@@ -314,3 +314,77 @@ jobs:
             gh release upload "$TAG" "$file" --repo "$GH_REPO" --clobber
           done
           echo "All assets uploaded successfully!"
+
+  update-homebrew:
+    needs: upload-release-assets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App token
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.CLI_GENERATION_APP_ID }}
+          private-key: ${{ secrets.CLI_GENERATION_APP_PRIVATE_KEY }}
+          owner: fireblocks
+
+      - name: Download tarballs
+        uses: actions/download-artifact@v4
+        with:
+          name: tarballs
+          path: dist/tarballs
+
+      - name: Update Homebrew formula
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          TAG=${{ github.event.release.tag_name }}
+          VERSION="${TAG#v}"
+
+          ARM64_FILE=$(ls dist/tarballs/*darwin-arm64*.tar.gz | head -1)
+          X64_FILE=$(ls dist/tarballs/*darwin-x64*.tar.gz | head -1)
+
+          ARM64_SHA256=$(sha256sum "$ARM64_FILE" | awk '{print $1}')
+          X64_SHA256=$(sha256sum "$X64_FILE" | awk '{print $1}')
+
+          BASE_URL="https://github.com/fireblocks/fireblocks-cli/releases/download/${TAG}"
+          ARM64_FILENAME=$(basename "$ARM64_FILE")
+          X64_FILENAME=$(basename "$X64_FILE")
+
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/fireblocks/homebrew-fireblocks-cli.git" tap
+          cd tap
+
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+
+          mkdir -p Formula
+          cat > Formula/fireblocks-cli.rb << FORMULA
+          class FireblocksCli < Formula
+            desc "Agent-first CLI for Fireblocks infrastructure"
+            homepage "https://github.com/fireblocks/fireblocks-cli"
+            version "${VERSION}"
+            license "MIT"
+
+            on_macos do
+              if Hardware::CPU.arm?
+                url "${BASE_URL}/${ARM64_FILENAME}"
+                sha256 "${ARM64_SHA256}"
+              else
+                url "${BASE_URL}/${X64_FILENAME}"
+                sha256 "${X64_SHA256}"
+              end
+            end
+
+            def install
+              libexec.install Dir["*"]
+              bin.write_exec_script libexec/"bin/fireblocks"
+            end
+
+            test do
+              assert_match version.to_s, shell_output("#{bin}/fireblocks --version")
+            end
+          end
+          FORMULA
+
+          git add Formula/fireblocks-cli.rb
+          git commit -m "Update fireblocks-cli to ${VERSION}"
+          git push
