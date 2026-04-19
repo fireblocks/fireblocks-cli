@@ -4,9 +4,31 @@ Agent-first CLI for Fireblocks infrastructure. Execute any Fireblocks API operat
 
 ## Installation
 
+### Homebrew (macOS)
+
+```bash
+brew tap fireblocks/fireblocks-cli
+brew install fireblocks-cli
+```
+
+### npm (macOS / Linux / Windows)
+
 ```bash
 npm install -g @fireblocks/cli
 ```
+
+### Standalone installers
+
+Download the latest release for your platform from the [GitHub Releases](https://github.com/fireblocks/fireblocks-cli/releases) page:
+
+| Platform | File |
+|----------|------|
+| macOS ARM64 (Apple Silicon) | `fireblocks-cli-*-darwin-arm64.pkg` |
+| macOS x64 (Intel) | `fireblocks-cli-*-darwin-x64.pkg` |
+| Windows x64 | `fireblocks-cli-*-x64.exe` |
+| Linux (tarball) | `fireblocks-cli-*-linux-x64.tar.gz` |
+
+No Node.js required for standalone installers.
 
 ## Quick Start
 
