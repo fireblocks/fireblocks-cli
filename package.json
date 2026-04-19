@@ -1,0 +1,227 @@
+{
+  "name": "@fireblocks/fireblocks-cli",
+  "description": "Agent-first CLI for Fireblocks infrastructure. Execute any Fireblocks API operation from the command line.",
+  "version": "0.1.0",
+  "author": "Fireblocks",
+  "bin": {
+    "fireblocks": "./bin/run.js"
+  },
+  "dependencies": {
+    "@oclif/core": "^4",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-autocomplete": "^3.2.42",
+    "chalk": "5",
+    "jose": "^6.2.1",
+    "js-yaml": "^4"
+  },
+  "devDependencies": {
+    "@oclif/test": "^4",
+    "@types/js-yaml": "^4",
+    "@types/node": "^22",
+    "nock": "^14",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "tsx": "^4",
+    "typescript": "^5",
+    "jest": "^29",
+    "ts-jest": "^29",
+    "ts-node": "^10",
+    "@types/jest": "^29"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "./bin",
+    "./dist",
+    "./oclif.manifest.json"
+  ],
+  "keywords": ["oclif", "fireblocks", "cli"],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "type": "module",
+  "oclif": {
+    "bin": "fireblocks",
+    "dirname": "fireblocks-cli",
+    "commands": {
+      "strategy": "pattern",
+      "target": "./dist/commands"
+    },
+    "topicSeparator": " ",
+    "topics": {
+      "vaults": {
+            "description": "Vaults operations"
+      },
+      "embedded-wallets": {
+            "description": "Embedded Wallets operations"
+      },
+      "workspace": {
+            "description": "Workspace operations"
+      },
+      "exchange-accounts": {
+            "description": "Exchange accounts operations"
+      },
+      "fiat-accounts": {
+            "description": "Fiat accounts operations"
+      },
+      "connected-accounts": {
+            "description": "Connected Accounts operations (Beta)"
+      },
+      "network-connections": {
+            "description": "Network connections operations"
+      },
+      "internal-wallets": {
+            "description": "Internal wallets operations"
+      },
+      "key-link": {
+            "description": "Key Link operations (Beta)"
+      },
+      "keys": {
+            "description": "Keys operations (Beta)"
+      },
+      "external-wallets": {
+            "description": "External wallets operations"
+      },
+      "contracts": {
+            "description": "Contracts operations"
+      },
+      "blockchains-assets": {
+            "description": "Blockchains & assets operations"
+      },
+      "transactions": {
+            "description": "Transactions operations"
+      },
+      "payments-payout": {
+            "description": "Payments - Payout operations"
+      },
+      "payments-flows": {
+            "description": "Payments - Flows operations"
+      },
+      "gas-stations": {
+            "description": "Gas stations operations"
+      },
+      "user-groups": {
+            "description": "User groups operations (Beta)"
+      },
+      "users": {
+            "description": "Users operations"
+      },
+      "audit-logs": {
+            "description": "Audit Logs operations"
+      },
+      "off-exchanges": {
+            "description": "Off exchanges operations"
+      },
+      "webhooks": {
+            "description": "Webhooks operations"
+      },
+      "webhooks-v2": {
+            "description": "Webhooks V2 operations"
+      },
+      "contract-templates": {
+            "description": "Contract Templates operations"
+      },
+      "deployed-contracts": {
+            "description": "Deployed Contracts operations"
+      },
+      "tokenization": {
+            "description": "Tokenization operations"
+      },
+      "contract-interactions": {
+            "description": "Contract Interactions operations"
+      },
+      "onchain-data": {
+            "description": "Onchain Data operations"
+      },
+      "staking": {
+            "description": "Staking operations"
+      },
+      "trading": {
+            "description": "Trading operations (Beta)"
+      },
+      "admin-quorum": {
+            "description": "Admin Quorum operations"
+      },
+      "nfts": {
+            "description": "NFTs operations"
+      },
+      "web3-connections": {
+            "description": "Web3 connections operations"
+      },
+      "compliance": {
+            "description": "Compliance operations"
+      },
+      "travel-rule": {
+            "description": "Travel Rule operations"
+      },
+      "compliance-screening-configuration": {
+            "description": "Compliance Screening Configuration operations"
+      },
+      "trlink": {
+            "description": "TRLink operations"
+      },
+      "ota": {
+            "description": "OTA operations (Beta)"
+      },
+      "workspace-status": {
+            "description": "Workspace Status operations (Beta)"
+      },
+      "policy-editor": {
+            "description": "Policy Editor operations (Beta)"
+      },
+      "policy-editor-v2": {
+            "description": "Policy Editor V2 operations (Beta)"
+      },
+      "console-user": {
+            "description": "Console User operations"
+      },
+      "api-user": {
+            "description": "Api User operations"
+      },
+      "reset-device": {
+            "description": "Reset device operations"
+      },
+      "whitelist-ip-addresses": {
+            "description": "whitelist ip addresses operations"
+      },
+      "smart-transfer": {
+            "description": "Smart Transfer operations"
+      },
+      "tags": {
+            "description": "Tags operations"
+      },
+      "cosigners": {
+            "description": "Cosigners operations (Beta)"
+      }
+},
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-autocomplete"
+    ],
+    "update": {
+      "node": {
+        "version": "22.0.0"
+      }
+    },
+    "targets": [
+      "darwin-x64",
+      "darwin-arm64",
+      "linux-x64",
+      "linux-arm64",
+      "win32-x64"
+    ],
+    "macos": {
+        "identifier": "com.fireblocks.mycli"
+    }
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "postbuild": "oclif manifest",
+    "test": "jest",
+    "pack": "oclif pack tarballs",
+    "pack:mac-arm64": "oclif pack macos --targets darwin-arm64",
+    "pack:mac-x64": "oclif pack macos --targets darwin-x64",
+    "pack:win": "oclif pack win"
+},
+  "types": "dist/index.d.ts"
+}
