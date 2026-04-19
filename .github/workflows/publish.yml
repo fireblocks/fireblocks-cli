@@ -72,7 +72,7 @@ jobs:
           git commit -m "release $tag"
           git push origin "$BRANCH"
           gh pr create --title "release $tag" --body "Automated version bump for release $tag" --base main --head "$BRANCH"
-          gh pr merge "$BRANCH" --squash --delete-branch
+          gh pr merge "$BRANCH" --admin --squash --delete-branch
 
       - name: Move tag
         env:
