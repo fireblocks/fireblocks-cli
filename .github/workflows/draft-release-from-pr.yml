@@ -3,7 +3,7 @@ name: Draft Release from PR
 on:
   push:
     branches:
-      - master
+      - main
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
         run: |
           gh pr list \
             --state merged \
-            --base master \
+            --base main \
             --limit 1 \
             --json number,title,body,labels \
             > pr.json

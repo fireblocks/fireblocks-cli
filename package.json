@@ -136,6 +136,9 @@
       "staking": {
             "description": "Staking operations"
       },
+      "earn": {
+            "description": "Earn operations (Beta)"
+      },
       "trading": {
             "description": "Trading operations (Beta)"
       },
