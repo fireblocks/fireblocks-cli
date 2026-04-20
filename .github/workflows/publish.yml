@@ -98,7 +98,7 @@ jobs:
         run: yarn build
 
       - name: Pack tarballs
-        run: npx oclif pack tarballs
+        run: npx oclif pack tarballs --targets darwin-x64,darwin-arm64,linux-x64,linux-arm64,win32-x64
 
       - name: Upload tarballs
         uses: actions/upload-artifact@v4
@@ -171,6 +171,70 @@ jobs:
           path: dist/macos/*.pkg
           retention-days: 7
 
+  pack-deb:
+    needs: bump-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Pack deb
+        run: npx oclif pack deb
+
+      - name: Upload deb installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-deb
+          path: dist/deb/*.deb
+          retention-days: 7
+
+  pack-rpm:
+    needs: bump-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Pack rpm
+        run: npx oclif pack rpm
+
+      - name: Upload rpm installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-rpm
+          path: dist/rpm/*.rpm
+          retention-days: 7
+
   pack-windows:
     needs: bump-version
     runs-on: windows-latest
@@ -193,8 +257,12 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Add GNU tar to PATH
+        shell: pwsh
+        run: echo "C:\Program Files\Git\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
       - name: Pack Windows
-        run: npx oclif pack win
+        run: npx oclif pack win --targets win32-x64
 
       - name: Upload Windows installer
         uses: actions/upload-artifact@v4
@@ -223,9 +291,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: yarn
 
-      - name: Ensure npm 11.5.1+
-        run: npm install -g npm@^11
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -233,7 +298,7 @@ jobs:
         run: yarn build
 
       - name: Publish package
-        run: npm publish --access public
+        run: npx --yes npm@^11 publish --access public
         # No NODE_AUTH_TOKEN needed - OIDC handles authentication
 
   publish-to-private-registry:
@@ -272,7 +337,7 @@ jobs:
           SKIP_POSTVERSION: true
 
   upload-release-assets:
-    needs: [pack-tarballs, pack-macos-arm64, pack-macos-x64, pack-windows]
+    needs: [pack-tarballs, pack-macos-arm64, pack-macos-x64, pack-deb, pack-rpm, pack-windows]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -295,6 +360,18 @@ jobs:
           name: macos-x64
           path: dist/macos-x64
 
+      - name: Download deb
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-deb
+          path: dist/linux-deb
+
+      - name: Download rpm
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-rpm
+          path: dist/linux-rpm
+
       - name: Download Windows
         uses: actions/download-artifact@v4
         with:
@@ -308,7 +385,7 @@ jobs:
         run: |
           TAG=${{ github.event.release.tag_name }}
           echo "Uploading assets to release $TAG..."
-          for file in dist/tarballs/* dist/macos-arm64/* dist/macos-x64/* dist/windows/*; do
+          for file in dist/tarballs/* dist/macos-arm64/* dist/macos-x64/* dist/linux-deb/* dist/linux-rpm/* dist/windows/*; do
             [ -f "$file" ] || continue
             echo "Uploading $(basename "$file")..."
             gh release upload "$TAG" "$file" --repo "$GH_REPO" --clobber
