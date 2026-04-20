@@ -53,8 +53,6 @@ jobs:
           npm i -g auto-changelog
 
       - name: Bump version and add changelog
-        env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           initialTag=${{ github.event.release.tag_name }}
           tag="${initialTag//[v]/}"
@@ -64,25 +62,16 @@ jobs:
           git checkout --track origin/main
           git config --global user.email "github-actions@github.com"
           git config --global user.name "Github Actions"
-          BRANCH="release/bump-${tag}"
-          git checkout -b "$BRANCH"
           npm --no-git-tag-version --allow-same-version version $tag
           auto-changelog
           git add .
           git commit -m "release $tag"
-          git push origin "$BRANCH"
-          gh pr create --title "release $tag" --body "Automated version bump for release $tag" --base main --head "$BRANCH"
-          gh pr merge "$BRANCH" --admin --squash --delete-branch
+          git push
 
       - name: Move tag
-        env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           TAG_NAME=${{ github.event.release.tag_name }}
           echo $TAG_NAME
-          git fetch origin main
-          git checkout main
-          git pull origin main
           git tag --force $TAG_NAME
           git push --force origin $TAG_NAME
 
