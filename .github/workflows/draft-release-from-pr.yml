@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   draft-release:
+    if: "!startsWith(github.event.head_commit.message, 'release ')"
     runs-on: ubuntu-latest
 
     steps:
@@ -48,8 +49,8 @@ jobs:
           LAST_TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName')
 
           if [[ -z "$LAST_TAG" || "$LAST_TAG" == "null" ]]; then
-            echo "No existing releases found. Defaulting to v0.0.0 as the base version."
-            LAST_TAG="v0.0.0"
+            echo "No existing releases found. Defaulting to v1.0.0 as the base version."
+            LAST_TAG="v1.0.0"
           fi
 
           echo "Found latest release: $LAST_TAG"
