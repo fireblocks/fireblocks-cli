@@ -194,7 +194,7 @@ jobs:
         run: yarn build
 
       - name: Pack deb
-        run: npx oclif pack deb
+        run: npx oclif pack deb --targets linux-x64,linux-arm64
 
       - name: Upload deb installer
         uses: actions/upload-artifact@v4
