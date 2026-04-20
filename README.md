@@ -27,7 +27,6 @@ Download the latest release for your platform from the [GitHub Releases](https:/
 | macOS x64 (Intel) | `fireblocks-cli-*-darwin-x64.pkg` |
 | Windows x64 | `fireblocks-cli-*-x64.exe` |
 | Linux x64 — `.deb` (Ubuntu, Debian) | `fireblocks-cli-*-amd64.deb` |
-| Linux x64 — `.rpm` (CentOS, RHEL, Fedora) | `fireblocks-cli-*-x86_64.rpm` |
 | Linux x64 (tarball) | `fireblocks-cli-*-linux-x64.tar.gz` |
 | Linux ARM64 (tarball) | `fireblocks-cli-*-linux-arm64.tar.gz` |
 

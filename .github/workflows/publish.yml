@@ -203,38 +203,6 @@ jobs:
           path: dist/deb/*.deb
           retention-days: 7
 
-  pack-rpm:
-    needs: bump-version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build
-        run: yarn build
-
-      - name: Pack rpm
-        run: npx oclif pack rpm
-
-      - name: Upload rpm installer
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-rpm
-          path: dist/rpm/*.rpm
-          retention-days: 7
-
   pack-windows:
     needs: bump-version
     runs-on: windows-latest
@@ -260,6 +228,9 @@ jobs:
       - name: Add GNU tar to PATH
         shell: pwsh
         run: echo "C:\Program Files\Git\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Install NSIS
+        run: choco install nsis -y
 
       - name: Pack Windows
         run: npx oclif pack win --targets win32-x64
@@ -337,7 +308,7 @@ jobs:
           SKIP_POSTVERSION: true
 
   upload-release-assets:
-    needs: [pack-tarballs, pack-macos-arm64, pack-macos-x64, pack-deb, pack-rpm, pack-windows]
+    needs: [pack-tarballs, pack-macos-arm64, pack-macos-x64, pack-deb, pack-windows]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -366,12 +337,6 @@ jobs:
           name: linux-deb
           path: dist/linux-deb
 
-      - name: Download rpm
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-rpm
-          path: dist/linux-rpm
-
       - name: Download Windows
         uses: actions/download-artifact@v4
         with:
@@ -385,7 +350,7 @@ jobs:
         run: |
           TAG=${{ github.event.release.tag_name }}
           echo "Uploading assets to release $TAG..."
-          for file in dist/tarballs/* dist/macos-arm64/* dist/macos-x64/* dist/linux-deb/* dist/linux-rpm/* dist/windows/*; do
+          for file in dist/tarballs/* dist/macos-arm64/* dist/macos-x64/* dist/linux-deb/* dist/windows/*; do
             [ -f "$file" ] || continue
             echo "Uploading $(basename "$file")..."
             gh release upload "$TAG" "$file" --repo "$GH_REPO" --clobber
