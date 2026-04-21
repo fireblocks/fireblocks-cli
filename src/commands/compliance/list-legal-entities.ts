@@ -19,15 +19,6 @@ export default class ListLegalEntities extends FireblocksBaseCommand {
       description: 'Maximum number of registrations to return. Ignored when \`vaultAccountId\` is provided.',
       default: 50,
     }),
-    'sort-by': Flags.string({
-      description: 'Field to sort results by. Ignored when \`vaultAccountId\` is provided.',
-      options: ['createdAt', 'updatedAt'],
-    }),
-    'order': Flags.string({
-      description: 'Sort order. Ignored when \`vaultAccountId\` is provided.',
-      default: 'DESC',
-      options: ['ASC', 'DESC'],
-    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -55,12 +46,6 @@ export default class ListLegalEntities extends FireblocksBaseCommand {
     }
     if (flags['page-size'] !== undefined && flags['page-size'] !== null) {
       queryParams['pageSize'] = String(flags['page-size'])
-    }
-    if (flags['sort-by'] !== undefined && flags['sort-by'] !== null) {
-      queryParams['sortBy'] = String(flags['sort-by'])
-    }
-    if (flags['order'] !== undefined && flags['order'] !== null) {
-      queryParams['order'] = String(flags['order'])
     }
 
     const result = await this.makeRequest(

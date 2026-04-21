@@ -65,7 +65,7 @@ jobs:
           npm --no-git-tag-version --allow-same-version version $tag
           auto-changelog
           git add .
-          git commit -m "release $tag"
+          git commit -m "dump new version $tag"
           git push
 
       - name: Move tag
@@ -206,6 +206,20 @@ jobs:
           choco install nsis -y
           echo "C:\Program Files (x86)\NSIS" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
+      - name: Patch oclif NSIS template for long PATH support
+        shell: pwsh
+        run: |
+          $nsiTemplate = Get-ChildItem -Path node_modules -Recurse -Filter "*.nsi" -ErrorAction SilentlyContinue | Where-Object { $_.FullName -match "oclif" } | Select-Object -First 1
+          if ($nsiTemplate) {
+            $content = Get-Content $nsiTemplate.FullName -Raw
+            $psCmd = 'nsExec::ExecToLog ''powershell -Command "[Environment]::SetEnvironmentVariable(''Path'', [Environment]::GetEnvironmentVariable(''Path'', ''Machine'') + '';$INSTDIR\bin'', ''Machine'')"'''
+            $content = $content -replace 'WriteRegExpandStr HKLM[^\n]*PATH[^\n]*', $psCmd
+            Set-Content $nsiTemplate.FullName $content
+            Write-Host "Patched $($nsiTemplate.FullName)"
+          } else {
+            Write-Host "NSI template not found, skipping patch"
+          }
+
       - name: Pack Windows
         run: npx oclif pack win --targets win32-x64
 
@@ -303,12 +317,6 @@ jobs:
           private-key: ${{ secrets.CLI_GENERATION_APP_PRIVATE_KEY }}
           owner: fireblocks
 
-      - name: Download tarballs
-        uses: actions/download-artifact@v4
-        with:
-          name: tarballs
-          path: dist/tarballs
-
       - name: Update Homebrew formula
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
@@ -316,15 +324,16 @@ jobs:
           TAG=${{ github.event.release.tag_name }}
           VERSION="${TAG#v}"
 
-          ARM64_FILE=$(ls dist/tarballs/*darwin-arm64*.tar.gz | head -1)
-          X64_FILE=$(ls dist/tarballs/*darwin-x64*.tar.gz | head -1)
-
-          ARM64_SHA256=$(sha256sum "$ARM64_FILE" | awk '{print $1}')
-          X64_SHA256=$(sha256sum "$X64_FILE" | awk '{print $1}')
-
           BASE_URL="https://github.com/fireblocks/fireblocks-cli/releases/download/${TAG}"
-          ARM64_FILENAME=$(basename "$ARM64_FILE")
-          X64_FILENAME=$(basename "$X64_FILE")
+
+          ARM64_FILENAME=$(gh release view "$TAG" --repo fireblocks/fireblocks-cli --json assets -q '.assets[].name | select(test("darwin-arm64.*\\.tar\\.gz$"))' | head -1)
+          X64_FILENAME=$(gh release view "$TAG" --repo fireblocks/fireblocks-cli --json assets -q '.assets[].name | select(test("darwin-x64.*\\.tar\\.gz$"))' | head -1)
+
+          curl -fLo arm64.tar.gz "${BASE_URL}/${ARM64_FILENAME}"
+          curl -fLo x64.tar.gz "${BASE_URL}/${X64_FILENAME}"
+
+          ARM64_SHA256=$(sha256sum arm64.tar.gz | awk '{print $1}')
+          X64_SHA256=$(sha256sum x64.tar.gz | awk '{print $1}')
 
           git clone "https://x-access-token:${GH_TOKEN}@github.com/fireblocks/homebrew-fireblocks-cli.git" tap
           cd tap
@@ -332,34 +341,11 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
 
-          mkdir -p Formula
-          cat > Formula/fireblocks-cli.rb << FORMULA
-          class FireblocksCli < Formula
-            desc "Agent-first CLI for Fireblocks infrastructure"
-            homepage "https://github.com/fireblocks/fireblocks-cli"
-            version "${VERSION}"
-            license "MIT"
-
-            on_macos do
-              if Hardware::CPU.arm?
-                url "${BASE_URL}/${ARM64_FILENAME}"
-                sha256 "${ARM64_SHA256}"
-              else
-                url "${BASE_URL}/${X64_FILENAME}"
-                sha256 "${X64_SHA256}"
-              end
-            end
-
-            def install
-              libexec.install Dir["*"]
-              bin.write_exec_script libexec/"bin/fireblocks"
-            end
-
-            test do
-              assert_match version.to_s, shell_output("#{bin}/fireblocks --version")
-            end
-          end
-          FORMULA
+          sed -i "s|  version \"[^\"]*\"|  version \"${VERSION}\"|" Formula/fireblocks-cli.rb
+          sed -i "s|url \"https://.*darwin-arm64.*\"|url \"${BASE_URL}/${ARM64_FILENAME}\"|" Formula/fireblocks-cli.rb
+          sed -i "/darwin-arm64/{n;s|sha256 \"[^\"]*\"|sha256 \"${ARM64_SHA256}\"|};" Formula/fireblocks-cli.rb
+          sed -i "s|url \"https://.*darwin-x64.*\"|url \"${BASE_URL}/${X64_FILENAME}\"|" Formula/fireblocks-cli.rb
+          sed -i "/darwin-x64/{n;s|sha256 \"[^\"]*\"|sha256 \"${X64_SHA256}\"|};" Formula/fireblocks-cli.rb
 
           git add Formula/fireblocks-cli.rb
           git commit -m "Update fireblocks-cli to ${VERSION}"

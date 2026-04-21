@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   draft-release:
-    if: "!startsWith(github.event.head_commit.message, 'release ')"
+    if: "!startsWith(github.event.head_commit.message, 'dump new version ')"
     runs-on: ubuntu-latest
 
     steps:
