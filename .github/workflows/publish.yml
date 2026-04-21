@@ -213,14 +213,13 @@ jobs:
           choco install nsis -y
           echo "C:\Program Files (x86)\NSIS" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
-      - name: Map workspace to short drive letter
-        shell: pwsh
-        run: |
-          subst T: "$env:GITHUB_WORKSPACE"
+      - name: Create short junction to workspace
+        shell: cmd
+        run: mklink /J C:\c "%GITHUB_WORKSPACE%"
 
-      - name: Pack Windows (from T:\)
+      - name: Pack Windows
         shell: pwsh
-        working-directory: T:\
+        working-directory: C:\c
         run: npx oclif pack win --targets win32-x64
 
       - name: Upload Windows installer
@@ -231,7 +230,7 @@ jobs:
           retention-days: 7
 
   publish:
-    needs: bump-version
+    needs: [pack-tarballs, pack-macos, pack-deb, pack-windows]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
