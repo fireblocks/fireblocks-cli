@@ -36,6 +36,8 @@ Download the latest release for your platform from [GitHub Releases](https://git
 |---|---|---|
 | x64 | `fireblocks-v*-x64.exe` | `fireblocks-v*-win32-x64.tar.gz` |
 
+> **Note:** If the installer shows "PATH not updated" during installation, your system PATH exceeds Windows' 1024-character limit. Use `npm install -g @fireblocks/fireblocks-cli` instead, or manually add `C:\Program Files\fireblocks\bin` to your PATH after installing.
+
 #### Linux
 
 | Architecture | `.deb` (Ubuntu / Debian) | Tarball |
