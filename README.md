@@ -178,7 +178,7 @@ Errors are structured JSON on stderr:
 
 ## AI agents
 
-The CLI is designed to be driven by coding agents (Claude Code, Cursor, Devin). Install the CLI, then drop [`SKILL.md`](./.claude/skills/fireblocks-cli/SKILL.md) into your agent's skills directory. Agents will:
+The CLI is designed to be driven by coding agents (Claude Code, Cursor, Devin). Install the CLI, then drop [`SKILL.md`](.claude/skills/fireblocks-cli/SKILL.md) into your agent's skills directory. Agents will:
 
 - Discover operations via `help-index`
 - Compose workflows by piping JSON between commands
