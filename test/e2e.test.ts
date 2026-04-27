@@ -19,7 +19,7 @@ jest.mock('../src/lib/auth/config.js', () => ({
   }),
 }))
 
-jest.mock('../src/lib/auth/index.js', () => ({
+jest.mock('../src/lib/auth', () => ({
   resolveAuth: jest.fn().mockResolvedValue({
     apiKey: TEST_API_KEY,
     privateKey: TEST_PRIVATE_KEY,
