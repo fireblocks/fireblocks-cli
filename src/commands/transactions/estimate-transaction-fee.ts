@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class EstimateTransactionFee extends FireblocksBaseCommand {
   static summary = 'Estimate transaction fee'
 
-  static description = 'Estimates the transaction fee for a specific transaction request.\nThis endpoint simulates a transaction which means that the system will expect to have the requested asset and balance in the specified wallet.\n\n**Note**: Supports all Fireblocks assets except ZCash (ZEC).\nLearn more about Fireblocks Fee Management in the following [guide](https://developers.fireblocks.com/reference/estimate-transaction-fee).\nEndpoint Permission: Admin, Signer, Approver, Editor.\n\nOperation ID: estimateTransactionFee\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Transactions/estimateTransactionFee'
+  static description = 'Estimates the transaction fee for a specific transaction request.\nThis endpoint simulates a transaction which means that the system will expect to have the requested asset and balance in the specified wallet.\n**Note**: Supports all Fireblocks assets except ZCash (ZEC).\nThe PROGRAM_CALL operation is not supported by this endpoint — fee estimation for Solana program calls is not available.\nLearn more about Fireblocks Fee Management in the following [guide](https://developers.fireblocks.com/reference/estimate-transaction-fee).\nEndpoint Permission: Admin, Signer, Approver, Editor.\n\nOperation ID: estimateTransactionFee\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Transactions/estimateTransactionFee'
 
   static enableJsonFlag = false
 

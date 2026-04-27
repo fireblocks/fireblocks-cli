@@ -44,12 +44,32 @@ export default class Configure extends Command {
       description: 'Named credential profile to configure',
       default: 'default',
     }),
+    'set-default': Flags.string({
+      description: 'Set the named profile as the default without re-entering credentials',
+    }),
   }
 
   async run(): Promise<void> {
     const {flags} = await this.parse(Configure)
-    const profileName = flags.profile
 
+    // --set-default: just flip the default profile and exit
+    if (flags['set-default']) {
+      const profileName = flags['set-default']
+      const existing = await readConfig()
+      if (!existing) {
+        this.error('No config file found. Run `fireblocks configure` first.')
+      }
+      if (!existing.profiles[profileName]) {
+        const known = Object.keys(existing.profiles).join(', ')
+        this.error(`Profile "${profileName}" not found. Known profiles: ${known}`)
+      }
+      existing.defaultProfile = profileName
+      await writeConfig(existing)
+      this.log(`Default profile set to "${profileName}".`)
+      return
+    }
+
+    const profileName = flags.profile
     const rl = createInterface({input: process.stdin, output: process.stderr})
 
     try {
@@ -88,16 +108,17 @@ export default class Configure extends Command {
       const baseUrl = await promptBaseUrl(rl)
 
       // Build config
-      const config: CliConfig = existing ?? {profiles: {}, defaultProfile: 'default'}
-      config.profiles[profileName] = {
-        apiKey,
-        privateKeyPath: resolvedKeyPath,
-        ...(baseUrl !== DEFAULT_BASE_URL ? {baseUrl} : {}),
-      }
+      const config: CliConfig = existing ?? {profiles: {}, defaultProfile: profileName}
+      config.profiles[profileName] = {apiKey, privateKeyPath: resolvedKeyPath, baseUrl}
 
-      // If this is the first profile, make it the default
+      // First profile always becomes default; subsequent profiles ask
       if (Object.keys(config.profiles).length === 1) {
         config.defaultProfile = profileName
+      } else if (config.defaultProfile !== profileName) {
+        const makeDefault = await prompt(rl, `Make "${profileName}" the default profile? (y/N) `)
+        if (makeDefault.toLowerCase() === 'y') {
+          config.defaultProfile = profileName
+        }
       }
 
       await writeConfig(config)
