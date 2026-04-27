@@ -78,16 +78,28 @@ fireblocks help-index
 Interactive setup that stores your API key ID and RSA secret in `~/.config/fireblocks/config.json`. For agents and CI, use env vars or flags instead (see [Authentication](#authentication)).
 
 ```bash
-fireblocks configure                    # interactive
-fireblocks configure --profile sandbox  # named profile for multi-env setups
+fireblocks configure                       # set up the default profile
+fireblocks configure --profile profile-name     # named profile for multi-env setups
+fireblocks configure --set-default=profile-name # switch the default profile without re-entering credentials
 ```
 
-### `fireblocks whoami` — Verify credentials
+When configuring a second profile you are asked whether to make it the default. The config always stores the `baseUrl` explicitly so the file is self-describing.
 
-Calls `GET /v1/users/me` and returns the masked API key, base URL, and verification status. Use this as a smoke test before running anything else.
+### `fireblocks whoami` — Show current profile
+
+Prints the default profile name, masked API key, and base URL from the local config file. No API call is made.
 
 ```bash
 fireblocks whoami
+```
+
+Example output:
+```json
+{
+  "defaultProfile": "default",
+  "apiKey": "d9cb...cba8",
+  "baseUrl": "https://api.fireblocks.io"
+}
 ```
 
 ### `fireblocks <namespace> <action>` — API operations
@@ -178,7 +190,7 @@ Errors are structured JSON on stderr:
 
 ## AI agents
 
-The CLI is designed to be driven by coding agents (Claude Code, Cursor, Devin). Install the CLI, then drop [`SKILL.md`](./.claude/skills/fireblocks-cli/SKILL.md) into your agent's skills directory. Agents will:
+The CLI is designed to be driven by coding agents (Claude Code, Cursor, Devin). Install the CLI, then drop [`SKILL.md`](.claude/skills/fireblocks-cli/SKILL.md) into your agent's skills directory. Agents will:
 
 - Discover operations via `help-index`
 - Compose workflows by piping JSON between commands
