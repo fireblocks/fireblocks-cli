@@ -42,8 +42,8 @@ Download the latest release for your platform from [GitHub Releases](https://git
 
 | Architecture | `.deb` (Ubuntu / Debian) | Tarball |
 |---|---|---|
-| x64 | `fireblocks_*_amd64.deb` | `fireblocks-v*-linux-x64.tar.gz` |
-| ARM64 | `fireblocks_*_arm64.deb` | `fireblocks-v*-linux-arm64.tar.gz` |
+| x64 | `fireblocks-v*-amd64.deb` | `fireblocks-v*-linux-x64.tar.gz` |
+| ARM64 | `fireblocks-v*-arm64.deb` | `fireblocks-v*-linux-arm64.tar.gz` |
 
 Tarballs are also available as `.tar.xz` for smaller downloads.
 
