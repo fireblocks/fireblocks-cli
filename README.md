@@ -65,7 +65,7 @@ fireblocks configure
 fireblocks whoami
 
 # 3. Make a request
-fireblocks vaults get-vault-accounts-paged --json
+fireblocks vaults get-paged-vault-accounts
 
 # 4. Discover the API
 fireblocks help-index
@@ -97,7 +97,7 @@ Example output:
 ```json
 {
   "defaultProfile": "default",
-  "apiKey": "d9cb...cba8",
+  "apiKey": "apiKey",
   "baseUrl": "https://api.fireblocks.io"
 }
 ```
@@ -108,8 +108,8 @@ Commands are generated from the Fireblocks OpenAPI spec. OpenAPI path parameters
 
 ```bash
 # Reads
-fireblocks vaults get-vault-accounts-paged --json
-fireblocks vaults get-vault-account --vault-account-id 0 --json
+fireblocks vaults get-paged-vault-accounts
+fireblocks vaults get-vault-account --vault-account-id 0
 
 # Writes (include --no-confirm for non-interactive)
 fireblocks transactions create-transaction \
@@ -135,7 +135,7 @@ fireblocks transactions create-transaction \
 | `--no-confirm` | | Skip confirmation prompt on writes |
 | `--dry-run` | | Print the assembled request without sending |
 | `--debug` | | Log request/response details to stderr |
-| `--json` | | Force structured JSON output |
+| `--output` | | Output format: `json` (default) or `yaml` |
 
 ### `fireblocks help-index` — Discover the API
 
@@ -198,7 +198,7 @@ The CLI is designed to be driven by coding agents (Claude Code, Cursor, Devin). 
 
 ```bash
 # List vault accounts, filter with jq, pipe to the next command
-fireblocks vaults get-vault-accounts-paged --json \
+fireblocks vaults get-paged-vault-accounts \
   | jq -r '.accounts[] | select(.assets[].balance > 0) | .id'
 ```
 

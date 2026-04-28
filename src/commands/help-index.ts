@@ -1,4 +1,5 @@
-import {Command} from '@oclif/core'
+import {Command, Flags} from '@oclif/core'
+import {formatOutput} from '../lib/output/formatter.js'
 
 interface CompactFlag {
   name: string
@@ -18,14 +19,21 @@ interface CompactCommand {
 export default class HelpIndex extends Command {
   static override description = 'Machine-readable command index for AI agents'
 
+  static override flags = {
+    output: Flags.string({
+      char: 'o',
+      description: 'Output format',
+      options: ['json', 'yaml'],
+      default: 'json',
+    }),
+  }
+
   static override examples = [
     '$ fireblocks help-index',
-    '$ fireblocks help-index --json',
+    '$ fireblocks help-index --output=yaml',
   ]
 
-  static override enableJsonFlag = true
-
-  async run(): Promise<{commands: CompactCommand[]}> {
+  async run(): Promise<void> {
     const commands: CompactCommand[] = []
 
     for (const cmd of this.config.commands) {
@@ -52,7 +60,7 @@ export default class HelpIndex extends Command {
       if (cmd.flags) {
         for (const [name, flag] of Object.entries(cmd.flags)) {
           // Skip base flags that every command has (output, debug, etc.)
-          if (['output', 'debug', 'json'].includes(name)) continue
+          if (['output', 'debug'].includes(name)) continue
 
           const flagDef = flag as Record<string, unknown>
           flags.push({
@@ -76,6 +84,7 @@ export default class HelpIndex extends Command {
       commands.push(entry)
     }
 
-    return {commands}
+    const {flags} = await this.parse(HelpIndex)
+    this.log(formatOutput({commands}, flags.output))
   }
 }
