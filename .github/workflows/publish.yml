@@ -100,6 +100,13 @@ jobs:
       - name: Pack tarballs
         run: npx oclif pack tarballs --targets darwin-x64,darwin-arm64,linux-x64,linux-arm64,win32-x64
 
+      - name: Remove git SHA from tarball filenames
+        run: |
+          for f in dist/*.tar.*; do
+            newname=$(echo "$f" | sed -E 's/-[0-9a-f]{7}([-.])/\1/')
+            [ "$f" != "$newname" ] && mv "$f" "$newname"
+          done
+
       - name: Upload tarballs
         uses: actions/upload-artifact@v4
         with:
@@ -131,6 +138,13 @@ jobs:
 
       - name: Pack macOS
         run: npx oclif pack macos --targets darwin-arm64,darwin-x64
+
+      - name: Remove git SHA from macOS package filenames
+        run: |
+          for f in dist/macos/*.pkg; do
+            newname=$(echo "$f" | sed -E 's/-[0-9a-f]{7}([-.])/\1/')
+            [ "$f" != "$newname" ] && mv "$f" "$newname"
+          done
 
       - name: Upload macOS installers
         uses: actions/upload-artifact@v4
@@ -221,6 +235,15 @@ jobs:
         shell: pwsh
         working-directory: C:\c
         run: npx oclif pack win --targets win32-x64
+
+      - name: Remove git SHA from Windows installer filenames
+        shell: pwsh
+        working-directory: C:\c
+        run: |
+          Get-ChildItem "dist\win32\*.exe" | ForEach-Object {
+            $newName = $_.Name -replace '-[0-9a-f]{7}(?=[-.])', ''
+            if ($newName -ne $_.Name) { Rename-Item $_.FullName $newName }
+          }
 
       - name: Upload Windows installer
         uses: actions/upload-artifact@v4
