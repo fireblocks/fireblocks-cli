@@ -1,16 +1,20 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class Stake extends FireblocksBaseCommand {
-  static summary = 'Initiate or add to existing stake'
+export default class ResolveActionTRLinkTrm extends FireblocksBaseCommand {
+  static summary = 'Resolve action for a TRM'
 
-  static description = 'Creates a new staking position and returns its unique ID. For Ethereum compounding validator (EIP-7251): when the \'id\' of an existing compounding validator position is provided, adds to that position; otherwise creates a new position. For Ethereum legacy validator: creates a new position regardless of existing delegations. For Cosmos chains and Ethereum liquid staking (Lido): automatically add to existing positions for the same validator provider and same vault account if one exists, otherwise create a new position. For Solana and Polygon (MATIC/POL): always create new positions regardless of existing delegations.\n\nOperation ID: stake\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/stake'
+  static description = 'Submits required data (e.g., beneficiary PII) to resolve a pending Travel Rule Message action.\n\nOperation ID: resolveActionTRLinkTrm\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/TRLink/resolveActionTRLinkTrm'
 
   static enableJsonFlag = false
 
   static flags = {
-    'chain-descriptor': Flags.string({
-      description: 'Protocol identifier for the stake staking operation (e.g., ATOM_COS/AXL/CELESTIA).',
+    'customer-integration-id': Flags.string({
+      description: 'Customer integration unique identifier',
+      required: true,
+    }),
+    'trm-id': Flags.string({
+      description: 'Travel Rule Message unique identifier',
       required: true,
     }),
     data: Flags.string({
@@ -24,12 +28,12 @@ export default class Stake extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/staking/chains/{chainDescriptor}/stake'
+  static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/resolve_action'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(Stake)
+    const {flags} = await this.parse(ResolveActionTRLinkTrm)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -50,14 +54,15 @@ export default class Stake extends FireblocksBaseCommand {
     }
 
     const pathParams: Record<string, string> = {}
-    pathParams['chainDescriptor'] = String(flags['chain-descriptor'])
+    pathParams['customerIntegrationId'] = String(flags['customer-integration-id'])
+    pathParams['trmId'] = String(flags['trm-id'])
 
 
-    await this.confirmOrAbort('POST', '/v1/staking/chains/{chainDescriptor}/stake')
+    await this.confirmOrAbort('POST', '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/resolve_action')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/staking/chains/{chainDescriptor}/stake',
+      '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/resolve_action',
       {
         body,
         headers,

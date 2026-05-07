@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class Withdraw extends FireblocksBaseCommand {
   static summary = 'Withdraw staked funds'
 
-  static description = 'Withdraws funds that have completed the unbonding period. Typically requires the position to be deactivated first (unstake → unbond → withdraw). Amount and timing vary by chain protocol.\n\nOperation ID: withdraw\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/withdraw'
+  static description = 'Withdraws funds that have completed the unbonding period. Typically requires the position to be deactivated first (unstake → unbond → withdraw). Amount and timing vary by chain protocol.\n\nPartial withdrawal is supported for ETH compounding validators (EIP-7251/Pectra) and Cosmos chains via the optional \'amount\' field. For ETH compounding validators, the remaining balance must be at least 32 ETH after the withdrawal. For all other chains, omitting \'amount\' withdraws the entire available balance.\n\nOperation ID: withdraw\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/withdraw'
 
   static enableJsonFlag = false
 

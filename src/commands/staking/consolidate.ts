@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class Consolidate extends FireblocksBaseCommand {
   static summary = 'Consolidate staking positions (ETH validator consolidation)'
 
-  static description = 'Consolidates the source staking position into the destination, merging the balance into the destination and closing the source position once complete. Both positions must be from the same funding vaults account (i.e. same withdrawals credentials).  On chain, this translates into a consolidation transaction, where the  source validator is consolidated into the destination validator.  Supported chains: Ethereum (ETH) only.\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor.\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: consolidate\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/consolidate'
+  static description = 'Consolidates the source staking position into the destination, merging the balance into the destination and closing the source position once complete. Both positions must be from the same vault account (i.e. same withdrawal credentials).  On chain, this translates into a consolidation transaction, where the  source validator is consolidated into the destination validator.  Supported chains: Ethereum (ETH) only.\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor.\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: consolidate\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/consolidate'
 
   static enableJsonFlag = false
 

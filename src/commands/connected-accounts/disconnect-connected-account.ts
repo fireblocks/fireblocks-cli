@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DisconnectConnectedAccount extends FireblocksBaseCommand {
   static summary = 'Disconnect connected account'
 
-  static description = 'Disconnect a connected account by ID. \n**Note**:\n- This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: disconnectConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/disconnectConnectedAccount'
+  static description = 'Disconnect a connected account by ID.\n\n**Note**:\n- This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: disconnectConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/disconnectConnectedAccount'
 
   static enableJsonFlag = false
 
