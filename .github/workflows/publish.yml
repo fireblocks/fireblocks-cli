@@ -181,6 +181,13 @@ jobs:
       - name: Remove unsupported deb architectures
         run: rm -f dist/deb/*armel*.deb
 
+      - name: Remove git SHA from deb filenames
+        run: |
+          for f in dist/deb/*.deb; do
+            newname=$(echo "$f" | sed -E 's|fireblocks_([0-9.]+)\.[0-9a-f]{7}-[0-9]+_|fireblocks-v\1-|')
+            [ "$f" != "$newname" ] && mv "$f" "$newname"
+          done
+
       - name: Upload deb installer
         uses: actions/upload-artifact@v4
         with:
@@ -281,6 +288,39 @@ jobs:
       - name: Publish package
         run: npx --yes npm@^11 publish --access public
         # No NODE_AUTH_TOKEN needed - OIDC handles authentication
+        
+  publish-to-private-registry:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      # First setup-node: for installing dependencies from npmjs.org
+      - name: Set up Node for dependency installation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      # Second setup-node: reconfigure for publishing to private registry
+      - name: Set up Node for private registry publishing
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: ${{ secrets.PRIVATE_NPM_REGISTRY_URL }}
+
+      - name: Publish package to private registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PRIVATE_NPM_REGISTRY_TOKEN }}
+          SKIP_POSTVERSION: true
 
 
   upload-release-assets:

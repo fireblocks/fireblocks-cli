@@ -10,7 +10,7 @@ export default class GetAllDelegations extends FireblocksBaseCommand {
 
   static flags = {
     'chain-descriptor': Flags.string({
-      description: 'Protocol identifier to filter positions (e.g., ATOM_COS/AXL/CELESTIA}). If omitted, positions across all supported chains are returned.',
+      description: 'Protocol identifier to filter positions (e.g., ATOM_COS/AXL/CELESTIA). If omitted, positions across all supported chains are returned.',
     }),
     'vault-account-id': Flags.string({
       description: 'Filter positions by vault account ID.',

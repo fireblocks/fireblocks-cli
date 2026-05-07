@@ -1,19 +1,14 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class ClaimRewards extends FireblocksBaseCommand {
-  static summary = 'Claim accrued rewards'
+export default class CreateCounterpartyGroup extends FireblocksBaseCommand {
+  static summary = 'Create a counterparty group'
 
-  static description = 'Claims available staking rewards for the specified chain and vault. Supported chains: Solana and Polygon (POL/Matic). Behavior depends on protocol reward distribution.\n\nOperation ID: claimRewards\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/claimRewards'
+  static description = 'Creates a new counterparty group.\n\n**Endpoint Permissions:** Admin, Non-Signing Admin.\n\nOperation ID: createCounterpartyGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/createCounterpartyGroup'
 
   static enableJsonFlag = false
 
   static flags = {
-    'chain-descriptor': Flags.string({
-      description: 'Protocol identifier for the claim rewards staking operation (e.g., POL/MATIC/SOL).',
-      required: true,
-      options: ['SOL', 'SOL_TEST', 'MATIC', 'POL', 'POL_TEST'],
-    }),
     data: Flags.string({
       description: 'JSON request body',
       required: true,
@@ -25,12 +20,12 @@ export default class ClaimRewards extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/staking/chains/{chainDescriptor}/claim_rewards'
+  static path = '/v1/counterparty_groups'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(ClaimRewards)
+    const {flags} = await this.parse(CreateCounterpartyGroup)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -50,19 +45,16 @@ export default class ClaimRewards extends FireblocksBaseCommand {
       headers['Idempotency-Key'] = flags['idempotency-key']
     }
 
-    const pathParams: Record<string, string> = {}
-    pathParams['chainDescriptor'] = String(flags['chain-descriptor'])
 
 
-    await this.confirmOrAbort('POST', '/v1/staking/chains/{chainDescriptor}/claim_rewards')
+    await this.confirmOrAbort('POST', '/v1/counterparty_groups')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/staking/chains/{chainDescriptor}/claim_rewards',
+      '/v1/counterparty_groups',
       {
         body,
         headers,
-        pathParams,
       },
     )
 

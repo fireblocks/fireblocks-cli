@@ -1,16 +1,16 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class Stake extends FireblocksBaseCommand {
-  static summary = 'Initiate or add to existing stake'
+export default class UpdateCounterpartyGroup extends FireblocksBaseCommand {
+  static summary = 'Update a counterparty group'
 
-  static description = 'Creates a new staking position and returns its unique ID. For Ethereum compounding validator (EIP-7251): when the \'id\' of an existing compounding validator position is provided, adds to that position; otherwise creates a new position. For Ethereum legacy validator: creates a new position regardless of existing delegations. For Cosmos chains and Ethereum liquid staking (Lido): automatically add to existing positions for the same validator provider and same vault account if one exists, otherwise create a new position. For Solana and Polygon (MATIC/POL): always create new positions regardless of existing delegations.\n\nOperation ID: stake\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/stake'
+  static description = 'Updates an existing counterparty group.\n\n**Endpoint Permissions:** Admin, Non-Signing Admin.\n\nOperation ID: updateCounterpartyGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/updateCounterpartyGroup'
 
   static enableJsonFlag = false
 
   static flags = {
-    'chain-descriptor': Flags.string({
-      description: 'Protocol identifier for the stake staking operation (e.g., ATOM_COS/AXL/CELESTIA).',
+    'group-id': Flags.string({
+      description: 'The unique identifier of the counterparty group',
       required: true,
     }),
     data: Flags.string({
@@ -23,13 +23,13 @@ export default class Stake extends FireblocksBaseCommand {
     }),
   }
 
-  static method = 'POST'
-  static path = '/v1/staking/chains/{chainDescriptor}/stake'
+  static method = 'PATCH'
+  static path = '/v1/counterparty_groups/{groupId}'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(Stake)
+    const {flags} = await this.parse(UpdateCounterpartyGroup)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -50,14 +50,14 @@ export default class Stake extends FireblocksBaseCommand {
     }
 
     const pathParams: Record<string, string> = {}
-    pathParams['chainDescriptor'] = String(flags['chain-descriptor'])
+    pathParams['groupId'] = String(flags['group-id'])
 
 
-    await this.confirmOrAbort('POST', '/v1/staking/chains/{chainDescriptor}/stake')
+    await this.confirmOrAbort('PATCH', '/v1/counterparty_groups/{groupId}')
 
     const result = await this.makeRequest(
-      'POST',
-      '/v1/staking/chains/{chainDescriptor}/stake',
+      'PATCH',
+      '/v1/counterparty_groups/{groupId}',
       {
         body,
         headers,
