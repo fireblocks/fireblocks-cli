@@ -20,7 +20,7 @@ export default class GetPublicKeyInfoNcw extends FireblocksBaseCommand {
     'algorithm': Flags.string({
       description: 'Elliptic Curve',
       required: true,
-      options: ['MPC_ECDSA_SECP256K1', 'MPC_ECDSA_SECP256R1', 'MPC_EDDSA_ED25519'],
+      options: ['MPC_ECDSA_SECP256K1', 'MPC_EDDSA_ED25519'],
     }),
     'compressed': Flags.boolean({
       description: 'Compressed/Uncompressed public key format',

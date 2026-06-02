@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class GetCircleGatewayWalletInfoBeta extends FireblocksBaseCommand {
-  static summary = 'Get Circle Gateway wallet info'
+export default class GetUsdcGatewayWalletInfoBeta extends FireblocksBaseCommand {
+  static summary = 'Get USDC Gateway wallet info'
 
-  static description = 'Returns the Circle Gateway wallet information associated with the given vault account.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getCircleGatewayWalletInfoBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getCircleGatewayWalletInfoBeta'
+  static description = 'Returns the USDC Gateway wallet information associated with the given vault account.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUsdcGatewayWalletInfoBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getUsdcGatewayWalletInfoBeta'
 
   static enableJsonFlag = false
 
@@ -20,12 +20,12 @@ export default class GetCircleGatewayWalletInfoBeta extends FireblocksBaseComman
   }
 
   static method = 'GET'
-  static path = '/v1/vault/accounts/{vaultAccountId}/circle_gateway'
+  static path = '/v1/vault/accounts/{vaultAccountId}/usdc_gateway'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(GetCircleGatewayWalletInfoBeta)
+    const {flags} = await this.parse(GetUsdcGatewayWalletInfoBeta)
 
 
     const headers: Record<string, string> = {}
@@ -36,7 +36,7 @@ export default class GetCircleGatewayWalletInfoBeta extends FireblocksBaseComman
 
     const result = await this.makeRequest(
       'GET',
-      '/v1/vault/accounts/{vaultAccountId}/circle_gateway',
+      '/v1/vault/accounts/{vaultAccountId}/usdc_gateway',
       {
         headers,
         pathParams,
