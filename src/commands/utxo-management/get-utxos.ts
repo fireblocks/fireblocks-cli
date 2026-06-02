@@ -53,12 +53,6 @@ export default class GetUtxos extends FireblocksBaseCommand {
     'max-amount': Flags.string({
       description: 'Maximum amount filter',
     }),
-    'use-change': Flags.boolean({
-      description: 'Include change outputs',
-    }),
-    'use-coinbase': Flags.boolean({
-      description: 'Include coinbase outputs',
-    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -115,12 +109,6 @@ export default class GetUtxos extends FireblocksBaseCommand {
     }
     if (flags['max-amount'] !== undefined && flags['max-amount'] !== null) {
       queryParams['maxAmount'] = String(flags['max-amount'])
-    }
-    if (flags['use-change'] !== undefined && flags['use-change'] !== null) {
-      queryParams['useChange'] = String(flags['use-change'])
-    }
-    if (flags['use-coinbase'] !== undefined && flags['use-coinbase'] !== null) {
-      queryParams['useCoinbase'] = String(flags['use-coinbase'])
     }
 
     const result = await this.makeRequest(

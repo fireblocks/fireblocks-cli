@@ -11,7 +11,7 @@ export default class GetOwnershipTokens extends FireblocksBaseCommand {
   static flags = {
     'blockchain-descriptor': Flags.string({
       description: 'Blockchain descriptor filter',
-      options: ['ETH', 'ETH_TEST3', 'ETH_TEST5', 'ETH_TEST6', 'POLYGON', 'POLYGON_TEST_MUMBAI', 'AMOY_POLYGON_TEST', 'XTZ', 'XTZ_TEST', 'BASECHAIN_ETH', 'BASECHAIN_ETH_TEST3', 'BASECHAIN_ETH_TEST5', 'ETHERLINK', 'ETHERLINK_TEST', 'MANTLE', 'MANTLE_TEST', 'GUN_GUNZILLA', 'GUN_GUNZILLA_TEST', 'ETH_SONEIUM', 'SONEIUM_MINATO_TEST', 'IOTX_IOTEX', 'KLAY_KAIA', 'KLAY_KAIA_TEST', 'APECHAIN', 'APECHAIN_TEST', 'CRONOS', 'CRONOS_TEST', 'ROBINHOOD_CHAIN_TESTNET_TEST'],
+      options: ['ETH', 'ETH_TEST3', 'ETH_TEST5', 'ETH_TEST6', 'POLYGON', 'POLYGON_TEST_MUMBAI', 'AMOY_POLYGON_TEST', 'XTZ', 'XTZ_TEST', 'BASECHAIN_ETH', 'BASECHAIN_ETH_TEST3', 'BASECHAIN_ETH_TEST5', 'ETHERLINK', 'ETHERLINK_TEST', 'MANTLE', 'MANTLE_TEST', 'GUN_GUNZILLA', 'GUN_GUNZILLA_TEST', 'ETH_SONEIUM', 'SONEIUM_MINATO_TEST', 'IOTX_IOTEX', 'KLAY_KAIA', 'KLAY_KAIA_TEST', 'APECHAIN', 'APECHAIN_TEST', 'CRONOS', 'CRONOS_TEST', 'ROBINHOOD_CHAIN_TESTNET_TEST', 'ARB'],
     }),
     'vault-account-ids': Flags.string({
       description: 'A comma separated list of Vault Account IDs. Up to 100 are allowed in a single request.  This field will be ignored when walletType=END_USER_WALLET or ncwId is provided.',

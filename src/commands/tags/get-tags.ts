@@ -29,6 +29,9 @@ export default class GetTags extends FireblocksBaseCommand {
     'is-protected': Flags.boolean({
       description: 'The isProtected parameter',
     }),
+    'type': Flags.string({
+      description: 'Filter by tag type',
+    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -65,6 +68,9 @@ export default class GetTags extends FireblocksBaseCommand {
     }
     if (flags['is-protected'] !== undefined && flags['is-protected'] !== null) {
       queryParams['isProtected'] = String(flags['is-protected'])
+    }
+    if (flags['type'] !== undefined && flags['type'] !== null) {
+      queryParams['type'] = String(flags['type'])
     }
 
     const result = await this.makeRequest(

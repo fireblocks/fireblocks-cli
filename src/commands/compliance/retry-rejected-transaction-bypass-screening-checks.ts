@@ -2,9 +2,9 @@ import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
 export default class RetryRejectedTransactionBypassScreeningChecks extends FireblocksBaseCommand {
-  static summary = 'Calling the "Bypass Screening Policy" API endpoint triggers a new transaction, with the API user as the initiator, bypassing the screening policy check'
+  static summary = 'Bypass Screening Policy'
 
-  static description = 'This endpoint is restricted to Admin API users and is only applicable to outgoing transactions.\n\nOperation ID: retryRejectedTransactionBypassScreeningChecks\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/retryRejectedTransactionBypassScreeningChecks'
+  static description = 'Triggers a new transaction, with the API user as the initiator, bypassing the screening policy checks. This endpoint is restricted to Admin API users and is only applicable to outgoing transactions.\n\nOperation ID: retryRejectedTransactionBypassScreeningChecks\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/retryRejectedTransactionBypassScreeningChecks'
 
   static enableJsonFlag = false
 
