@@ -38,7 +38,7 @@ export default class GetTransactions extends FireblocksBaseCommand {
     }),
     'source-type': Flags.string({
       description: 'The source type of the transaction',
-      options: ['VAULT_ACCOUNT', 'EXCHANGE_ACCOUNT', 'INTERNAL_WALLET', 'EXTERNAL_WALLET', 'CONTRACT', 'FIAT_ACCOUNT', 'NETWORK_CONNECTION', 'COMPOUND', 'UNKNOWN', 'GAS_STATION', 'END_USER_WALLET'],
+      options: ['VAULT_ACCOUNT', 'EXCHANGE_ACCOUNT', 'INTERNAL_WALLET', 'EXTERNAL_WALLET', 'CONTRACT', 'FIAT_ACCOUNT', 'NETWORK_CONNECTION', 'COMPOUND', 'UNKNOWN', 'GAS_STATION', 'END_USER_WALLET', 'WALLET_POOL'],
     }),
     'source-id': Flags.string({
       description: 'The source ID of the transaction',
