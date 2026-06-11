@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class ActivateUsdcGatewayWalletBeta extends FireblocksBaseCommand {
   static summary = 'Activate a USDC Gateway wallet'
 
-  static description = 'Activates the USDC Gateway wallet associated with the given vault account. If the wallet does not yet exist it is created in an activated state.\n\n **Note:** This endpoint is currently in beta and might be subject to changes.\n\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver.\n\nOperation ID: activateUsdcGatewayWalletBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/activateUsdcGatewayWalletBeta'
+  static description = 'Activates the USDC Gateway wallet associated with the given vault account. If the wallet does not yet exist it is created in an activated state.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver.\n\nOperation ID: activateUsdcGatewayWalletBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/activateUsdcGatewayWalletBeta'
 
   static enableJsonFlag = false
 
