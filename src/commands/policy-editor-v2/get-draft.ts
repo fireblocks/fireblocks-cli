@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetDraft extends FireblocksBaseCommand {
   static summary = 'Get the active draft by policy type'
 
-  static description = 'Returns the active draft and its validation for a specific policy type. \n**Note:** These endpoints are currently in beta and might be subject to changes.\n\nOperation ID: getDraft\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Policy%20Editor%20V2/getDraft'
+  static description = 'Returns the active draft and its validation for a specific policy type.\n\nOperation ID: getDraft\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Policy%20Editor%20V2/getDraft'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,11 @@ export default class GetDraft extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/policy/draft'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetDraft)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

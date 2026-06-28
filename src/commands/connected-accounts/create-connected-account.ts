@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class UpdateDraft extends FireblocksBaseCommand {
-  static summary = 'Update the draft with a new set of rules by policy types'
+export default class CreateConnectedAccount extends FireblocksBaseCommand {
+  static summary = 'Create a connected account'
 
-  static description = 'Update the draft and return its validation for specific policy types.\n\n**⚠️ IMPORTANT SECURITY NOTICE:**\n\nThe Fireblocks Policy is a critical security guardrail. Programmatically modifying your policy via the API introduces significant security risks. As an industry best practice, Fireblocks strongly recommends manual editing accompanied by strict human oversight and approval workflows for all policy changes. Programmatic updates should only be implemented by advanced users with comprehensive, multi-layer security controls in place.\n\nOperation ID: updateDraft\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Policy%20Editor%20V2/updateDraft'
+  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /exchange_accounts/credentials_public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: createConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/createConnectedAccount'
 
   static enableJsonFlag = false
 
@@ -19,13 +19,15 @@ export default class UpdateDraft extends FireblocksBaseCommand {
     }),
   }
 
-  static method = 'PUT'
-  static path = '/v1/policy/draft'
-  static isBeta = false
+  static method = 'POST'
+  static path = '/v1/connected_accounts'
+  static isBeta = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(UpdateDraft)
+    const {flags} = await this.parse(CreateConnectedAccount)
+
+    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -47,11 +49,11 @@ export default class UpdateDraft extends FireblocksBaseCommand {
 
 
 
-    await this.confirmOrAbort('PUT', '/v1/policy/draft')
+    await this.confirmOrAbort('POST', '/v1/connected_accounts')
 
     const result = await this.makeRequest(
-      'PUT',
-      '/v1/policy/draft',
+      'POST',
+      '/v1/connected_accounts',
       {
         body,
         headers,

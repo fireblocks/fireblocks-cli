@@ -289,39 +289,6 @@ jobs:
         run: npx --yes npm@^11 publish --access public
         # No NODE_AUTH_TOKEN needed - OIDC handles authentication
         
-  publish-to-private-registry:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          fetch-depth: 0
-
-      # First setup-node: for installing dependencies from npmjs.org
-      - name: Set up Node for dependency installation
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: npm install
-
-      # Second setup-node: reconfigure for publishing to private registry
-      - name: Set up Node for private registry publishing
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          registry-url: ${{ secrets.PRIVATE_NPM_REGISTRY_URL }}
-
-      - name: Publish package to private registry
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PRIVATE_NPM_REGISTRY_TOKEN }}
-          SKIP_POSTVERSION: true
-
 
   upload-release-assets:
     needs: [pack-tarballs, pack-macos, pack-deb, pack-windows]

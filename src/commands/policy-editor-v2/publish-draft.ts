@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class PublishDraft extends FireblocksBaseCommand {
   static summary = 'Send publish request for a certain draft id'
 
-  static description = 'Send publish request of certain draft id and returns the response. \n**Note:** These endpoints are currently in beta and might be subject to changes.\nIf you want to participate and learn more about the Fireblocks Policy Editor, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nOperation ID: publishDraft\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Policy%20Editor%20V2/publishDraft'
+  static description = 'Send publish request of certain draft id and returns the response.\n\n**⚠️ IMPORTANT SECURITY NOTICE:**\n\nThe Fireblocks Policy is a critical security guardrail. Programmatically modifying your policy via the API introduces significant security risks. As an industry best practice, Fireblocks strongly recommends manual editing accompanied by strict human oversight and approval workflows for all policy changes. Programmatic updates should only be implemented by advanced users with comprehensive, multi-layer security controls in place.\n\nIf you want to learn more about the Fireblocks Policy Editor, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nOperation ID: publishDraft\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Policy%20Editor%20V2/publishDraft'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,11 @@ export default class PublishDraft extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/policy/draft'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(PublishDraft)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
