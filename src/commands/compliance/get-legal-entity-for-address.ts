@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetLegalEntityForAddress extends FireblocksBaseCommand {
   static summary = 'Look up legal entity by blockchain address'
 
-  static description = 'Returns legal entity information for the given blockchain address (verification status, LEI, Travel Rule providers, contact email, and related fields — see response schema). URL-encode \`{address}\` when required.\n\nOperation ID: getLegalEntityForAddress\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/getLegalEntityForAddress'
+  static description = 'Returns legal entity information for the given blockchain address (LEI data availability, LEI identifier, Travel Rule providers, contact email, and related fields — see response schema). URL-encode \`{address}\` when required.\n\nOperation ID: getLegalEntityForAddress\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/getLegalEntityForAddress'
 
   static enableJsonFlag = false
 

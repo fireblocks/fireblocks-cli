@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetConnectedAccountAllowlistEntry extends FireblocksBaseCommand {
   static summary = 'Get a single allowlist entry for a connected account'
 
-  static description = 'Retrieves a single allowlist entry by its Fireblocks identifier for a specified connected account.\n\n**Note:** This endpoint is currently in beta and might be subject to changes. Currently supports CoinbaseExchange accounts only.\n\nOperation ID: getConnectedAccountAllowlistEntry\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountAllowlistEntry'
+  static description = 'Retrieves a single allowlist entry by its Fireblocks identifier for a specified connected account.\n\n**Note:** This endpoint is currently in beta and might be subject to changes. Currently supports CoinbaseExchange/Binance accounts only.\n\nOperation ID: getConnectedAccountAllowlistEntry\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountAllowlistEntry'
 
   static enableJsonFlag = false
 
