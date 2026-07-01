@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class CreateConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Create a connected account'
+export default class AddConnectedAccount extends FireblocksBaseCommand {
+  static summary = 'Add a connected account'
 
-  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /exchange_accounts/credentials_public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: createConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/createConnectedAccount'
+  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /exchange_accounts/credentials_public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: addConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/addConnectedAccount'
 
   static enableJsonFlag = false
 
@@ -25,7 +25,7 @@ export default class CreateConnectedAccount extends FireblocksBaseCommand {
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(CreateConnectedAccount)
+    const {flags} = await this.parse(AddConnectedAccount)
 
     this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
