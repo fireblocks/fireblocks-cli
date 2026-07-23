@@ -1,7 +1,7 @@
 {
   "name": "@fireblocks/fireblocks-cli",
   "description": "Agent-first CLI for Fireblocks infrastructure. Execute any Fireblocks API operation from the command line.",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "author": "Fireblocks",
   "repository": {
     "type": "git",
@@ -40,7 +40,11 @@
     "./dist",
     "./oclif.manifest.json"
   ],
-  "keywords": ["oclif", "fireblocks", "cli"],
+  "keywords": [
+    "oclif",
+    "fireblocks",
+    "cli"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "type": "module",
@@ -54,165 +58,165 @@
     "topicSeparator": " ",
     "topics": {
       "admin-quorum": {
-            "description": "Admin Quorum operations"
+        "description": "Admin Quorum operations"
       },
       "api-user": {
-            "description": "Api User operations"
+        "description": "Api User operations"
       },
       "audit-logs": {
-            "description": "Audit Logs operations"
+        "description": "Audit Logs operations"
       },
       "blockchain-link": {
-            "description": "Blockchain link operations (Beta)"
+        "description": "Blockchain link operations (Beta)"
       },
       "blockchains-assets": {
-            "description": "Blockchains & assets operations"
+        "description": "Blockchains & assets operations"
       },
       "compliance": {
-            "description": "Compliance operations"
+        "description": "Compliance operations"
       },
       "compliance-screening-configuration": {
-            "description": "Compliance Screening Configuration operations"
+        "description": "Compliance Screening Configuration operations"
       },
       "connected-accounts": {
-            "description": "Connected Accounts operations (Beta)"
+        "description": "Connected Accounts operations (Beta)"
       },
       "console-user": {
-            "description": "Console User operations"
+        "description": "Console User operations"
       },
       "contract-interactions": {
-            "description": "Contract Interactions operations"
+        "description": "Contract Interactions operations"
       },
       "contract-templates": {
-            "description": "Contract Templates operations"
+        "description": "Contract Templates operations"
       },
       "contracts": {
-            "description": "Contracts operations"
+        "description": "Contracts operations"
       },
       "cosigners": {
-            "description": "Cosigners operations (Beta)"
+        "description": "Cosigners operations (Beta)"
       },
       "deployed-contracts": {
-            "description": "Deployed Contracts operations"
+        "description": "Deployed Contracts operations"
       },
       "earn": {
-            "description": "Earn operations"
+        "description": "Earn operations"
       },
       "embedded-wallets": {
-            "description": "Embedded Wallets operations"
+        "description": "Embedded Wallets operations"
       },
       "exchange-accounts": {
-            "description": "Exchange accounts operations"
+        "description": "Exchange accounts operations"
       },
       "external-wallets": {
-            "description": "External wallets operations"
+        "description": "External wallets operations"
       },
       "fiat-accounts": {
-            "description": "Fiat accounts operations"
+        "description": "Fiat accounts operations"
       },
       "gas-stations": {
-            "description": "Gas stations operations"
+        "description": "Gas stations operations"
       },
       "genie": {
-            "description": "Genie operations (Beta)"
+        "description": "Genie operations (Beta)"
       },
       "internal-wallets": {
-            "description": "Internal wallets operations"
+        "description": "Internal wallets operations"
       },
       "key-link": {
-            "description": "Key Link operations (Beta)"
+        "description": "Key Link operations (Beta)"
       },
       "keys": {
-            "description": "Keys operations (Beta)"
+        "description": "Keys operations (Beta)"
       },
       "network-connections": {
-            "description": "Network connections operations"
+        "description": "Network connections operations"
       },
       "nfts": {
-            "description": "NFTs operations"
+        "description": "NFTs operations"
       },
       "off-exchanges": {
-            "description": "Off exchanges operations"
+        "description": "Off exchanges operations"
       },
       "onchain-data": {
-            "description": "Onchain Data operations"
+        "description": "Onchain Data operations"
       },
       "ota": {
-            "description": "OTA operations (Beta)"
+        "description": "OTA operations (Beta)"
       },
       "payments-flows": {
-            "description": "Payments - Flows operations"
+        "description": "Payments - Flows operations"
       },
       "payments-payout": {
-            "description": "Payments - Payout operations"
+        "description": "Payments - Payout operations"
       },
       "policy-editor": {
-            "description": "Policy Editor operations (Beta)"
+        "description": "Policy Editor operations (Beta)"
       },
       "policy-editor-v2": {
-            "description": "Policy Editor V2 operations"
+        "description": "Policy Editor V2 operations"
       },
       "reports": {
-            "description": "Reports operations (Beta)"
+        "description": "Reports operations (Beta)"
       },
       "reset-device": {
-            "description": "Reset device operations"
+        "description": "Reset device operations"
       },
       "smart-transfer": {
-            "description": "Smart Transfer operations"
+        "description": "Smart Transfer operations"
       },
       "staking": {
-            "description": "Staking operations"
+        "description": "Staking operations"
       },
       "tags": {
-            "description": "Tags operations"
+        "description": "Tags operations"
       },
       "tokenization": {
-            "description": "Tokenization operations"
+        "description": "Tokenization operations"
       },
       "trading": {
-            "description": "Trading operations (Beta)"
+        "description": "Trading operations (Beta)"
       },
       "transactions": {
-            "description": "Transactions operations"
+        "description": "Transactions operations"
       },
       "travel-rule": {
-            "description": "Travel Rule operations"
+        "description": "Travel Rule operations"
       },
       "trlink": {
-            "description": "TRLink operations"
+        "description": "TRLink operations"
       },
       "user-groups": {
-            "description": "User groups operations (Beta)"
+        "description": "User groups operations (Beta)"
       },
       "users": {
-            "description": "Users operations"
+        "description": "Users operations"
       },
       "utxo-management": {
-            "description": "UTXO Management operations (Beta)"
+        "description": "UTXO Management operations (Beta)"
       },
       "vaults": {
-            "description": "Vaults operations"
+        "description": "Vaults operations"
       },
       "web3-connections": {
-            "description": "Web3 connections operations"
+        "description": "Web3 connections operations"
       },
       "webhooks": {
-            "description": "Webhooks operations"
+        "description": "Webhooks operations"
       },
       "webhooks-v2": {
-            "description": "Webhooks V2 operations"
+        "description": "Webhooks V2 operations"
       },
       "whitelist-ip-addresses": {
-            "description": "whitelist ip addresses operations"
+        "description": "whitelist ip addresses operations"
       },
       "workspace": {
-            "description": "Workspace operations"
+        "description": "Workspace operations"
       },
       "workspace-status": {
-            "description": "Workspace Status operations (Beta)"
+        "description": "Workspace Status operations (Beta)"
       }
-},
+    },
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-autocomplete"
@@ -230,7 +234,7 @@
       "win32-x64"
     ],
     "macos": {
-        "identifier": "com.fireblocks.mycli"
+      "identifier": "com.fireblocks.mycli"
     }
   },
   "scripts": {
@@ -241,6 +245,6 @@
     "pack:mac": "oclif pack macos",
     "pack:win": "oclif pack win --targets win32-x64",
     "pack:deb": "oclif pack deb"
-},
+  },
   "types": "dist/index.d.ts"
 }
