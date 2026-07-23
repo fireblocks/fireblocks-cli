@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetEarnActions extends FireblocksBaseCommand {
   static summary = 'List earn lending actions'
 
-  static description = 'Returns a paginated list of lending actions (deposits and withdrawals) for the authenticated tenant.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getEarnActions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnActions'
+  static description = 'Returns a paginated list of lending actions (deposits and withdrawals) for the authenticated tenant.\n\nOperation ID: getEarnActions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnActions'
 
   static enableJsonFlag = false
 
@@ -33,13 +33,11 @@ export default class GetEarnActions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/actions'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetEarnActions)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

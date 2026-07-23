@@ -31,11 +31,6 @@ export default class GetConnectedAccountAllowlist extends FireblocksBaseCommand 
     'page-size': Flags.integer({
       description: 'Maximum number of entries to return',
     }),
-    'sort-by': Flags.string({
-      description: 'Field to sort results by.',
-      default: 'addedAt',
-      options: ['addedAt', 'lastSyncedAt'],
-    }),
     'order': Flags.string({
       description: 'Sort order (ASC or DESC).',
       default: 'DESC',
@@ -81,9 +76,6 @@ export default class GetConnectedAccountAllowlist extends FireblocksBaseCommand 
     }
     if (flags['page-size'] !== undefined && flags['page-size'] !== null) {
       queryParams['pageSize'] = String(flags['page-size'])
-    }
-    if (flags['sort-by'] !== undefined && flags['sort-by'] !== null) {
-      queryParams['sortBy'] = String(flags['sort-by'])
     }
     if (flags['order'] !== undefined && flags['order'] !== null) {
       queryParams['order'] = String(flags['order'])

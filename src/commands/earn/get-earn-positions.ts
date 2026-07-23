@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetEarnPositions extends FireblocksBaseCommand {
   static summary = 'Get list of earn positions'
 
-  static description = 'Get list of earn positions for accounts tracked for this workspace. \nOptional query parameters filter by chain, provider, and pagination.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getEarnPositions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnPositions'
+  static description = 'Get list of earn positions for accounts tracked for this workspace.\nOptional query parameters filter by chain, provider, and pagination.\n\nOperation ID: getEarnPositions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnPositions'
 
   static enableJsonFlag = false
 
@@ -39,13 +39,11 @@ export default class GetEarnPositions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/positions'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetEarnPositions)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

@@ -47,6 +47,12 @@ export default class GetUtxos extends FireblocksBaseCommand {
     'address': Flags.string({
       description: 'Filter by address',
     }),
+    'tx-hash': Flags.string({
+      description: 'Filter by the on-chain hash of the transaction that created the UTXOs. Returns all UTXOs originating from that transaction.',
+    }),
+    'tx-id': Flags.string({
+      description: 'Filter by the Fireblocks transaction ID that created the UTXOs.',
+    }),
     'min-amount': Flags.string({
       description: 'Minimum amount filter',
     }),
@@ -103,6 +109,12 @@ export default class GetUtxos extends FireblocksBaseCommand {
     }
     if (flags['address'] !== undefined && flags['address'] !== null) {
       queryParams['address'] = String(flags['address'])
+    }
+    if (flags['tx-hash'] !== undefined && flags['tx-hash'] !== null) {
+      queryParams['txHash'] = String(flags['tx-hash'])
+    }
+    if (flags['tx-id'] !== undefined && flags['tx-id'] !== null) {
+      queryParams['txId'] = String(flags['tx-id'])
     }
     if (flags['min-amount'] !== undefined && flags['min-amount'] !== null) {
       queryParams['minAmount'] = String(flags['min-amount'])

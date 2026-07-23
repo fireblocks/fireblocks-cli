@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateEarnAction extends FireblocksBaseCommand {
   static summary = 'Create and execute a lending action (deposit or withdraw)'
 
-  static description = 'Creates and runs a sequence of on-chain steps for either a deposit into or a withdrawal from an earn\nvault/market. Specify the operation with \`action\` in the request body (\`DEPOSIT\` or \`WITHDRAW\`).\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: createEarnAction\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/createEarnAction'
+  static description = 'Creates and runs a sequence of on-chain steps for either a deposit into or a withdrawal from an earn\nvault/market. Specify the operation with \`action\` in the request body (\`DEPOSIT\` or \`WITHDRAW\`).\n\nOperation ID: createEarnAction\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/createEarnAction'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,11 @@ export default class CreateEarnAction extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/earn/actions'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(CreateEarnAction)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
