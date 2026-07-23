@@ -20,6 +20,24 @@ export default class GetMaxSpendableAmount extends FireblocksBaseCommand {
     'manual-signging': Flags.boolean({
       description: 'False by default. The maximum number of inputs depends if the transaction will be signed by an automated co-signer server or on a mobile device.',
     }),
+    'include-all-labels': Flags.string({
+      description: 'Only include UTXOs that have ALL of these labels (AND logic). Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
+    'include-any-labels': Flags.string({
+      description: 'Only include UTXOs that have ANY of these labels (OR logic). Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
+    'exclude-any-labels': Flags.string({
+      description: 'Exclude UTXOs that have ANY of these labels. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
+    'address': Flags.string({
+      description: 'Only include UTXOs from this specific address. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
+    'min-amount': Flags.string({
+      description: 'Minimum UTXO amount in the asset\'s base unit. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
+    'max-amount': Flags.string({
+      description: 'Maximum UTXO amount in the asset\'s base unit. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -44,6 +62,24 @@ export default class GetMaxSpendableAmount extends FireblocksBaseCommand {
     const queryParams: Record<string, string> = {}
     if (flags['manual-signging'] !== undefined && flags['manual-signging'] !== null) {
       queryParams['manualSignging'] = String(flags['manual-signging'])
+    }
+    if (flags['include-all-labels'] !== undefined && flags['include-all-labels'] !== null) {
+      queryParams['includeAllLabels'] = String(flags['include-all-labels'])
+    }
+    if (flags['include-any-labels'] !== undefined && flags['include-any-labels'] !== null) {
+      queryParams['includeAnyLabels'] = String(flags['include-any-labels'])
+    }
+    if (flags['exclude-any-labels'] !== undefined && flags['exclude-any-labels'] !== null) {
+      queryParams['excludeAnyLabels'] = String(flags['exclude-any-labels'])
+    }
+    if (flags['address'] !== undefined && flags['address'] !== null) {
+      queryParams['address'] = String(flags['address'])
+    }
+    if (flags['min-amount'] !== undefined && flags['min-amount'] !== null) {
+      queryParams['minAmount'] = String(flags['min-amount'])
+    }
+    if (flags['max-amount'] !== undefined && flags['max-amount'] !== null) {
+      queryParams['maxAmount'] = String(flags['max-amount'])
     }
 
     const result = await this.makeRequest(

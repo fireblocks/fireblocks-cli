@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetEarnProviders extends FireblocksBaseCommand {
   static summary = 'Get list of earn providers'
 
-  static description = 'Get list of earn providers.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getEarnProviders\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnProviders'
+  static description = 'Get list of earn providers.\n\nOperation ID: getEarnProviders\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Earn/getEarnProviders'
 
   static enableJsonFlag = false
 
@@ -32,13 +32,11 @@ export default class GetEarnProviders extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/providers'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetEarnProviders)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

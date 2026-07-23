@@ -32,6 +32,9 @@ export default class GetTags extends FireblocksBaseCommand {
     'type': Flags.string({
       description: 'Filter by tag type',
     }),
+    'allowed-entity-type': Flags.string({
+      description: 'Filter tags whose allow-list contains this entity type. Known values: vault_account, contact.',
+    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -71,6 +74,9 @@ export default class GetTags extends FireblocksBaseCommand {
     }
     if (flags['type'] !== undefined && flags['type'] !== null) {
       queryParams['type'] = String(flags['type'])
+    }
+    if (flags['allowed-entity-type'] !== undefined && flags['allowed-entity-type'] !== null) {
+      queryParams['allowedEntityType'] = String(flags['allowed-entity-type'])
     }
 
     const result = await this.makeRequest(

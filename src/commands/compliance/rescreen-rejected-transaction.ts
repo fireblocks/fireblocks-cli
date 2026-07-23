@@ -1,17 +1,20 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class AddConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Add a connected account'
+export default class RescreenRejectedTransaction extends FireblocksBaseCommand {
+  static summary = 'Rescreen a rejected transaction'
 
-  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /connected_accounts/credentials/public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: addConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/addConnectedAccount'
+  static description = 'Re-runs compliance screening on an incoming transaction that was rejected or failed by screening checks, moving it back to pending screening. This endpoint is only applicable to incoming transactions with a rejected/failed AML screening status.\n\nOperation ID: rescreenRejectedTransaction\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/rescreenRejectedTransaction'
 
   static enableJsonFlag = false
 
   static flags = {
+    'tx-id': Flags.string({
+      description: 'The transaction id that was rejected by screening checks',
+      required: true,
+    }),
     data: Flags.string({
       description: 'JSON request body',
-      required: true,
     }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
@@ -20,14 +23,12 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/connected_accounts'
-  static isBeta = true
+  static path = '/v1/screening/transaction/{txId}/rescreen'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(AddConnectedAccount)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
+    const {flags} = await this.parse(RescreenRejectedTransaction)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -47,16 +48,19 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
       headers['Idempotency-Key'] = flags['idempotency-key']
     }
 
+    const pathParams: Record<string, string> = {}
+    pathParams['txId'] = String(flags['tx-id'])
 
 
-    await this.confirmOrAbort('POST', '/v1/connected_accounts')
+    await this.confirmOrAbort('POST', '/v1/screening/transaction/{txId}/rescreen')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/connected_accounts',
+      '/v1/screening/transaction/{txId}/rescreen',
       {
         body,
         headers,
+        pathParams,
       },
     )
 
