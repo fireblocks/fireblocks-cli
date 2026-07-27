@@ -3,6 +3,12 @@ name: Publish
 on:
   release:
     types: [released]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to use for this test run (no commit/push/tag/publish will actually happen)'
+        required: false
+        default: '0.0.0-test'
 
 jobs:
   build-and-test:
@@ -53,27 +59,39 @@ jobs:
           npm i -g auto-changelog
 
       - name: Bump version and add changelog
+        env:
+          INITIAL_TAG: ${{ github.event.release.tag_name || inputs.version }}
+          # TEMPORARY DRY-RUN OVERRIDE - forces test mode even for real releases.
+          # Original: ${{ github.event_name == 'workflow_dispatch' }}
+          # Revert this commit before running a real release.
+          IS_TEST_RUN: 'true'
         run: |
-          initialTag=${{ github.event.release.tag_name }}
-          tag="${initialTag//[v]/}"
-          echo $tag
+          tag="${INITIAL_TAG//[v]/}"
+          echo "$tag"
           git remote update
           git fetch
           git checkout --track origin/main
           git config --global user.email "github-actions@github.com"
           git config --global user.name "Github Actions"
-          npm --no-git-tag-version --allow-same-version version $tag
+          npm --no-git-tag-version --allow-same-version version "$tag"
           auto-changelog
           git add .
           git commit -m "dump new version $tag"
-          git push
+          if [ "$IS_TEST_RUN" = "true" ]; then
+            echo "Test run: skipping git push"
+          else
+            git push
+          fi
 
       - name: Move tag
+        # TEMPORARY DRY-RUN OVERRIDE - original: github.event_name == 'release'
+        if: false
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
-          TAG_NAME=${{ github.event.release.tag_name }}
-          echo $TAG_NAME
-          git tag --force $TAG_NAME
-          git push --force origin $TAG_NAME
+          echo "$TAG_NAME"
+          git tag --force "$TAG_NAME"
+          git push --force origin "$TAG_NAME"
 
   pack-tarballs:
     needs: bump-version
@@ -286,12 +304,23 @@ jobs:
         run: yarn build
 
       - name: Publish package
-        run: npx --yes npm@^11 publish --access public
+        env:
+          # TEMPORARY DRY-RUN OVERRIDE - original: ${{ github.event_name == 'workflow_dispatch' }}
+          IS_TEST_RUN: 'true'
+        run: |
+          if [ "$IS_TEST_RUN" = "true" ]; then
+            npx --yes npm@^11 publish --access public --dry-run
+          else
+            npx --yes npm@^11 publish --access public
+          fi
         # No NODE_AUTH_TOKEN needed - OIDC handles authentication
         
 
   upload-release-assets:
     needs: [pack-tarballs, pack-macos, pack-deb, pack-windows]
+    # TEMPORARY DRY-RUN OVERRIDE - original: github.event_name == 'release'
+    # Skipping this also skips update-homebrew, which depends on it.
+    if: false
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -324,8 +353,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.event.release.tag_name }}
         run: |
-          TAG=${{ github.event.release.tag_name }}
           echo "Uploading assets to release $TAG..."
           for file in dist/tarballs/* dist/macos/* dist/linux-deb/* dist/windows/*; do
             [ -f "$file" ] || continue
@@ -349,8 +378,8 @@ jobs:
       - name: Update Homebrew formula
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+          TAG: ${{ github.event.release.tag_name }}
         run: |
-          TAG=${{ github.event.release.tag_name }}
           VERSION="${TAG#v}"
 
           BASE_URL="https://github.com/fireblocks/fireblocks-cli/releases/download/${TAG}"
