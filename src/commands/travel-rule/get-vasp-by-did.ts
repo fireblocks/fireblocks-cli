@@ -4,17 +4,17 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetVASPByDID extends FireblocksBaseCommand {
   static summary = 'Get VASP details'
 
-  static description = 'Get VASP Details.\n\nReturns information about a VASP that has the specified DID.\n\nOperation ID: getVASPByDID\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Travel%20Rule/getVASPByDID'
+  static description = 'Get VASP Details.\n\nReturns information about a VASP that has the specified DID.\n\nThe response may contain fields that are not documented in the schema below. Clients must ignore unrecognised fields rather than failing to deserialize.\n\nOperation ID: getVASPByDID\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Travel%20Rule/getVASPByDID'
 
   static enableJsonFlag = false
 
   static flags = {
     'did': Flags.string({
-      description: 'The did parameter',
+      description: 'The Decentralized Identifier (DID) of the VASP.',
       required: true,
     }),
     'fields': Flags.string({
-      description: 'A CSV of fields to return. Choose from the following options:',
+      description: 'The VASP fields to return.\n\nOptional. If omitted, or supplied with an empty value, the complete VASP record is returned, which is the same as passing \`all\`.\n\nMost field names return exactly the requested field. A few behave differently: \`documents\` and \`ddq\` return a small default set of identifying fields instead of the requested one, and \`travelRule_EMAIL\` returns an empty object. An unrecognised field name causes an error.',
     }),
   }
 
