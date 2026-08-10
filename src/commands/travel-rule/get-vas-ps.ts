@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetVASPs extends FireblocksBaseCommand {
   static summary = 'Get All VASPs'
 
-  static description = 'Get All VASPs.\n\nReturns a list of VASPs. VASPs can be searched and sorted.\n\nOperation ID: getVASPs\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Travel%20Rule/getVASPs'
+  static description = 'Get All VASPs.\n\nReturns a list of VASPs. VASPs can be searched and sorted.\n\nEach VASP in the response may contain fields that are not documented in the schema below. Clients must ignore unrecognised fields rather than failing to deserialize.\n\nOperation ID: getVASPs\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Travel%20Rule/getVASPs'
 
   static enableJsonFlag = false
 
@@ -18,7 +18,7 @@ export default class GetVASPs extends FireblocksBaseCommand {
       default: '500',
     }),
     'fields': Flags.string({
-      description: 'CSV of fields to return (all, "blank" or see list of all field names below)',
+      description: 'The VASP fields to return.\n\nOptional. If omitted, each VASP is returned with a default subset of six fields: \`did\`, \`name\`, \`website\`, \`logo\`, \`incorporationCountry\` and \`jurisdictions\`. Pass \`all\` to return the complete record for each VASP.\n\nMost field names return exactly the requested field. A few behave differently: \`documents\` and \`ddq\` return a small default set of identifying fields instead of the requested one, and \`travelRule_EMAIL\` returns an empty object. An unrecognised field name causes an error.',
     }),
     'search': Flags.string({
       description: 'Search query',
