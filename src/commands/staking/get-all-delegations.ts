@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetAllDelegations extends FireblocksBaseCommand {
   static summary = 'List staking positions'
 
-  static description = 'Returns all staking positions with core details: amounts, rewards, status, chain, and vault.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: getAllDelegations\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getAllDelegations'
+  static description = 'Returns all staking positions with core details: amounts, rewards, status, chain, and vault.\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getAllDelegations\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getAllDelegations'
 
   static enableJsonFlag = false
 
