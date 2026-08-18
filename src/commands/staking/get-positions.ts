@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetPositions extends FireblocksBaseCommand {
   static summary = 'List staking positions (Paginated)'
 
-  static description = 'Returns staking positions with core details: amounts, rewards, status, chain, and vault. It supports cursor-based pagination for efficient data retrieval. This endpoint always returns a paginated response with {data, next} structure.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: getPositions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getPositions'
+  static description = 'Returns staking positions with core details: amounts, rewards, status, chain, and vault. It supports cursor-based pagination for efficient data retrieval. This endpoint always returns a paginated response with {data, next} structure.\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getPositions\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getPositions'
 
   static enableJsonFlag = false
 

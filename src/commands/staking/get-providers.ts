@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetProviders extends FireblocksBaseCommand {
   static summary = 'List staking providers'
 
-  static description = 'Returns all available staking providers with metadata such as name, ID, and supported chains.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: getProviders\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getProviders'
+  static description = 'Returns all available staking providers with metadata such as name, ID, and supported chains.\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getProviders\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/getProviders'
 
   static enableJsonFlag = false
 
