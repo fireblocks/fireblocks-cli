@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetSecurityFindings extends FireblocksBaseCommand {
   static summary = 'Get FSPM security findings'
 
-  static description = 'Returns a paginated list of FSPM security findings for the workspace.\nEndpoint Permissions: Security Admin, Security Auditor.\n\nOperation ID: getSecurityFindings\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindings'
+  static description = 'Returns a paginated list of FSPM security findings for the workspace.\nEndpoint Roles: Security Admin, Security Auditor.\n\nOperation ID: getSecurityFindings\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindings'
 
   static enableJsonFlag = false
 
@@ -22,7 +22,7 @@ export default class GetSecurityFindings extends FireblocksBaseCommand {
     }),
     'category': Flags.string({
       description: 'Filter by finding category',
-      options: ['USER_MANAGEMENT', 'ACCESS_CONTROL', 'ADMIN_MANAGEMENT', 'SECURITY', 'CONFIGURATION', 'APPROVAL_GROUP_MANAGEMENT', 'POLICY_ENGINE_UTILIZATION', 'WORKSPACE_CONFIGURATION', 'DEFI_ACCESS', 'FLEET_MANAGEMENT'],
+      options: ['USER_MANAGEMENT', 'APPROVAL_GROUP_MANAGEMENT', 'POLICY_ENGINE_UTILIZATION', 'WORKSPACE_CONFIGURATION', 'DEFI_ACCESS', 'FLEET_MANAGEMENT'],
     }),
     'status': Flags.string({
       description: 'Filter by finding status',
