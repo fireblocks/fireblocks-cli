@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetSecurityFindings extends FireblocksBaseCommand {
   static summary = 'Get FSPM security findings'
 
-  static description = 'Returns a paginated list of FSPM security findings for the workspace.\nEndpoint Roles: Security Admin, Security Auditor.\n\nOperation ID: getSecurityFindings\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindings'
+  static description = 'Returns a paginated list of FSPM security findings for the workspace.\nEndpoint Roles: Security Admin, Security Auditor.\n\n**Note:** This endpoint is available only for the FSPM Pro package. It is not available for FSPM Basic.\n\nOperation ID: getSecurityFindings\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindings'
 
   static enableJsonFlag = false
 

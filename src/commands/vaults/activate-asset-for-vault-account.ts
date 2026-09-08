@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class ActivateAssetForVaultAccount extends FireblocksBaseCommand {
   static summary = 'Activate a wallet in a vault account'
 
-  static description = 'Initiates activation for a wallet in a vault account. \nActivation is required for tokens that need an on-chain transaction for creation (XLM tokens, SOL tokens etc).\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: activateAssetForVaultAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/activateAssetForVaultAccount'
+  static description = 'Initiates activation for a wallet in a vault account. \nActivation is required for tokens that need an on-chain transaction for creation.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: activateAssetForVaultAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/activateAssetForVaultAccount'
 
   static enableJsonFlag = false
 

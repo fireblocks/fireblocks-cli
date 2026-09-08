@@ -1,18 +1,14 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class UpdateSecurityFindingById extends FireblocksBaseCommand {
-  static summary = 'Update a FSPM security finding by ID'
+export default class CreateWebhookOAuth extends FireblocksBaseCommand {
+  static summary = 'Create OAuth credentials'
 
-  static description = 'Accepts or reopens a finding for the workspace. When accepting a finding\n(\`status: "ACCEPTED"\`), \`statusUpdatedReason\` is required.\nEndpoint Roles: Security Admin.\n\n**Note:** This endpoint is available only for the FSPM Pro package. It is not available for FSPM Basic.\n\nOperation ID: updateSecurityFindingById\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/updateSecurityFindingById'
+  static description = 'Creates a reusable OAuth client credential set. Attach it to a webhook by passing the returned id as that webhook\'s \`webhookOauthId\`. Several webhooks may share one credential set, so rotating its client secret covers all of them at once. The client secret is write-only and is never returned.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookOAuth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookOAuth'
 
   static enableJsonFlag = false
 
   static flags = {
-    'id': Flags.string({
-      description: 'Unique identifier of the finding',
-      required: true,
-    }),
     data: Flags.string({
       description: 'JSON request body',
       required: true,
@@ -23,13 +19,13 @@ export default class UpdateSecurityFindingById extends FireblocksBaseCommand {
     }),
   }
 
-  static method = 'PATCH'
-  static path = '/v1/security/fspm/findings/{id}'
+  static method = 'POST'
+  static path = '/v1/webhooks_settings/oauth'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(UpdateSecurityFindingById)
+    const {flags} = await this.parse(CreateWebhookOAuth)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -49,19 +45,16 @@ export default class UpdateSecurityFindingById extends FireblocksBaseCommand {
       headers['Idempotency-Key'] = flags['idempotency-key']
     }
 
-    const pathParams: Record<string, string> = {}
-    pathParams['id'] = String(flags['id'])
 
 
-    await this.confirmOrAbort('PATCH', '/v1/security/fspm/findings/{id}')
+    await this.confirmOrAbort('POST', '/v1/webhooks_settings/oauth')
 
     const result = await this.makeRequest(
-      'PATCH',
-      '/v1/security/fspm/findings/{id}',
+      'POST',
+      '/v1/webhooks_settings/oauth',
       {
         body,
         headers,
-        pathParams,
       },
     )
 
