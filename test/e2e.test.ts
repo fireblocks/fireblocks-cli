@@ -92,8 +92,9 @@ describe('e2e: full command execution flow', () => {
           '--no-confirm',
         ])
       } catch (error: any) {
-        // oclif wraps exits in errors; successful exits are expected
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        // oclif wraps a successful exit in an error with oclif.exit === 0.
+        // Anything else — a nonzero exit or a genuine crash — must surface.
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -130,7 +131,7 @@ describe('e2e: full command execution flow', () => {
           '--no-confirm',
         ])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -159,7 +160,7 @@ describe('e2e: full command execution flow', () => {
           '--no-confirm',
         ])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -181,7 +182,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetVaultAccount.run(['--vault-account-id', '123', '--no-confirm'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) throw error
+        if (error?.oclif?.exit !== 0) throw error
       }
 
       const output = logSpy.mock.calls[0][0] as string
@@ -201,7 +202,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetVaultAccount.run(['--vault-account-id', '123', '--no-confirm', '--output', 'yaml'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) throw error
+        if (error?.oclif?.exit !== 0) throw error
       }
 
       const output = logSpy.mock.calls[0][0] as string
@@ -222,7 +223,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetTransactions.run(['--no-confirm', '-o', 'yaml'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) throw error
+        if (error?.oclif?.exit !== 0) throw error
       }
 
       const output = logSpy.mock.calls[0][0] as string
@@ -239,7 +240,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetVaultAccount.run(['--vault-account-id', '456', '--dry-run', '--no-confirm', '--output', 'yaml'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) throw error
+        if (error?.oclif?.exit !== 0) throw error
       }
 
       expect(mockFireblocksFetch).not.toHaveBeenCalled()
@@ -272,7 +273,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetTransactions.run(['--include-headers', '--no-confirm'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -314,7 +315,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetTransactions.run(['--no-confirm'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -349,7 +350,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetTransactions.run(['--include-headers', '--no-confirm'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
@@ -411,7 +412,7 @@ describe('e2e: full command execution flow', () => {
       try {
         await GetTransactions.run(['--include-headers', '--no-confirm'])
       } catch (error: any) {
-        if (error?.oclif?.exit !== undefined && error.oclif.exit !== 0) {
+        if (error?.oclif?.exit !== 0) {
           throw error
         }
       }
