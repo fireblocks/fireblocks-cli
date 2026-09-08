@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetSecurityFindingById extends FireblocksBaseCommand {
   static summary = 'Get a FSPM security finding by ID'
 
-  static description = 'Returns a single FSPM security finding for the workspace, redacted to the public field set.\nEndpoint Roles: Security Admin, Security Auditor.\n\nOperation ID: getSecurityFindingById\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindingById'
+  static description = 'Returns a single FSPM security finding for the workspace, redacted to the public field set.\nEndpoint Roles: Security Admin, Security Auditor.\n\n**Note:** This endpoint is available only for the FSPM Pro package. It is not available for FSPM Basic.\n\nOperation ID: getSecurityFindingById\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Security%20Posture%20Management/getSecurityFindingById'
 
   static enableJsonFlag = false
 
