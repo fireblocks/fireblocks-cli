@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class GetWebhookOAuth extends FireblocksBaseCommand {
+export default class GetWebhookOauth extends FireblocksBaseCommand {
   static summary = 'Get OAuth credentials by id'
 
-  static description = 'Retrieve an OAuth credential set by its id. The client secret is never returned.\n\nOperation ID: getWebhookOAuth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/getWebhookOAuth'
+  static description = 'Retrieve an OAuth credential set by its id. The client secret is never returned.\n\nOperation ID: getWebhookOauth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/getWebhookOauth'
 
   static enableJsonFlag = false
 
@@ -25,7 +25,7 @@ export default class GetWebhookOAuth extends FireblocksBaseCommand {
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(GetWebhookOAuth)
+    const {flags} = await this.parse(GetWebhookOauth)
 
 
     const headers: Record<string, string> = {}
