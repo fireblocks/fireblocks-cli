@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class CreateWebhookOAuth extends FireblocksBaseCommand {
+export default class CreateWebhookOauth extends FireblocksBaseCommand {
   static summary = 'Create OAuth credentials'
 
-  static description = 'Creates a reusable OAuth client credential set. Attach it to a webhook by passing the returned id as that webhook\'s \`webhookOauthId\`. Several webhooks may share one credential set, so rotating its client secret covers all of them at once. The client secret is write-only and is never returned.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookOAuth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookOAuth'
+  static description = 'Creates a reusable OAuth client credential set. Attach it to a webhook by passing the returned id as that webhook\'s \`webhookOauthId\`. Several webhooks may share one credential set, so rotating its client secret covers all of them at once. The client secret is write-only and is never returned.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookOauth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookOauth'
 
   static enableJsonFlag = false
 
@@ -25,7 +25,7 @@ export default class CreateWebhookOAuth extends FireblocksBaseCommand {
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(CreateWebhookOAuth)
+    const {flags} = await this.parse(CreateWebhookOauth)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
