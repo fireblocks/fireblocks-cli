@@ -170,6 +170,37 @@ describe('e2e: full command execution flow', () => {
     })
   })
 
+  describe('Key Link page-size validation', () => {
+    it('forwards the maximum supported page size', async () => {
+      mockFireblocksFetch.mockResolvedValueOnce(createMockApiResponse(200, {data: []}))
+
+      const {default: GetValidationKeysList} = require(
+        '../src/commands/key-link/get-validation-keys-list.js'
+      )
+
+      try {
+        await GetValidationKeysList.run(['--page-size', '50', '--no-confirm'])
+      } catch (error: any) {
+        if (error?.oclif?.exit !== 0) throw error
+      }
+
+      expect(mockFireblocksFetch).toHaveBeenCalledTimes(1)
+      const [, , , options] = mockFireblocksFetch.mock.calls[0]
+      expect(options?.queryParams?.pageSize).toBe('50')
+    })
+
+    it('rejects page sizes above the API limit before making a request', async () => {
+      const {default: GetValidationKeysList} = require(
+        '../src/commands/key-link/get-validation-keys-list.js'
+      )
+
+      await expect(
+        GetValidationKeysList.run(['--page-size', '51', '--no-confirm']),
+      ).rejects.toThrow(/less than or equal to 50/i)
+      expect(mockFireblocksFetch).not.toHaveBeenCalled()
+    })
+  })
+
   describe('--output flag', () => {
     it('outputs JSON by default', async () => {
       const mockBody = {id: 'vault-1', name: 'My Vault', assets: []}
