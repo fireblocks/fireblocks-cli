@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class AddConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Add a connected account'
+export default class UpsertUtxoSelectionConfig extends FireblocksBaseCommand {
+  static summary = 'Upsert UTXO selection config'
 
-  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /connected_accounts/credentials/public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\nOperation ID: addConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/addConnectedAccount'
+  static description = 'Creates or updates the workspace-level UTXO selection strategy. \`ADAPTIVE\` is recommended.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: upsertUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/upsertUtxoSelectionConfig'
 
   static enableJsonFlag = false
 
@@ -19,13 +19,15 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
     }),
   }
 
-  static method = 'POST'
-  static path = '/v1/connected_accounts'
-  static isBeta = false
+  static method = 'PUT'
+  static path = '/v1/utxo_management/selection_config'
+  static isBeta = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(AddConnectedAccount)
+    const {flags} = await this.parse(UpsertUtxoSelectionConfig)
+
+    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -47,11 +49,11 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
 
 
 
-    await this.confirmOrAbort('POST', '/v1/connected_accounts')
+    await this.confirmOrAbort('PUT', '/v1/utxo_management/selection_config')
 
     const result = await this.makeRequest(
-      'POST',
-      '/v1/connected_accounts',
+      'PUT',
+      '/v1/utxo_management/selection_config',
       {
         body,
         headers,

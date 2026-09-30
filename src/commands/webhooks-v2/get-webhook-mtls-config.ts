@@ -1,16 +1,16 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class GetConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Get connected account'
+export default class GetWebhookMtlsConfig extends FireblocksBaseCommand {
+  static summary = 'Get an mTLS configuration by id'
 
-  static description = 'Retrieve detailed information about a specific connected account by ID.\n\nOperation ID: getConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccount'
+  static description = 'Retrieve one stored mTLS configuration by its id.\n\nOperation ID: getWebhookMtlsConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/getWebhookMtlsConfig'
 
   static enableJsonFlag = false
 
   static flags = {
-    'account-id': Flags.string({
-      description: 'The ID of the account to fetch.',
+    'webhook-mtls-id': Flags.string({
+      description: 'The unique identifier of the mTLS configuration',
       required: true,
     }),
     'include-headers': Flags.boolean({
@@ -20,23 +20,23 @@ export default class GetConnectedAccount extends FireblocksBaseCommand {
   }
 
   static method = 'GET'
-  static path = '/v1/connected_accounts/{accountId}'
+  static path = '/v1/webhooks_settings/mtls/{webhookMtlsId}'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(GetConnectedAccount)
+    const {flags} = await this.parse(GetWebhookMtlsConfig)
 
 
     const headers: Record<string, string> = {}
 
     const pathParams: Record<string, string> = {}
-    pathParams['accountId'] = String(flags['account-id'])
+    pathParams['webhookMtlsId'] = String(flags['webhook-mtls-id'])
 
 
     const result = await this.makeRequest(
       'GET',
-      '/v1/connected_accounts/{accountId}',
+      '/v1/webhooks_settings/mtls/{webhookMtlsId}',
       {
         headers,
         pathParams,

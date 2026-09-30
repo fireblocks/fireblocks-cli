@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetConnectedAccounts extends FireblocksBaseCommand {
   static summary = 'Get connected accounts'
 
-  static description = 'Returns all connected accounts.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getConnectedAccounts\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccounts'
+  static description = 'Returns all connected accounts.\n\nOperation ID: getConnectedAccounts\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccounts'
 
   static enableJsonFlag = false
 
@@ -27,13 +27,11 @@ export default class GetConnectedAccounts extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/connected_accounts'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetConnectedAccounts)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

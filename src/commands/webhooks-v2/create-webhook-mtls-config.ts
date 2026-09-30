@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class AddConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Add a connected account'
+export default class CreateWebhookMtlsConfig extends FireblocksBaseCommand {
+  static summary = 'Create an mTLS configuration'
 
-  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /connected_accounts/credentials/public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\nOperation ID: addConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/addConnectedAccount'
+  static description = 'Stores a certificate signed against the CSR from \`GET /v1/webhooks_settings/mtls_csr\` and returns its id, which is then set as \`webhookMtlsId\` on a webhook or on OAuth credentials. The private key the certificate was issued for is derived from the certificate, so it is never named by the caller.\n\nRe-uploading a certificate already stored returns the existing id rather than creating a second configuration, so several webhooks and OAuth credentials can share one certificate.\n\nA certificate that was not issued for a private key this workspace holds is rejected with a \`400\`.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookMtlsConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookMtlsConfig'
 
   static enableJsonFlag = false
 
@@ -20,12 +20,12 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/connected_accounts'
+  static path = '/v1/webhooks_settings/mtls'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(AddConnectedAccount)
+    const {flags} = await this.parse(CreateWebhookMtlsConfig)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -47,11 +47,11 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
 
 
 
-    await this.confirmOrAbort('POST', '/v1/connected_accounts')
+    await this.confirmOrAbort('POST', '/v1/webhooks_settings/mtls')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/connected_accounts',
+      '/v1/webhooks_settings/mtls',
       {
         body,
         headers,

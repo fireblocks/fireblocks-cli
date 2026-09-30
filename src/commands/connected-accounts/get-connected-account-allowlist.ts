@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetConnectedAccountAllowlist extends FireblocksBaseCommand {
   static summary = 'Get allowlist for connected account'
 
-  static description = 'Retrieves the address allowlist for a specified connected account.\n\n**Note:** This endpoint is currently in beta and might be subject to changes. Currently supports CoinbaseExchange/Binance accounts only.\n\nOperation ID: getConnectedAccountAllowlist\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountAllowlist'
+  static description = 'Retrieves the address allowlist for a specified connected account.\n\n**Note:** Currently supports CoinbaseExchange/Binance accounts only.\n\nOperation ID: getConnectedAccountAllowlist\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountAllowlist'
 
   static enableJsonFlag = false
 
@@ -44,13 +44,11 @@ export default class GetConnectedAccountAllowlist extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}/allowlist'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetConnectedAccountAllowlist)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DisconnectConnectedAccount extends FireblocksBaseCommand {
   static summary = 'Disconnect connected account'
 
-  static description = 'Disconnect a connected account by ID.\n\n**Note**:\n- This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: disconnectConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/disconnectConnectedAccount'
+  static description = 'Disconnect a connected account by ID.\n\nOperation ID: disconnectConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/disconnectConnectedAccount'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,11 @@ export default class DisconnectConnectedAccount extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/connected_accounts/{accountId}'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(DisconnectConnectedAccount)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

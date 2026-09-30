@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class RespondToCantonOffer extends FireblocksBaseCommand {
   static summary = 'Answer an offer'
 
-  static description = 'ONE endpoint for every offer domain. Two layers of discrimination, nested: \`domain\` selects \`response\`, and inside \`response\` the \`responseType\` selects the variant. Both layers are closed, so an onboarding response type sent under \`domain: ALLOCATIONS\` is a \`400\`.\n{"domain":"ONBOARDING","response":{"responseType":"DTCC_…_REJECT","reason":"KYC"}}\n\`domain: TRANSFERS\` is declared so the endpoint covers every offer domain. Transfer responses are not available yet — the domain is part of the contract, not of v1\'s behaviour.\n\nOperation ID: respondToCantonOffer\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/respondToCantonOffer'
+  static description = 'ONE endpoint for every offer domain. Two layers of discrimination, nested: \`domain\` selects \`response\`, and inside \`response\` the \`responseType\` selects the variant. Both layers are closed, so an onboarding response type sent under \`domain: ALLOCATION\` is a \`400\`.\n{"domain":"ONBOARDING","response":{"responseType":"DTCC_…_REJECT","reason":"KYC"}}\n\`domain: TRANSFER\` is declared so the endpoint covers every offer domain. Transfer responses are not available yet — the domain is part of the contract, not of v1\'s behaviour.\n\nOperation ID: respondToCantonOffer\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/respondToCantonOffer'
 
   static enableJsonFlag = false
 
