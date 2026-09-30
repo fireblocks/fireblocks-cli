@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetConnectedAccountRates extends FireblocksBaseCommand {
   static summary = 'Get exchange rates for an account'
 
-  static description = 'Retrieve current exchange rates for converting between specific assets in a connected account.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getConnectedAccountRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountRates'
+  static description = 'Retrieve current exchange rates for converting between specific assets in a connected account.\n\nOperation ID: getConnectedAccountRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/getConnectedAccountRates'
 
   static enableJsonFlag = false
 
@@ -29,13 +29,11 @@ export default class GetConnectedAccountRates extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}/rates'
-  static isBeta = true
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetConnectedAccountRates)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

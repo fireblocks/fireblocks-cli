@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class AddConnectedAccount extends FireblocksBaseCommand {
-  static summary = 'Add a connected account'
+export default class CreateAddressRegistryProofOfOwnership extends FireblocksBaseCommand {
+  static summary = 'Create a Proof of Ownership PDF for an address'
 
-  static description = 'Creates a new connected account for the authenticated tenant.\n\nThe \`creds\` field must be a Base64-encoded RSA-encrypted credential blob.\nUse \`GET /connected_accounts/credentials/public_key\` to retrieve the public key for encryption.\n\nThe \`providerType\` is derived server-side from the \`providerId\` — callers do not supply it.\n\nEndpoint Permission: Editor, Admin, Non-Signing Admin.\n\nOperation ID: addConnectedAccount\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Connected%20Accounts/addConnectedAccount'
+  static description = 'Creates a Proof of Ownership PDF for a blockchain address owned by the authenticated workspace — for example, to share with a counterparty or bank as compliance evidence. Recipients can confirm it with \`POST /v1/address_registry/proof_of_ownership_exports/verify\`.\n\nCheck \`proofOfOwnershipAvailable\` on \`GET /v1/address_registry/legal_entities/{address}\` first if you want to know whether create is likely to succeed.\n\nOperation ID: createAddressRegistryProofOfOwnership\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/createAddressRegistryProofOfOwnership'
 
   static enableJsonFlag = false
 
@@ -20,12 +20,12 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/connected_accounts'
+  static path = '/v1/address_registry/proof_of_ownership_exports'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(AddConnectedAccount)
+    const {flags} = await this.parse(CreateAddressRegistryProofOfOwnership)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -47,11 +47,11 @@ export default class AddConnectedAccount extends FireblocksBaseCommand {
 
 
 
-    await this.confirmOrAbort('POST', '/v1/connected_accounts')
+    await this.confirmOrAbort('POST', '/v1/address_registry/proof_of_ownership_exports')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/connected_accounts',
+      '/v1/address_registry/proof_of_ownership_exports',
       {
         body,
         headers,
