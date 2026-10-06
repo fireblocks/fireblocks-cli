@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DeleteApprovalKey extends FireblocksBaseCommand {
   static summary = 'Delete an approval key'
 
-  static description = 'Delete (revoke) an approval public key for the specified API user. Revoking the last key disables the API user\'s ability to sign approvals.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Approver, Signer, Security Admin.\n\nOperation ID: deleteApprovalKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Approvals/deleteApprovalKey'
+  static description = 'Delete (revoke) an approval public key for the specified API user. The deletion may require approval: it always does for the API user\'s last key or another user\'s key. In that case the response carries \`ccrIdPendingDeletion\`, the key reads as \`APPROVAL_API_KEY_STATUS_PENDING_DELETION\` and stays active until the request is approved. A rejected request leaves the key enabled.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Approver, Signer, Security Admin.\n\nOperation ID: deleteApprovalKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Approvals/deleteApprovalKey'
 
   static enableJsonFlag = false
 

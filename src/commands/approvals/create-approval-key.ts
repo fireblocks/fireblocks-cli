@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateApprovalKey extends FireblocksBaseCommand {
   static summary = 'Register an approval key'
 
-  static description = 'Register an approval public key for an API user, used to sign approval requests. Up to 2 active keys are supported per API user. Returns the server-generated key ID used for deletion.\n\nThe \`userId\` must be the authenticated API user\'s own ID. Registering a key for another user is not supported and is rejected.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Approver, Signer, Security Admin.\n\nOperation ID: createApprovalKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Approvals/createApprovalKey'
+  static description = 'Register an approval public key for an API user, used to sign approval requests. Up to 2 active keys are supported per API user. Returns the server-generated key ID used for deletion.\n\nThe \`userId\` must be the authenticated API user\'s own ID. Registering a key for another user is not supported and is rejected.\n\nRegistration may require approval. In that case the response carries \`ccrIdPendingRegistration\`, the key reads as \`APPROVAL_API_KEY_STATUS_PENDING_REGISTRATION\` and cannot sign until the request is approved. A rejected request removes the key.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Approver, Signer, Security Admin.\n\nOperation ID: createApprovalKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Approvals/createApprovalKey'
 
   static enableJsonFlag = false
 

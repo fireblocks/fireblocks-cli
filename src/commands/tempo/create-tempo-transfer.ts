@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class CreateCantonCall extends FireblocksBaseCommand {
-  static summary = 'Make a Canton call'
+export default class CreateTempoTransfer extends FireblocksBaseCommand {
+  static summary = 'Create a Tempo transfer transaction'
 
-  static description = 'Submits one Canton call. \`type\` names the call and selects the shape of \`payload\`.\nAn unknown or missing \`type\`, or a \`payload\` missing a required field, is a \`400\`. A field that does not belong to the selected \`type\` is ignored rather than rejected.\nA \`501\` has two different causes, and the distinction is permanent rather than a build-order detail, so it belongs in the published spec:\nNO CANTON CAPABILITY — specified so the contract is complete, but not available in v1: \`DTCC_END_INVESTOR_INVITE_CANCEL\`, \`DTCC_ALLOW_LIST_ADD\`, \`DTCC_ALLOW_LIST_REMOVE\`. NO HANDLER YET — the capability exists and the type is being wired one slice at a time.\n\`ALLOCATION_WITHDRAW\` is implemented and answers \`201\` / \`400\` / \`404\` / \`409\`.\n\nOperation ID: createCantonCall\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/createCantonCall'
+  static description = 'Creates a new Tempo transfer transaction.\n\nOperation ID: createTempoTransfer\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Tempo/createTempoTransfer'
 
   static enableJsonFlag = false
 
@@ -20,12 +20,12 @@ export default class CreateCantonCall extends FireblocksBaseCommand {
   }
 
   static method = 'POST'
-  static path = '/v1/operations/canton/calls'
+  static path = '/v1/operations/tempo/transfer'
   static isBeta = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(CreateCantonCall)
+    const {flags} = await this.parse(CreateTempoTransfer)
 
     this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
@@ -49,11 +49,11 @@ export default class CreateCantonCall extends FireblocksBaseCommand {
 
 
 
-    await this.confirmOrAbort('POST', '/v1/operations/canton/calls')
+    await this.confirmOrAbort('POST', '/v1/operations/tempo/transfer')
 
     const result = await this.makeRequest(
       'POST',
-      '/v1/operations/canton/calls',
+      '/v1/operations/tempo/transfer',
       {
         body,
         headers,
