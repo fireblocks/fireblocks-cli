@@ -21,6 +21,7 @@ export default class GetTransaction extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/transactions/{txId}'
+  static operationId = 'getTransaction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

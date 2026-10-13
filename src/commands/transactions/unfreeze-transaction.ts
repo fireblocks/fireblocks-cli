@@ -21,6 +21,7 @@ export default class UnfreezeTransaction extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/transactions/{txId}/unfreeze'
+  static operationId = 'unfreezeTransaction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

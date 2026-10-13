@@ -21,6 +21,7 @@ export default class GetExchangeAccount extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/exchange_accounts/{exchangeAccountId}'
+  static operationId = 'getExchangeAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -17,6 +17,7 @@ export default class DeployAndLinkAdapters extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/multichain/bridge/layerzero'
+  static operationId = 'deployAndLinkAdapters'
   static isBeta = false
 
   async run(): Promise<unknown> {

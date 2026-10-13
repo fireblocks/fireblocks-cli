@@ -21,6 +21,7 @@ export default class FundDvpTicket extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/smart_transfers/{ticketId}/dvp/fund'
+  static operationId = 'fundDvpTicket'
   static isBeta = false
 
   async run(): Promise<unknown> {

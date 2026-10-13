@@ -29,6 +29,7 @@ export default class ReadCallFunction extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/contract_interactions/base_asset_id/{baseAssetId}/contract_address/{contractAddress}/functions/read'
+  static operationId = 'readCallFunction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

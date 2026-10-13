@@ -21,6 +21,7 @@ export default class GetAddressRegistryVaultOptOut extends FireblocksBaseCommand
 
   static method = 'GET'
   static path = '/v1/address_registry/vaults/{vaultAccountId}'
+  static operationId = 'getAddressRegistryVaultOptOut'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

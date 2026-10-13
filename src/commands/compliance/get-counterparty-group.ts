@@ -21,6 +21,7 @@ export default class GetCounterpartyGroup extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/counterparty_groups/{groupId}'
+  static operationId = 'getCounterpartyGroup'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

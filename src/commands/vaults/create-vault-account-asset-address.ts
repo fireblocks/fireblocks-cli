@@ -28,6 +28,7 @@ export default class CreateVaultAccountAssetAddress extends FireblocksBaseComman
 
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses'
+  static operationId = 'createVaultAccountAssetAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

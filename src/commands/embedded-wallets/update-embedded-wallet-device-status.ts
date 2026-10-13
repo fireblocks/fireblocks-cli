@@ -29,6 +29,7 @@ export default class UpdateEmbeddedWalletDeviceStatus extends FireblocksBaseComm
 
   static method = 'PATCH'
   static path = '/v1/ncw/wallets/{walletId}/devices/{deviceId}/status'
+  static operationId = 'updateEmbeddedWalletDeviceStatus'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

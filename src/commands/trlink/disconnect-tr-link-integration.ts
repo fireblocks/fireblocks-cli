@@ -21,6 +21,7 @@ export default class DisconnectTRLinkIntegration extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}'
+  static operationId = 'disconnectTRLinkIntegration'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

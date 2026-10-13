@@ -28,6 +28,7 @@ export default class GetPublicKeyInfo extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/public_key_info'
+  static operationId = 'getPublicKeyInfo'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

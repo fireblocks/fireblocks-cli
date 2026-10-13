@@ -25,6 +25,7 @@ export default class GetVaultAccountAssetAddresses extends FireblocksBaseCommand
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses'
+  static operationId = 'getVaultAccountAssetAddresses'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

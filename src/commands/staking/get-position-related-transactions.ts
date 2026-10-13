@@ -33,6 +33,7 @@ export default class GetPositionRelatedTransactions extends FireblocksBaseComman
 
   static method = 'GET'
   static path = '/v1/staking/positions/{id}/related_transactions'
+  static operationId = 'getPositionRelatedTransactions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

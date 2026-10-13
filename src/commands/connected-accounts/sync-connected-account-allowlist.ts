@@ -21,6 +21,7 @@ export default class SyncConnectedAccountAllowlist extends FireblocksBaseCommand
 
   static method = 'POST'
   static path = '/v1/connected_accounts/{accountId}/allowlist/sync'
+  static operationId = 'syncConnectedAccountAllowlist'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

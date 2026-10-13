@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class FetchAllOffers extends FireblocksBaseCommand {
   static summary = 'Get all offers'
 
-  static description = 'Retrieve all available offers across the workspace for a given asset pair.\nAlways operates in open scope — no provider or account selection required.\nReturns a mix of indicative rates and committed quotes as applicable per provider.\n\nIf no slippageBps is provided, it defaults to 50 bps (0.5%).\nSlippage and settlement configuration do not affect the returned rate.\n\nNote: These endpoints are currently in beta and might be subject to changes.\n\nIf you want to participate and learn more about the Fireblocks Trading, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchAllOffers\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchAllOffers'
+  static description = 'Retrieve all available offers across the workspace for a given asset pair.\nAlways operates in open scope — no provider or account selection required.\nReturns a mix of indicative rates and committed quotes as applicable per provider.\n\nIf no slippageBps is provided, it defaults to 50 bps (0.5%).\nSlippage and settlement configuration do not affect the returned rate.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchAllOffers\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchAllOffers'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,12 @@ export default class FetchAllOffers extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/trading/offers'
-  static isBeta = true
+  static operationId = 'fetchAllOffers'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(FetchAllOffers)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

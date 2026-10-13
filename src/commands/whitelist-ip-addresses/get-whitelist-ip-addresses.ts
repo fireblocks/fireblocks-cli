@@ -21,6 +21,7 @@ export default class GetWhitelistIpAddresses extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/api_users/{userId}/whitelist_ip_addresses'
+  static operationId = 'getWhitelistIpAddresses'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

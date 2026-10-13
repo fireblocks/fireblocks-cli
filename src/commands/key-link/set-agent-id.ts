@@ -25,13 +25,12 @@ export default class SetAgentId extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/key_link/signing_keys/{keyId}/agent_user_id'
-  static isBeta = true
+  static operationId = 'setAgentId'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(SetAgentId)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

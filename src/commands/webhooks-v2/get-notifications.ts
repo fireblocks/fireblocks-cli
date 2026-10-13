@@ -53,6 +53,7 @@ export default class GetNotifications extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/webhooks/{webhookId}/notifications'
+  static operationId = 'getNotifications'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

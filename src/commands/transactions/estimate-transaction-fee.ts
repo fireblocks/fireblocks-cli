@@ -20,6 +20,7 @@ export default class EstimateTransactionFee extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/transactions/estimate_fee'
+  static operationId = 'estimateTransactionFee'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

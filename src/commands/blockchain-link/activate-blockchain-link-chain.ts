@@ -21,13 +21,12 @@ export default class ActivateBlockchainLinkChain extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}/activate'
-  static isBeta = true
+  static operationId = 'activateBlockchainLinkChain'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(ActivateBlockchainLinkChain)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

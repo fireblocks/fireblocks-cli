@@ -25,6 +25,7 @@ export default class ValidateAddress extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/transactions/validate_address/{assetId}/{address}'
+  static operationId = 'validateAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

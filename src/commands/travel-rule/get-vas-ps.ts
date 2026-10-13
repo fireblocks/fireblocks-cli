@@ -38,6 +38,7 @@ export default class GetVASPs extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/travel_rule/vasp'
+  static operationId = 'getVASPs'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

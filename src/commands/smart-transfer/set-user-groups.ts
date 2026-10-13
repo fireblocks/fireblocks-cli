@@ -17,6 +17,7 @@ export default class SetUserGroups extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/smart-transfers/settings/user-groups'
+  static operationId = 'setUserGroups'
   static isBeta = false
 
   async run(): Promise<unknown> {

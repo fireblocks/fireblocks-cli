@@ -37,6 +37,7 @@ export default class GetEmbeddedWalletDevicesPaginated extends FireblocksBaseCom
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/devices_paginated'
+  static operationId = 'getEmbeddedWalletDevicesPaginated'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

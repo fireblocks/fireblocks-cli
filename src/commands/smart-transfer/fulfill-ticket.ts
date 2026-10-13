@@ -17,6 +17,7 @@ export default class FulfillTicket extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/smart-transfers/{ticketId}/fulfill'
+  static operationId = 'fulfillTicket'
   static isBeta = false
 
   async run(): Promise<unknown> {

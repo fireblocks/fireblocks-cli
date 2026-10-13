@@ -25,6 +25,7 @@ export default class CheckThirdPartyRouting extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/network_connections/{connectionId}/is_third_party_routing/{assetType}'
+  static operationId = 'checkThirdPartyRouting'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -32,6 +32,7 @@ export default class UpdateVaultAccountAssetAddress extends FireblocksBaseComman
 
   static method = 'PUT'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses/{addressId}'
+  static operationId = 'updateVaultAccountAssetAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

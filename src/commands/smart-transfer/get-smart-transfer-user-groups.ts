@@ -13,6 +13,7 @@ export default class GetSmartTransferUserGroups extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/smart-transfers/settings/user-groups'
+  static operationId = 'getSmartTransferUserGroups'
   static isBeta = false
 
   async run(): Promise<unknown> {

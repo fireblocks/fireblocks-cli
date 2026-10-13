@@ -27,6 +27,7 @@ export default class ListLegalEntities extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/legal_entities'
+  static operationId = 'listLegalEntities'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

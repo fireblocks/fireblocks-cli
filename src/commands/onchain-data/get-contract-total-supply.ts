@@ -52,6 +52,7 @@ export default class GetContractTotalSupply extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/onchain_data/base_asset_id/{baseAssetId}/contract_address/{contractAddress}/total_supply'
+  static operationId = 'getContractTotalSupply'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

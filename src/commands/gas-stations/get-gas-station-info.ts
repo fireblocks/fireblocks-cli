@@ -17,6 +17,7 @@ export default class GetGasStationInfo extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/gas_station'
+  static operationId = 'getGasStationInfo'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

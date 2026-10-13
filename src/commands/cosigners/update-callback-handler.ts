@@ -29,13 +29,12 @@ export default class UpdateCallbackHandler extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/cosigners/{cosignerId}/api_keys/{apiKeyId}'
-  static isBeta = true
+  static operationId = 'updateCallbackHandler'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID","Location"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(UpdateCallbackHandler)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

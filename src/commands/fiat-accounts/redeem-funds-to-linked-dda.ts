@@ -24,6 +24,7 @@ export default class RedeemFundsToLinkedDDA extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/fiat_accounts/{accountId}/redeem_to_linked_dda'
+  static operationId = 'redeemFundsToLinkedDDA'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

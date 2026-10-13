@@ -21,6 +21,7 @@ export default class DeleteContract extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/contracts/{contractId}'
+  static operationId = 'deleteContract'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

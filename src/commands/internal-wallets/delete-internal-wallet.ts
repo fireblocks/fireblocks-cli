@@ -21,6 +21,7 @@ export default class DeleteInternalWallet extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/internal_wallets/{walletId}'
+  static operationId = 'deleteInternalWallet'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

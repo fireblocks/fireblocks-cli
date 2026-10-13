@@ -17,6 +17,7 @@ export default class ActivateByorkConfig extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/byork/config/activate'
+  static operationId = 'activateByorkConfig'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

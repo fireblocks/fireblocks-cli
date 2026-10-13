@@ -67,6 +67,7 @@ export default class GetOwnershipTokens extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/nfts/ownership/tokens'
+  static operationId = 'getOwnershipTokens'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

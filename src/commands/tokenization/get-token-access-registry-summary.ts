@@ -21,6 +21,7 @@ export default class GetTokenAccessRegistrySummary extends FireblocksBaseCommand
 
   static method = 'GET'
   static path = '/v1/tokenization/access_registries/{id}/summary'
+  static operationId = 'getTokenAccessRegistrySummary'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

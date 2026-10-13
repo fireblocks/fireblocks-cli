@@ -25,6 +25,7 @@ export default class MintCollectionToken extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/collections/{id}/tokens/mint'
+  static operationId = 'mintCollectionToken'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

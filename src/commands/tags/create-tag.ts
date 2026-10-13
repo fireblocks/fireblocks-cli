@@ -21,6 +21,7 @@ export default class CreateTag extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tags'
+  static operationId = 'createTag'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

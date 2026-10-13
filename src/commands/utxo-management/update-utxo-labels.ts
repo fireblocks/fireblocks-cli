@@ -29,13 +29,12 @@ export default class UpdateUtxoLabels extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/utxo_management/{vaultAccountId}/{assetId}/labels'
-  static isBeta = true
+  static operationId = 'updateUtxoLabels'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(UpdateUtxoLabels)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

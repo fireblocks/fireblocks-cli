@@ -25,13 +25,12 @@ export default class RenameCosigner extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/cosigners/{cosignerId}'
-  static isBeta = true
+  static operationId = 'renameCosigner'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(RenameCosigner)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

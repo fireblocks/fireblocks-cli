@@ -61,6 +61,7 @@ export default class GetContacts extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/contacts'
+  static operationId = 'getContacts'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

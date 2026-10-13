@@ -29,13 +29,12 @@ export default class GetCosigners extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/cosigners'
-  static isBeta = true
+  static operationId = 'getCosigners'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetCosigners)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

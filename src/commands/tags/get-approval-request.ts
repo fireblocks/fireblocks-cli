@@ -21,6 +21,7 @@ export default class GetApprovalRequest extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tags/approval_requests/{id}'
+  static operationId = 'getApprovalRequest'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

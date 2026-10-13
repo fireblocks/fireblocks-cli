@@ -21,6 +21,7 @@ export default class CreateTRLinkIntegration extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration'
+  static operationId = 'createTRLinkIntegration'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

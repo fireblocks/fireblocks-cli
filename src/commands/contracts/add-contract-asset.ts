@@ -28,6 +28,7 @@ export default class AddContractAsset extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/contracts/{contractId}/{assetId}'
+  static operationId = 'addContractAsset'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

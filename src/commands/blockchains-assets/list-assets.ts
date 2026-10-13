@@ -42,6 +42,7 @@ export default class ListAssets extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/assets'
+  static operationId = 'listAssets'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

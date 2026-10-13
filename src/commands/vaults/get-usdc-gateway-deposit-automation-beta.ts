@@ -21,6 +21,7 @@ export default class GetUsdcGatewayDepositAutomationBeta extends FireblocksBaseC
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/virtual_asset_wallet/usdc_gateway/deposit_automation'
+  static operationId = 'getUsdcGatewayDepositAutomationBeta'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -25,6 +25,7 @@ export default class Submit extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/connections/wc/{id}'
+  static operationId = 'submit'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

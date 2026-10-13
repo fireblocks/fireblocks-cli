@@ -21,6 +21,7 @@ export default class PublishDraft extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/policy/draft'
+  static operationId = 'publishDraft'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

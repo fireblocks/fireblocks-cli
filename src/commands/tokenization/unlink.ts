@@ -21,6 +21,7 @@ export default class Unlink extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/tokenization/tokens/{id}'
+  static operationId = 'unlink'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

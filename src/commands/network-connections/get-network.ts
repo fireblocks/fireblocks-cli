@@ -21,6 +21,7 @@ export default class GetNetwork extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/network_connections/{connectionId}'
+  static operationId = 'getNetwork'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

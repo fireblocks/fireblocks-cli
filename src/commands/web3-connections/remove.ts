@@ -21,6 +21,7 @@ export default class Remove extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/connections/wc/{id}'
+  static operationId = 'remove'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

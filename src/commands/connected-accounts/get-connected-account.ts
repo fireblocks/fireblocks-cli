@@ -21,6 +21,7 @@ export default class GetConnectedAccount extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}'
+  static operationId = 'getConnectedAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

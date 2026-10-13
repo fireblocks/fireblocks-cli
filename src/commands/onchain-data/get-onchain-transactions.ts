@@ -47,6 +47,7 @@ export default class GetOnchainTransactions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/onchain_data/base_asset_id/{baseAssetId}/contract_address/{contractAddress}/transactions'
+  static operationId = 'getOnchainTransactions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

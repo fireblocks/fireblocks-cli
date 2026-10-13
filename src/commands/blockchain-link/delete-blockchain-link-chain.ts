@@ -21,13 +21,12 @@ export default class DeleteBlockchainLinkChain extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}'
-  static isBeta = true
+  static operationId = 'deleteBlockchainLinkChain'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(DeleteBlockchainLinkChain)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

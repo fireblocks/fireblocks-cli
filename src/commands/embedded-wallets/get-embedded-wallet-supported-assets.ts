@@ -27,6 +27,7 @@ export default class GetEmbeddedWalletSupportedAssets extends FireblocksBaseComm
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/supported_assets'
+  static operationId = 'GetEmbeddedWalletSupportedAssets'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

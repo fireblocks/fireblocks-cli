@@ -26,6 +26,7 @@ export default class GetLinkedTokens extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/tokens'
+  static operationId = 'getLinkedTokens'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

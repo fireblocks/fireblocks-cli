@@ -56,13 +56,12 @@ export default class GetSigningKeysList extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/key_link/signing_keys'
-  static isBeta = true
+  static operationId = 'getSigningKeysList'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetSigningKeysList)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

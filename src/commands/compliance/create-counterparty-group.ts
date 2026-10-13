@@ -21,6 +21,7 @@ export default class CreateCounterpartyGroup extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/counterparty_groups'
+  static operationId = 'createCounterpartyGroup'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

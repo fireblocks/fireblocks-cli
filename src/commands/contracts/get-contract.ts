@@ -21,6 +21,7 @@ export default class GetContract extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/contracts/{contractId}'
+  static operationId = 'getContract'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

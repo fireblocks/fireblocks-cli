@@ -21,6 +21,7 @@ export default class FetchContractAbi extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/contracts/fetch_abi'
+  static operationId = 'fetchContractAbi'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

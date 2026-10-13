@@ -21,6 +21,7 @@ export default class GetEmbeddedWalletLatestBackup extends FireblocksBaseCommand
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/backup/latest'
+  static operationId = 'GetEmbeddedWalletLatestBackup'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

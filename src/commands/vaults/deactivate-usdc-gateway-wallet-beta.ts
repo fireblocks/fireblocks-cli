@@ -21,6 +21,7 @@ export default class DeactivateUsdcGatewayWalletBeta extends FireblocksBaseComma
 
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/usdc_gateway/deactivate'
+  static operationId = 'deactivateUsdcGatewayWalletBeta'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

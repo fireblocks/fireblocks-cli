@@ -17,6 +17,7 @@ export default class GetConnectedAccountsCredentialsPublicKey extends Fireblocks
 
   static method = 'GET'
   static path = '/v1/connected_accounts/credentials/public_key'
+  static operationId = 'getConnectedAccountsCredentialsPublicKey'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -21,6 +21,7 @@ export default class CancelTransaction extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/transactions/{txId}/cancel'
+  static operationId = 'cancelTransaction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

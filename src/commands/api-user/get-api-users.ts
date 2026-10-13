@@ -17,6 +17,7 @@ export default class GetApiUsers extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/api_users'
+  static operationId = 'getApiUsers'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

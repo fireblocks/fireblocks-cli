@@ -13,6 +13,7 @@ export default class GetPostScreeningPolicy extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/travel_rule/post_screening_policy'
+  static operationId = 'getPostScreeningPolicy'
   static isBeta = false
 
   async run(): Promise<unknown> {

@@ -25,6 +25,7 @@ export default class ResendNotificationsByResourceId extends FireblocksBaseComma
 
   static method = 'POST'
   static path = '/v1/webhooks/{webhookId}/notifications/resend_by_resource'
+  static operationId = 'resendNotificationsByResourceId'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

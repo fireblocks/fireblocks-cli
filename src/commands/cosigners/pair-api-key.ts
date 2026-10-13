@@ -29,13 +29,12 @@ export default class PairApiKey extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/cosigners/{cosignerId}/api_keys/{apiKeyId}'
-  static isBeta = true
+  static operationId = 'pairApiKey'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID","Location"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(PairApiKey)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

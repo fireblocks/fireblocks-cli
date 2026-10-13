@@ -44,6 +44,7 @@ export default class GetConnectedAccountAllowlist extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}/allowlist'
+  static operationId = 'getConnectedAccountAllowlist'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

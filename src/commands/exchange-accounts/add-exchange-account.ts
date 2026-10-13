@@ -21,6 +21,7 @@ export default class AddExchangeAccount extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/exchange_accounts'
+  static operationId = 'addExchangeAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

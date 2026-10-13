@@ -21,13 +21,12 @@ export default class RejectApproval extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/approvals/{requestId}/reject'
-  static isBeta = true
+  static operationId = 'rejectApproval'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(RejectApproval)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

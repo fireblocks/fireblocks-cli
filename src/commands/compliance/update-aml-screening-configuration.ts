@@ -13,6 +13,7 @@ export default class UpdateAmlScreeningConfiguration extends FireblocksBaseComma
 
   static method = 'PUT'
   static path = '/v1/screening/aml/policy_configuration'
+  static operationId = 'updateAmlScreeningConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

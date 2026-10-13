@@ -21,13 +21,12 @@ export default class GetScreeningResult extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/compliance/orchestrator/screenings/{screeningId}'
-  static isBeta = true
+  static operationId = 'getScreeningResult'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetScreeningResult)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

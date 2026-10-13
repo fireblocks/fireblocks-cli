@@ -25,13 +25,12 @@ export default class UpdateBlockchainLinkChain extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}'
-  static isBeta = true
+  static operationId = 'updateBlockchainLinkChain'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(UpdateBlockchainLinkChain)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class RespondToCantonOffer extends FireblocksBaseCommand {
   static summary = 'Answer an offer'
 
-  static description = 'ONE endpoint for every offer. \`responseType\` selects the variant, and \`payload\` carries that variant\'s arguments — the same \`{discriminator, payload}\` shape \`/calls\` uses. The union is closed, so an unknown \`responseType\` is a \`400\`.\n{"responseType":"DTCC_END_INVESTOR_ONBOARDING_REJECT","payload":{"reason":"KYC"}} {"responseType":"ALLOCATION_ACCEPT"}\n\`payload\` appears ONLY on the variants that take arguments. A variant with no arguments has no \`payload\` property at all, rather than an empty object — so the schema says what the ledger says, and a future type that needs fields declares its own instead of widening this envelope.\n\`responseType\` is a direct copy of a value the caller already read off the offer, in \`cantonDetails.offerResponse.availableResponses\`. Both sides share one flat vocabulary, so there is nothing to translate; the previous shape required pairing that value with a matching \`domain\` string, which carried no information \`responseType\` did not already determine.\n\nOperation ID: respondToCantonOffer\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/respondToCantonOffer'
+  static description = 'ONE endpoint for every offer. \`responseType\` selects the variant, and \`payload\` carries that variant\'s arguments — the same \`{discriminator, payload}\` shape \`/calls\` uses. The union is closed, so an unknown \`responseType\` is a \`400\`.\n{"responseType":"DTCC_END_INVESTOR_ONBOARDING_REJECT","payload":{"reason":"KYC"}} {"responseType":"ALLOCATION_ACCEPT"}\nAn allocation offer takes three answers, all on the offer\'s own id: \`ALLOCATION_ACCEPT\`, \`ALLOCATION_REJECT\`, and — once the accept has settled — \`ALLOCATION_WITHDRAW\`, which unlocks the holding the accept allocated. Sent earlier, the withdraw is a \`409\`.\n\`payload\` appears ONLY on the variants that take arguments. A variant with no arguments has no \`payload\` property at all, rather than an empty object — so the schema says what the ledger says, and a future type that needs fields declares its own instead of widening this envelope.\n\`responseType\` is a direct copy of a value the caller already read off the offer, in \`cantonDetails.offerResponse.availableResponses\`. Both sides share one flat vocabulary, so there is nothing to translate; the previous shape required pairing that value with a matching \`domain\` string, which carried no information \`responseType\` did not already determine.\n\nOperation ID: respondToCantonOffer\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/respondToCantonOffer'
 
   static enableJsonFlag = false
 
@@ -25,13 +25,12 @@ export default class RespondToCantonOffer extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/operations/canton/offers/{offerId}/responses'
-  static isBeta = true
+  static operationId = 'respondToCantonOffer'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(RespondToCantonOffer)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DeleteConsoleUser extends FireblocksBaseCommand {
   static summary = 'Request deletion of a console user'
 
-  static description = 'Requests deletion of a console user. The request is asynchronous: it goes through the workspace\'s configured "Delete users" approval policy (Settings > Quorums), exactly as deleting a user from the console does, and the user is removed only once that approval completes.\n- Track progress by polling GET /management/users; deletion is complete when the user is disabled.\n- Please note that this endpoint is available only for API keys with Admin/Non Signing Admin/Security Admin permissions.\nEndpoint Permission: Admin, Non-Signing Admin, Security Admin.\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: deleteConsoleUser\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Console%20User/deleteConsoleUser'
+  static description = 'Requests deletion of a console user. The request is asynchronous: it goes through the workspace\'s configured "Delete users" approval policy (Settings > Quorums), exactly as deleting a user from the console does, and the user is removed only once that approval completes.\n- The workspace must have a "Delete users" approval policy (admin quorum or approval group). If "Delete users" is Owner-only, which is the default, the request is refused with OWNER_ONLY (2760) and the Owner deletes users in the Console. With an admin quorum, the requesting API user\'s own approval counts toward the quorum.\n- Track progress by polling GET /management/users; deletion is complete when the user is disabled.\n- Please note that this endpoint is available only for API keys with Admin/Non Signing Admin/Security Admin permissions.\nEndpoint Permission: Admin, Non-Signing Admin, Security Admin.\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: deleteConsoleUser\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Console%20User/deleteConsoleUser'
 
   static enableJsonFlag = false
 
@@ -25,7 +25,8 @@ export default class DeleteConsoleUser extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/management/users/{id}'
-  static isBeta = false
+  static operationId = 'deleteConsoleUser'
+  static isBeta = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

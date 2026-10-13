@@ -21,6 +21,7 @@ export default class GetSupportedBlockchainsByTemplateId extends FireblocksBaseC
 
   static method = 'GET'
   static path = '/v1/tokenization/templates/{contractTemplateId}/supported_blockchains'
+  static operationId = 'getSupportedBlockchainsByTemplateId'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

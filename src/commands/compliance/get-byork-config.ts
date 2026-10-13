@@ -17,6 +17,7 @@ export default class GetByorkConfig extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/byork/config'
+  static operationId = 'getByorkConfig'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

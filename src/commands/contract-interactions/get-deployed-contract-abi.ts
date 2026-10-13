@@ -25,6 +25,7 @@ export default class GetDeployedContractAbi extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/contract_interactions/base_asset_id/{baseAssetId}/contract_address/{contractAddress}/functions'
+  static operationId = 'getDeployedContractAbi'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

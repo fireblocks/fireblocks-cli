@@ -25,6 +25,7 @@ export default class SetTRLinkDestinationTravelRuleMessageId extends FireblocksB
 
   static method = 'POST'
   static path = '/v1/screening/trlink/transaction/{txId}/destination/travel_rule_message_id'
+  static operationId = 'setTRLinkDestinationTravelRuleMessageId'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

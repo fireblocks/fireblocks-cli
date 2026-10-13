@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class SubmitOrderRequirements extends FireblocksBaseCommand {
   static summary = 'Submit a response to an order requirement'
 
-  static description = 'Submit the user\'s textual response to an order requirement on an order that is in \`AWAITING_INFORMATION\` status.\n\nThe request body carries \`data\` — a free-form object conforming to the \`requiredData\` JSON Schema\nreturned by the GET endpoint. Any required files are uploaded separately via\n\`POST /trading/orders/{orderId}/requirement/file\`.\n\nNote: These endpoints are currently in beta and might be subject to changes.\n\nIf you want to participate and learn more about the Fireblocks Trading, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: submitOrderRequirements\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/submitOrderRequirements'
+  static description = 'Submit the user\'s textual response to an order requirement on an order that is in \`AWAITING_INFORMATION\` status.\n\nThe request body carries \`data\` — a free-form object conforming to the \`requiredData\` JSON Schema\nreturned by the GET endpoint. Any required files are uploaded separately via\n\`POST /trading/orders/{orderId}/requirement/file\`.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: submitOrderRequirements\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/submitOrderRequirements'
 
   static enableJsonFlag = false
 
@@ -25,13 +25,12 @@ export default class SubmitOrderRequirements extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/trading/orders/{orderId}/requirement/data'
-  static isBeta = true
+  static operationId = 'submitOrderRequirements'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(SubmitOrderRequirements)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

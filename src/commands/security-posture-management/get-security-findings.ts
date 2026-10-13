@@ -36,6 +36,7 @@ export default class GetSecurityFindings extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/security/fspm/findings'
+  static operationId = 'getSecurityFindings'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

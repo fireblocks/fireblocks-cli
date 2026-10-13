@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetOrder extends FireblocksBaseCommand {
   static summary = 'Get order details'
 
-  static description = 'Retrieve detailed information about a specific order by its ID.\n\nNote:These endpoints are currently in beta and might be subject to changes.\n\nIf you want to participate and learn more about the Fireblocks Trading, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: getOrder\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/getOrder'
+  static description = 'Retrieve detailed information about a specific order by its ID.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: getOrder\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/getOrder'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,12 @@ export default class GetOrder extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/trading/orders/{orderId}'
-  static isBeta = true
+  static operationId = 'getOrder'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetOrder)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

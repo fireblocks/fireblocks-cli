@@ -21,6 +21,7 @@ export default class CreateVaultAccount extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/vault/accounts'
+  static operationId = 'createVaultAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

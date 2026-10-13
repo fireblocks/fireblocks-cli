@@ -17,13 +17,12 @@ export default class GetVaultAssetUtxoSelectionConfig extends FireblocksBaseComm
 
   static method = 'GET'
   static path = '/v1/utxo_management/{vaultAccountId}/{assetId}/selection_config'
-  static isBeta = true
+  static operationId = 'getVaultAssetUtxoSelectionConfig'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetVaultAssetUtxoSelectionConfig)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

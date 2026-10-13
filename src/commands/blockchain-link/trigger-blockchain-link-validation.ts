@@ -21,13 +21,12 @@ export default class TriggerBlockchainLinkValidation extends FireblocksBaseComma
 
   static method = 'POST'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}/validate'
-  static isBeta = true
+  static operationId = 'triggerBlockchainLinkValidation'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(TriggerBlockchainLinkValidation)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

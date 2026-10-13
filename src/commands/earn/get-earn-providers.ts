@@ -32,6 +32,7 @@ export default class GetEarnProviders extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/providers'
+  static operationId = 'getEarnProviders'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -26,6 +26,7 @@ export default class UpdateOwnershipTokens extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/nfts/ownership/tokens'
+  static operationId = 'updateOwnershipTokens'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

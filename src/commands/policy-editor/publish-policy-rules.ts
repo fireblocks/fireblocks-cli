@@ -21,13 +21,12 @@ export default class PublishPolicyRules extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tap/publish'
-  static isBeta = true
+  static operationId = 'publishPolicyRules'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(PublishPolicyRules)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

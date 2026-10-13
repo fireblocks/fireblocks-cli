@@ -17,6 +17,7 @@ export default class GetExternalWallets extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/external_wallets'
+  static operationId = 'getExternalWallets'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

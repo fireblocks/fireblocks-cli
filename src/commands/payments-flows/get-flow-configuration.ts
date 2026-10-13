@@ -17,6 +17,7 @@ export default class GetFlowConfiguration extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/payments/workflow_config/{configId}'
+  static operationId = 'getFlowConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

@@ -25,6 +25,7 @@ export default class GetAccessRegistrySummary extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/onchain_data/base_asset_id/{baseAssetId}/access_registry_address/{accessRegistryAddress}/summary'
+  static operationId = 'getAccessRegistrySummary'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

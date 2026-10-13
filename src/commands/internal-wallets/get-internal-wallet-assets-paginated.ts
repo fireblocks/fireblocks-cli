@@ -28,6 +28,7 @@ export default class GetInternalWalletAssetsPaginated extends FireblocksBaseComm
 
   static method = 'GET'
   static path = '/v1/internal_wallets/{walletId}/assets'
+  static operationId = 'getInternalWalletAssetsPaginated'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

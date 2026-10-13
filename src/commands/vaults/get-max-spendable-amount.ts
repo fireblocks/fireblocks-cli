@@ -46,6 +46,7 @@ export default class GetMaxSpendableAmount extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/max_spendable_amount'
+  static operationId = 'getMaxSpendableAmount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

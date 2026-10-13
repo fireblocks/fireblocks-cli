@@ -21,6 +21,7 @@ export default class AttachOrDetachTagsFromVaultAccounts extends FireblocksBaseC
 
   static method = 'POST'
   static path = '/v1/vault/accounts/attached_tags'
+  static operationId = 'attachOrDetachTagsFromVaultAccounts'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

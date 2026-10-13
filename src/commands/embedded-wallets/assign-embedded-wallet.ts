@@ -21,6 +21,7 @@ export default class AssignEmbeddedWallet extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/ncw/wallets/{walletId}/assign'
+  static operationId = 'assignEmbeddedWallet'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

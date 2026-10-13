@@ -21,6 +21,7 @@ export default class CreateWebhookMtlsConfig extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/webhooks_settings/mtls'
+  static operationId = 'createWebhookMtlsConfig'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

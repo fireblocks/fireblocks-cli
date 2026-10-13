@@ -17,6 +17,7 @@ export default class UpdateScreeningConfiguration extends FireblocksBaseCommand 
 
   static method = 'PUT'
   static path = '/v1/screening/configurations'
+  static operationId = 'updateScreeningConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

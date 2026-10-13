@@ -21,6 +21,7 @@ export default class CreateMultipleDepositAddresses extends FireblocksBaseComman
 
   static method = 'POST'
   static path = '/v1/vault/accounts/addresses/bulk'
+  static operationId = 'createMultipleDepositAddresses'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

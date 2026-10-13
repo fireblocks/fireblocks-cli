@@ -21,6 +21,7 @@ export default class EstimateNetworkFee extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/estimate_network_fee'
+  static operationId = 'estimateNetworkFee'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

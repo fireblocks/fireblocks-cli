@@ -21,6 +21,7 @@ export default class UnhideVaultAccount extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/unhide'
+  static operationId = 'unhideVaultAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
