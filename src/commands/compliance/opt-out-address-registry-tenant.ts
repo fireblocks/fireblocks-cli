@@ -17,6 +17,7 @@ export default class OptOutAddressRegistryTenant extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/address_registry/tenant'
+  static operationId = 'optOutAddressRegistryTenant'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

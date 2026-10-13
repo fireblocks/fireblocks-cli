@@ -39,6 +39,7 @@ export default class GetEarnPositions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/positions'
+  static operationId = 'getEarnPositions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

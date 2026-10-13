@@ -29,6 +29,7 @@ export default class CreateLegacyAddress extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses/{addressId}/create_legacy'
+  static operationId = 'createLegacyAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

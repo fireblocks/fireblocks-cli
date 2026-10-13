@@ -21,6 +21,7 @@ export default class ActivateUsdcGatewayWalletBeta extends FireblocksBaseCommand
 
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/usdc_gateway/activate'
+  static operationId = 'activateUsdcGatewayWalletBeta'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

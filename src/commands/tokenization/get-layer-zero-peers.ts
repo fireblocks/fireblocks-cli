@@ -17,6 +17,7 @@ export default class GetLayerZeroPeers extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/multichain/bridge/layerzero/config/{adapterTokenLinkId}/peers'
+  static operationId = 'getLayerZeroPeers'
   static isBeta = false
 
   async run(): Promise<unknown> {

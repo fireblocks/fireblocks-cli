@@ -25,6 +25,7 @@ export default class SetVaspForVault extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/travel_rule/vault/{vaultAccountId}/vasp'
+  static operationId = 'setVaspForVault'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

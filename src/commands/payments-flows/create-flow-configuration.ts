@@ -16,6 +16,7 @@ export default class CreateFlowConfiguration extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/payments/workflow_config'
+  static operationId = 'createFlowConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

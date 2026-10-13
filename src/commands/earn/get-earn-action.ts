@@ -21,6 +21,7 @@ export default class GetEarnAction extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/earn/actions/{id}'
+  static operationId = 'getEarnAction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -17,6 +17,7 @@ export default class GetSummaryByVault extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/staking/positions/summary/vaults'
+  static operationId = 'getSummaryByVault'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

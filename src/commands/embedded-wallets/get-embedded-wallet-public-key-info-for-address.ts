@@ -40,6 +40,7 @@ export default class GetEmbeddedWalletPublicKeyInfoForAddress extends Fireblocks
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/accounts/{accountId}/assets/{assetId}/{change}/{addressIndex}/public_key_info'
+  static operationId = 'GetEmbeddedWalletPublicKeyInfoForAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

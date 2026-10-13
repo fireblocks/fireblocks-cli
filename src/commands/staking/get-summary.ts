@@ -17,6 +17,7 @@ export default class GetSummary extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/staking/positions/summary'
+  static operationId = 'getSummary'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

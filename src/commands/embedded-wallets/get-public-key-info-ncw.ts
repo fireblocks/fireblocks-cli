@@ -33,6 +33,7 @@ export default class GetPublicKeyInfoNcw extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/public_key_info'
+  static operationId = 'getPublicKeyInfoNcw'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

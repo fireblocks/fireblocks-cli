@@ -21,6 +21,7 @@ export default class AddAddressRegistryVaultOptOuts extends FireblocksBaseComman
 
   static method = 'POST'
   static path = '/v1/address_registry/vaults'
+  static operationId = 'addAddressRegistryVaultOptOuts'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

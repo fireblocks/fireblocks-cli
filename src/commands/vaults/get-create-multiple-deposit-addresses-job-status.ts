@@ -21,6 +21,7 @@ export default class GetCreateMultipleDepositAddressesJobStatus extends Firebloc
 
   static method = 'GET'
   static path = '/v1/vault/accounts/addresses/bulk/{jobId}'
+  static operationId = 'getCreateMultipleDepositAddressesJobStatus'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

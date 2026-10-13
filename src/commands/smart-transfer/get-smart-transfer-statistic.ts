@@ -17,6 +17,7 @@ export default class GetSmartTransferStatistic extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/smart_transfers/statistic'
+  static operationId = 'getSmartTransferStatistic'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

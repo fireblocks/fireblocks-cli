@@ -67,13 +67,12 @@ export default class GetUtxos extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/utxo_management/{vaultAccountId}/{assetId}/unspent_outputs'
-  static isBeta = true
+  static operationId = 'getUtxos'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetUtxos)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

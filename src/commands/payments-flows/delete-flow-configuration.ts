@@ -17,6 +17,7 @@ export default class DeleteFlowConfiguration extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/payments/workflow_config/{configId}'
+  static operationId = 'deleteFlowConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

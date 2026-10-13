@@ -21,6 +21,7 @@ export default class GetDeployedContractById extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/contracts/{id}'
+  static operationId = 'getDeployedContractById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

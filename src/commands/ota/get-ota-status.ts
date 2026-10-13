@@ -13,12 +13,11 @@ export default class GetOtaStatus extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/ota'
-  static isBeta = true
+  static operationId = 'getOtaStatus'
+  static isBeta = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetOtaStatus)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

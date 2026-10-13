@@ -13,6 +13,7 @@ export default class UpdateTravelRuleConfig extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/screening/travel_rule/policy_configuration'
+  static operationId = 'updateTravelRuleConfig'
   static isBeta = false
 
   async run(): Promise<unknown> {

@@ -43,6 +43,7 @@ export default class GetTags extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tags'
+  static operationId = 'getTags'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

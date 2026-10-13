@@ -21,6 +21,7 @@ export default class FindTicketTermById extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/smart-transfers/{ticketId}/terms/{termId}'
+  static operationId = 'findTicketTermById'
   static isBeta = false
 
   async run(): Promise<unknown> {

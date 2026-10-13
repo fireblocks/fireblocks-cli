@@ -17,6 +17,7 @@ export default class DeactivateByorkConfig extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/byork/config/deactivate'
+  static operationId = 'deactivateByorkConfig'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

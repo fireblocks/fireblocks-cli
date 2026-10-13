@@ -25,6 +25,7 @@ export default class Unstake extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/staking/chains/{chainDescriptor}/unstake'
+  static operationId = 'unstake'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

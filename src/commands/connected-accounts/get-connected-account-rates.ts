@@ -29,6 +29,7 @@ export default class GetConnectedAccountRates extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}/rates'
+  static operationId = 'getConnectedAccountRates'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

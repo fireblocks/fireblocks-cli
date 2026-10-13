@@ -21,6 +21,7 @@ export default class GetUsdcGatewayWalletInfoBeta extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/usdc_gateway'
+  static operationId = 'getUsdcGatewayWalletInfoBeta'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

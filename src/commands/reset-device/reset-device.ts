@@ -21,6 +21,7 @@ export default class ResetDevice extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/management/users/{id}/reset_device'
+  static operationId = 'resetDevice'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

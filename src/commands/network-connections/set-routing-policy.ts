@@ -24,6 +24,7 @@ export default class SetRoutingPolicy extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/network_connections/{connectionId}/set_routing_policy'
+  static operationId = 'setRoutingPolicy'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

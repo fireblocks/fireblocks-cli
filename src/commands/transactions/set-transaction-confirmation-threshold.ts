@@ -24,6 +24,7 @@ export default class SetTransactionConfirmationThreshold extends FireblocksBaseC
 
   static method = 'POST'
   static path = '/v1/transactions/{txId}/set_confirmation_threshold'
+  static operationId = 'setTransactionConfirmationThreshold'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -13,6 +13,7 @@ export default class GetAmlScreeningConfiguration extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/screening/aml/policy_configuration'
+  static operationId = 'getAmlScreeningConfiguration'
   static isBeta = false
 
   async run(): Promise<unknown> {

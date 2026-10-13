@@ -25,6 +25,7 @@ export default class GetFunctionAbiByContractTemplateId extends FireblocksBaseCo
 
   static method = 'GET'
   static path = '/v1/tokenization/templates/{contractTemplateId}/function'
+  static operationId = 'getFunctionAbiByContractTemplateId'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

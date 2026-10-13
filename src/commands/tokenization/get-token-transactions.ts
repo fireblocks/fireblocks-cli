@@ -43,6 +43,7 @@ export default class GetTokenTransactions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/tokens/{id}/transactions'
+  static operationId = 'getTokenTransactions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

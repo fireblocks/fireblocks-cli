@@ -21,6 +21,7 @@ export default class GetNFT extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/nfts/tokens/{id}'
+  static operationId = 'getNFT'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

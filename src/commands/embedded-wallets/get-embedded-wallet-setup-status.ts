@@ -21,6 +21,7 @@ export default class GetEmbeddedWalletSetupStatus extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/setup_status'
+  static operationId = 'getEmbeddedWalletSetupStatus'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

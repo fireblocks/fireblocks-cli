@@ -25,6 +25,7 @@ export default class GetMaxBipIndexUsed extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/max_bip44_index_used'
+  static operationId = 'getMaxBipIndexUsed'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

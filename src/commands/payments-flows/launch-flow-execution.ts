@@ -17,6 +17,7 @@ export default class LaunchFlowExecution extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/payments/workflow_execution/{workflowExecutionId}/actions/execute'
+  static operationId = 'launchFlowExecution'
   static isBeta = false
 
   async run(): Promise<unknown> {

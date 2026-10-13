@@ -21,6 +21,7 @@ export default class CreateTrustProofOfAddress extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/travel_rule/providers/trust/proof_of_address'
+  static operationId = 'createTrustProofOfAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -57,6 +57,7 @@ export default class GetAuditLogs extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/audit_logs'
+  static operationId = 'getAuditLogs'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

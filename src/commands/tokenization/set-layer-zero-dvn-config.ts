@@ -17,6 +17,7 @@ export default class SetLayerZeroDvnConfig extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/multichain/bridge/layerzero/config/dvns'
+  static operationId = 'setLayerZeroDvnConfig'
   static isBeta = false
 
   async run(): Promise<unknown> {

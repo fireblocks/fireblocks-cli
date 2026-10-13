@@ -28,6 +28,7 @@ export default class GetConnectedAccountTradingPairs extends FireblocksBaseComma
 
   static method = 'GET'
   static path = '/v1/connected_accounts/{accountId}/manifest/capabilities/trading/pairs'
+  static operationId = 'getConnectedAccountTradingPairs'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

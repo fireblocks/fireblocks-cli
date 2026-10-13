@@ -21,13 +21,12 @@ export default class GetBlockchainLinkChain extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}'
-  static isBeta = true
+  static operationId = 'getBlockchainLinkChain'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetBlockchainLinkChain)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

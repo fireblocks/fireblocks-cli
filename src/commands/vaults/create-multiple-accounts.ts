@@ -21,6 +21,7 @@ export default class CreateMultipleAccounts extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/vault/accounts/bulk'
+  static operationId = 'createMultipleAccounts'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

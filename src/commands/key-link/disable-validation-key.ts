@@ -25,13 +25,12 @@ export default class DisableValidationKey extends FireblocksBaseCommand {
 
   static method = 'PATCH'
   static path = '/v1/key_link/validation_keys/{keyId}'
-  static isBeta = true
+  static operationId = 'disableValidationKey'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(DisableValidationKey)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

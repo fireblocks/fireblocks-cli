@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class UploadOrderRequirementFile extends FireblocksBaseCommand {
   static summary = 'Upload a file for an order requirement'
 
-  static description = 'Upload a single file (multipart/form-data) in response to an order requirement on an order that is in\n\`AWAITING_INFORMATION\` status. Call this endpoint once per required file.\n\nSend \`fileKey\` (matching a \`fileKey\` from \`requiredFiles\` on the GET response) and the binary \`file\`. Its type\nmust be one of the supported file formats. Fireblocks encrypts each file and uploads it individually to the\nunderlying provider. The textual response is submitted separately via\n\`POST /trading/orders/{orderId}/requirement/data\`.\n\nNote: These endpoints are currently in beta and might be subject to changes.\n\nIf you want to participate and learn more about the Fireblocks Trading, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: uploadOrderRequirementFile\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/uploadOrderRequirementFile'
+  static description = 'Upload a single file (multipart/form-data) in response to an order requirement on an order that is in\n\`AWAITING_INFORMATION\` status. Call this endpoint once per required file.\n\nSend \`fileKey\` (matching a \`fileKey\` from \`requiredFiles\` on the GET response) and the binary \`file\`. Its type\nmust be one of the supported file formats. Fireblocks encrypts each file and uploads it individually to the\nunderlying provider. The textual response is submitted separately via\n\`POST /trading/orders/{orderId}/requirement/data\`.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: uploadOrderRequirementFile\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/uploadOrderRequirementFile'
 
   static enableJsonFlag = false
 
@@ -25,13 +25,12 @@ export default class UploadOrderRequirementFile extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/trading/orders/{orderId}/requirement/file'
-  static isBeta = true
+  static operationId = 'uploadOrderRequirementFile'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(UploadOrderRequirementFile)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

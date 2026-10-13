@@ -21,13 +21,12 @@ export default class PublishDraftLegacy extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tap/draft'
-  static isBeta = true
+  static operationId = 'publishDraftLegacy'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(PublishDraftLegacy)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

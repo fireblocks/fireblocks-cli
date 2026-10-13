@@ -21,6 +21,7 @@ export default class GetDelegationById extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/staking/positions/{id}'
+  static operationId = 'getDelegationById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

@@ -17,6 +17,7 @@ export default class IssueNewToken extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/tokens'
+  static operationId = 'issueNewToken'
   static isBeta = false
 
   async run(): Promise<unknown> {

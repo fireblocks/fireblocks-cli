@@ -25,6 +25,7 @@ export default class BurnCollectionToken extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/collections/{id}/tokens/burn'
+  static operationId = 'burnCollectionToken'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

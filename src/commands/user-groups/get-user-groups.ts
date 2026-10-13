@@ -17,13 +17,12 @@ export default class GetUserGroups extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/user_groups'
-  static isBeta = true
+  static operationId = 'getUserGroups'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetUserGroups)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

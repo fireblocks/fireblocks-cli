@@ -25,6 +25,7 @@ export default class GetInternalWalletAsset extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/internal_wallets/{walletId}/{assetId}'
+  static operationId = 'getInternalWalletAsset'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

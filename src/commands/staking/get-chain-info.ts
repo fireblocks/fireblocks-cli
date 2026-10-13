@@ -21,6 +21,7 @@ export default class GetChainInfo extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/staking/chains/{chainDescriptor}/chainInfo'
+  static operationId = 'getChainInfo'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

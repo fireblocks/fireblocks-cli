@@ -25,6 +25,7 @@ export default class ResendNotificationsByQuery extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/webhooks/{webhookId}/notifications/resend_by_query'
+  static operationId = 'resendNotificationsByQuery'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID","Location"]
 

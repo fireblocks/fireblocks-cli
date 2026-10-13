@@ -29,6 +29,7 @@ export default class CancelTRLinkTrm extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/cancel'
+  static operationId = 'cancelTRLinkTrm'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

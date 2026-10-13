@@ -17,6 +17,7 @@ export default class RemoveLayerZeroPeers extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/tokenization/multichain/bridge/layerzero/config/peers'
+  static operationId = 'removeLayerZeroPeers'
   static isBeta = false
 
   async run(): Promise<unknown> {

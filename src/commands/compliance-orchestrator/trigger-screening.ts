@@ -21,13 +21,12 @@ export default class TriggerScreening extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/compliance/orchestrator/screenings'
-  static isBeta = true
+  static operationId = 'triggerScreening'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(TriggerScreening)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

@@ -25,6 +25,7 @@ export default class UpdateLegalEntity extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/legal_entities/{legalEntityId}'
+  static operationId = 'updateLegalEntity'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

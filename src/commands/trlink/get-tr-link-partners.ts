@@ -17,6 +17,7 @@ export default class GetTRLinkPartners extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/trlink/partners'
+  static operationId = 'getTRLinkPartners'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

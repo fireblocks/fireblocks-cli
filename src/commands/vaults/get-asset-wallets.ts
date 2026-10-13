@@ -38,6 +38,7 @@ export default class GetAssetWallets extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/asset_wallets'
+  static operationId = 'getAssetWallets'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

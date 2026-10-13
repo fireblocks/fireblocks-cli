@@ -24,6 +24,7 @@ export default class ValidateTravelRuleTransaction extends FireblocksBaseCommand
 
   static method = 'POST'
   static path = '/v1/screening/travel_rule/transaction/validate'
+  static operationId = 'validateTravelRuleTransaction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

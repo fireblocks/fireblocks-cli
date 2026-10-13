@@ -24,6 +24,7 @@ export default class DropTransaction extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/transactions/{txId}/drop'
+  static operationId = 'dropTransaction'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

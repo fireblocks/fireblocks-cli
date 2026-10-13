@@ -21,13 +21,12 @@ export default class DeleteUserGroup extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/management/user_groups/{groupId}'
-  static isBeta = true
+  static operationId = 'deleteUserGroup'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(DeleteUserGroup)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

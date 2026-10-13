@@ -40,6 +40,7 @@ export default class GetPublicKeyInfoForAddressNcw extends FireblocksBaseCommand
 
   static method = 'GET'
   static path = '/v1/ncw/{walletId}/accounts/{accountId}/{assetId}/{change}/{addressIndex}/public_key_info'
+  static operationId = 'getPublicKeyInfoForAddressNcw'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

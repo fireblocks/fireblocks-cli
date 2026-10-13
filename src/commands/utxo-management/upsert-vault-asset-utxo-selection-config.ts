@@ -21,13 +21,12 @@ export default class UpsertVaultAssetUtxoSelectionConfig extends FireblocksBaseC
 
   static method = 'PUT'
   static path = '/v1/utxo_management/{vaultAccountId}/{assetId}/selection_config'
-  static isBeta = true
+  static operationId = 'upsertVaultAssetUtxoSelectionConfig'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(UpsertVaultAssetUtxoSelectionConfig)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

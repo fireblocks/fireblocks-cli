@@ -36,6 +36,7 @@ export default class GetPublicKeyInfoForAddress extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/{change}/{addressIndex}/public_key_info'
+  static operationId = 'getPublicKeyInfoForAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

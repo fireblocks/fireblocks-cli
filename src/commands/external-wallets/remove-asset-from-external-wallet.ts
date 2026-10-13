@@ -25,6 +25,7 @@ export default class RemoveAssetFromExternalWallet extends FireblocksBaseCommand
 
   static method = 'DELETE'
   static path = '/v1/external_wallets/{walletId}/{assetId}'
+  static operationId = 'removeAssetFromExternalWallet'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

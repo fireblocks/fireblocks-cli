@@ -17,6 +17,7 @@ export default class IssueTokenMultiChain extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/multichain/tokens'
+  static operationId = 'issueTokenMultiChain'
   static isBeta = false
 
   async run(): Promise<unknown> {

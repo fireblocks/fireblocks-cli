@@ -25,6 +25,7 @@ export default class ResendTransactionWebhooks extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/webhooks/resend/{txId}'
+  static operationId = 'resendTransactionWebhooks'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

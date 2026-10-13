@@ -22,6 +22,7 @@ export default class GetMtlsCsr extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/webhooks_settings/mtls_csr'
+  static operationId = 'getMtlsCsr'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

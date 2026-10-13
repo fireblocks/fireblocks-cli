@@ -499,4 +499,208 @@ describe('e2e: full command execution flow', () => {
       }
     })
   })
+
+
+  describe('lifecycle warnings', () => {
+    const SUPPRESS_ENV_VAR = 'FIREBLOCKS_SDK_SUPPRESS_LIFECYCLE_WARNING'
+    const SUNSET = 'Fri, 15 Jan 2027 00:00:00 GMT'
+    const originalSuppress = process.env[SUPPRESS_ENV_VAR]
+
+    beforeEach(() => {
+      delete process.env[SUPPRESS_ENV_VAR]
+    })
+
+    afterEach(() => {
+      if (originalSuppress === undefined) delete process.env[SUPPRESS_ENV_VAR]
+      else process.env[SUPPRESS_ENV_VAR] = originalSuppress
+    })
+
+    /** Run GetVaultAccount, capturing stdout, stderr and the exit code. */
+    async function runGetVaultAccount(extraArgs: string[] = []) {
+      const {default: GetVaultAccount} = require('../src/commands/vaults/get-vault-account.js')
+      const logSpy = jest.spyOn(GetVaultAccount.prototype, 'log').mockImplementation(() => {})
+      const stderrSpy = jest.spyOn(GetVaultAccount.prototype, 'logToStderr').mockImplementation(() => {})
+
+      let exitCode = 0
+      try {
+        await GetVaultAccount.run(['--vault-account-id', '123', '--no-confirm', ...extraArgs])
+      } catch (error: any) {
+        if (error?.oclif?.exit === undefined) throw error
+        exitCode = error.oclif.exit
+      }
+
+      const stdout = logSpy.mock.calls.map((c) => c[0] as string)
+      const stderr = stderrSpy.mock.calls.map((c) => c[0] as string)
+      logSpy.mockRestore()
+      stderrSpy.mockRestore()
+      return {stdout, stderr, exitCode}
+    }
+
+    const warnings = (stderr: string[]) => stderr.filter((line) => line.startsWith('Warning:'))
+
+    it('warns on stderr for a beta response and keeps stdout to the JSON body', async () => {
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+      )
+
+      const {stdout, stderr, exitCode} = await runGetVaultAccount()
+
+      expect(exitCode).toBe(0)
+      expect(warnings(stderr)).toEqual([
+        "Warning: Operation 'getVaultAccount' is in 'beta' lifecycle state and is not generally available. " +
+          'It may change or be removed without notice.',
+      ])
+      expect(stdout).toHaveLength(1)
+      expect(stdout[0]).toContain('"123"')
+      expect(stdout[0]).not.toContain('Warning')
+    })
+
+    it('prints nothing for the old private_beta state name (strict rename)', async () => {
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'private_beta'}),
+      )
+
+      const {stderr, exitCode} = await runGetVaultAccount()
+
+      expect(exitCode).toBe(0)
+      expect(warnings(stderr)).toEqual([])
+    })
+
+    it('includes sunset, successor and migration guide for a deprecated response', async () => {
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(200, {id: '123'}, {
+          'fireblocks-lifecycle-state': 'deprecated',
+          sunset: SUNSET,
+          link:
+            '<https://developer.fireblocks.com/docs/v2-migration>; rel="deprecation", ' +
+            '<https://api.fireblocks.io/v1/vault/accounts_v2/{id}>; rel="successor-version"',
+        }),
+      )
+
+      const {stderr} = await runGetVaultAccount()
+
+      expect(warnings(stderr)).toEqual([
+        `Warning: Operation 'getVaultAccount' is deprecated and will stop working after ${SUNSET}. ` +
+          'Use https://api.fireblocks.io/v1/vault/accounts_v2/{id} instead. ' +
+          'Migration guide: https://developer.fireblocks.com/docs/v2-migration',
+      ])
+    })
+
+    it('warns on an error response, before the structured error, without changing the exit code', async () => {
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(404, {message: 'Not found'}, {
+          'fireblocks-lifecycle-state': 'deprecated',
+          sunset: SUNSET,
+        }),
+      )
+
+      const {stderr, exitCode} = await runGetVaultAccount()
+
+      expect(exitCode).toBe(4)
+      expect(stderr).toHaveLength(2)
+      expect(stderr[0]).toBe(`Warning: Operation 'getVaultAccount' is deprecated and will stop working after ${SUNSET}.`)
+      expect(JSON.parse(stderr[1])).toMatchObject({code: 4, status: 404})
+    })
+
+    describe('closed operations', () => {
+      const CLOSED_MESSAGE =
+        "Warning: Operation 'getVaultAccount' has been closed and is no longer supported. " +
+        'Your access is provided under a temporary exception and may be revoked. ' +
+        'Contact your Customer Success Manager for migration support'
+
+      it('warns for a closed operation that still answers 200 under a temporary exception', async () => {
+        mockFireblocksFetch.mockResolvedValueOnce(
+          createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'closed'}),
+        )
+
+        const {stdout, stderr, exitCode} = await runGetVaultAccount()
+
+        expect(exitCode).toBe(0)
+        expect(warnings(stderr)).toEqual([CLOSED_MESSAGE])
+        expect(stdout).toHaveLength(1)
+        expect(stdout[0]).toContain('"123"')
+      })
+
+      it('warns on a closed 404 and keeps the structured error and exit code', async () => {
+        mockFireblocksFetch.mockResolvedValueOnce(
+          createMockApiResponse(404, {message: 'Not found'}, {'fireblocks-lifecycle-state': 'closed'}),
+        )
+
+        const {stderr, exitCode} = await runGetVaultAccount()
+
+        expect(exitCode).toBe(4)
+        expect(stderr).toHaveLength(2)
+        expect(stderr[0]).toBe(CLOSED_MESSAGE)
+        expect(JSON.parse(stderr[1])).toMatchObject({code: 4, status: 404})
+      })
+
+      it('prints no warning on 410 Gone, only the structured error', async () => {
+        mockFireblocksFetch.mockResolvedValueOnce(
+          createMockApiResponse(410, {message: 'Gone'}, {'fireblocks-lifecycle-state': 'closed'}),
+        )
+
+        const {stdout, stderr, exitCode} = await runGetVaultAccount()
+
+        expect(exitCode).toBe(1)
+        expect(warnings(stderr)).toEqual([])
+        expect(stderr).toHaveLength(1)
+        expect(JSON.parse(stderr[0])).toMatchObject({code: 1, status: 410})
+        expect(stdout).toHaveLength(0)
+      })
+
+      it('is suppressed by the environment variable', async () => {
+        process.env[SUPPRESS_ENV_VAR] = '1'
+        mockFireblocksFetch.mockResolvedValueOnce(
+          createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'closed'}),
+        )
+
+        const {stderr} = await runGetVaultAccount()
+
+        expect(warnings(stderr)).toEqual([])
+      })
+    })
+
+    it.each([
+      ['ga', {'fireblocks-lifecycle-state': 'ga'}],
+      ['an unrecognised state', {'fireblocks-lifecycle-state': 'quantum_preview'}],
+      ['no lifecycle header', {}],
+    ])('stays silent for %s', async (_label, headers) => {
+      mockFireblocksFetch.mockResolvedValueOnce(createMockApiResponse(200, {id: '123'}, headers))
+
+      const {stderr, exitCode} = await runGetVaultAccount()
+
+      expect(exitCode).toBe(0)
+      expect(warnings(stderr)).toEqual([])
+    })
+
+    it.each(['1', 'true'])('is suppressed when %s is %s', async (value) => {
+      process.env[SUPPRESS_ENV_VAR] = value
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+      )
+
+      const {stderr} = await runGetVaultAccount()
+
+      expect(warnings(stderr)).toEqual([])
+    })
+
+    it.each(['0', 'false'])('still warns when the suppression variable is %s', async (value) => {
+      process.env[SUPPRESS_ENV_VAR] = value
+      mockFireblocksFetch.mockResolvedValueOnce(
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+      )
+
+      const {stderr} = await runGetVaultAccount()
+
+      expect(warnings(stderr)).toHaveLength(1)
+    })
+
+    it('does not warn on --dry-run, which makes no request', async () => {
+      const {stderr, exitCode} = await runGetVaultAccount(['--dry-run'])
+
+      expect(exitCode).toBe(0)
+      expect(mockFireblocksFetch).not.toHaveBeenCalled()
+      expect(warnings(stderr)).toEqual([])
+    })
+  })
 })

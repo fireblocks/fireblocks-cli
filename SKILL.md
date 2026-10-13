@@ -58,9 +58,9 @@ Always pass `--no-confirm` on write operations. The CLI auto-skips prompts when 
 ## Output
 
 - **stdout**: JSON data only.
-- **stderr**: warnings, beta notices, errors, debug logs.
+- **stderr**: warnings, errors, debug logs.
 - `--debug` output on stderr: `[DEBUG] METHOD URL`, `[DEBUG] Body: ...`, `[DEBUG] Response: STATUS`, `[DEBUG] Request-ID: ...`
-- Beta commands print to stderr: `Warning: This command is in beta and may change in future releases.` This is informational, not an error.
+- When a response reports a non-GA lifecycle state (`beta`, `deprecated` or `closed`), the CLI prints one line to stderr naming the operation, for example `Warning: Operation 'getWebhooks' is in 'beta' lifecycle state and is not generally available. ...`. For `deprecated` operations it includes the sunset date and, when the API provides them, the replacement and migration guide. A `closed` operation that returns `410 Gone` prints no warning; one that still responds (a temporary exception) warns that it has been closed and access may be revoked. This is informational, not an error: stdout and the exit code are unchanged. Set `FIREBLOCKS_SDK_SUPPRESS_LIFECYCLE_WARNING=1` to suppress it.
 
 ## Exit Codes
 

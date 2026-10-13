@@ -21,6 +21,7 @@ export default class GetLegalEntityForAddress extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/address_registry/legal_entities/{address}'
+  static operationId = 'getLegalEntityForAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

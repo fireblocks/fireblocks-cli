@@ -28,6 +28,7 @@ export default class ListTRLinkSupportedAssets extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/assets'
+  static operationId = 'listTRLinkSupportedAssets'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

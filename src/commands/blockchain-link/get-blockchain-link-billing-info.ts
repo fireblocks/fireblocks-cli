@@ -17,13 +17,12 @@ export default class GetBlockchainLinkBillingInfo extends FireblocksBaseCommand 
 
   static method = 'GET'
   static path = '/v1/blockchain_link/blockchains/billing_info'
-  static isBeta = true
+  static operationId = 'getBlockchainLinkBillingInfo'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetBlockchainLinkBillingInfo)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

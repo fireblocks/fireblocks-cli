@@ -17,6 +17,7 @@ export default class DeactivateAndUnlinkAdapters extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/tokenization/multichain/bridge/layerzero'
+  static operationId = 'deactivateAndUnlinkAdapters'
   static isBeta = false
 
   async run(): Promise<unknown> {

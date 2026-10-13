@@ -25,6 +25,7 @@ export default class GetEmbeddedWalletDevice extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/devices/{deviceId}'
+  static operationId = 'GetEmbeddedWalletDevice'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

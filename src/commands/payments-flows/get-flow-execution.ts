@@ -17,6 +17,7 @@ export default class GetFlowExecution extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/payments/workflow_execution/{workflowExecutionId}'
+  static operationId = 'getFlowExecution'
   static isBeta = false
 
   async run(): Promise<unknown> {

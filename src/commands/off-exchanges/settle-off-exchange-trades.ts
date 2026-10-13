@@ -20,6 +20,7 @@ export default class SettleOffExchangeTrades extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/off_exchange/settlements/trader'
+  static operationId = 'settleOffExchangeTrades'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

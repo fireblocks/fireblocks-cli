@@ -37,6 +37,7 @@ export default class GetTokenBalances extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/tokens/{id}/balances'
+  static operationId = 'getTokenBalances'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

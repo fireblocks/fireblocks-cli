@@ -33,13 +33,12 @@ export default class GetApiKeys extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/cosigners/{cosignerId}/api_keys'
-  static isBeta = true
+  static operationId = 'getApiKeys'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetApiKeys)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

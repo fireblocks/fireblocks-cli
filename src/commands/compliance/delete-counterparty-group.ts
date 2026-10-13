@@ -21,6 +21,7 @@ export default class DeleteCounterpartyGroup extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/counterparty_groups/{groupId}'
+  static operationId = 'deleteCounterpartyGroup'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

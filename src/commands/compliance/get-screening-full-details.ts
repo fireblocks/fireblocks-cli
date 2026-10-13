@@ -21,6 +21,7 @@ export default class GetScreeningFullDetails extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/transaction/{txId}'
+  static operationId = 'getScreeningFullDetails'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

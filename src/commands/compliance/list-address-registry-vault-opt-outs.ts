@@ -27,6 +27,7 @@ export default class ListAddressRegistryVaultOptOuts extends FireblocksBaseComma
 
   static method = 'GET'
   static path = '/v1/address_registry/vaults'
+  static operationId = 'listAddressRegistryVaultOptOuts'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

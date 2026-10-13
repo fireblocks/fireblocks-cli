@@ -21,13 +21,12 @@ export default class CreateUserGroup extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/management/user_groups'
-  static isBeta = true
+  static operationId = 'createUserGroup'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(CreateUserGroup)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

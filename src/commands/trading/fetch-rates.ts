@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class FetchRates extends FireblocksBaseCommand {
   static summary = 'Get rates'
 
-  static description = 'Retrieve indicative exchange rate from specified providers for a given asset pair.\nRates are non-executable price signals intended for discovery and display purposes.\n\nNote: These endpoints are currently in beta and might be subject to changes.\n\nIf you want to participate and learn more about the Fireblocks Trading, please contact your Fireblocks Customer Success Manager or send an email to CSM@fireblocks.com.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchRates'
+  static description = 'Retrieve indicative exchange rate from specified providers for a given asset pair.\nRates are non-executable price signals intended for discovery and display purposes.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchRates'
 
   static enableJsonFlag = false
 
@@ -21,13 +21,12 @@ export default class FetchRates extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/trading/rates'
-  static isBeta = true
+  static operationId = 'fetchRates'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(FetchRates)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {

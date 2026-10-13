@@ -21,6 +21,7 @@ export default class GetOffExchangeSettlementTransactions extends FireblocksBase
 
   static method = 'GET'
   static path = '/v1/off_exchange/settlements/transactions'
+  static operationId = 'getOffExchangeSettlementTransactions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

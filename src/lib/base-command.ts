@@ -4,6 +4,7 @@ import {resolveAuth} from './auth/index.js'
 import type {AuthContext} from './auth/index.js'
 import {fireblocksFetch, type RequestOptions, type ApiResponse} from './http/client.js'
 import {mapHttpError, EXIT_CODE} from './errors/mapper.js'
+import {buildLifecycleWarning, isSuppressed, SUPPRESS_ENV_VAR} from './lifecycle/warning.js'
 import {formatOutput} from './output/formatter.js'
 import {formatHeaders} from './output/headers.js'
 
@@ -156,6 +157,14 @@ export abstract class FireblocksBaseCommand extends Command {
     if (flags.debug) {
       this.logToStderr(`[DEBUG] Response: ${response.status}`)
       this.logToStderr(`[DEBUG] Request-ID: ${response.requestId}`)
+    }
+
+    // Warn when the response reports a non-GA lifecycle state. Ahead of the error
+    // handling below on purpose: the header is present on allowed error responses too.
+    const operationId = (this.constructor as {operationId?: string}).operationId
+    if (operationId && !isSuppressed(process.env[SUPPRESS_ENV_VAR])) {
+      const warning = buildLifecycleWarning(response.headers, operationId, response.status)
+      if (warning) this.logToStderr(`Warning: ${warning}`)
     }
 
     // Output response headers if --include-headers is set and the command declares spec-defined headers.

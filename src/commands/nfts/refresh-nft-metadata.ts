@@ -21,6 +21,7 @@ export default class RefreshNFTMetadata extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/nfts/tokens/{id}'
+  static operationId = 'refreshNFTMetadata'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

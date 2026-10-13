@@ -21,6 +21,7 @@ export default class GetSecurityFindingById extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/security/fspm/findings/{id}'
+  static operationId = 'getSecurityFindingById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

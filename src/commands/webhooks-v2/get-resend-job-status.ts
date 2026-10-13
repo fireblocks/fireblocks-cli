@@ -25,6 +25,7 @@ export default class GetResendJobStatus extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/webhooks/{webhookId}/notifications/resend_failed/jobs/{jobId}'
+  static operationId = 'getResendJobStatus'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

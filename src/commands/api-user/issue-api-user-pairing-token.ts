@@ -21,6 +21,7 @@ export default class IssueApiUserPairingToken extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/management/api_users/{userId}/pairing_token'
+  static operationId = 'issueApiUserPairingToken'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

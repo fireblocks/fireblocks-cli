@@ -29,6 +29,7 @@ export default class ResolveActionTRLinkTrm extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/resolve_action'
+  static operationId = 'resolveActionTRLinkTrm'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

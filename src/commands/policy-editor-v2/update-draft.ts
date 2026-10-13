@@ -21,6 +21,7 @@ export default class UpdateDraft extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/policy/draft'
+  static operationId = 'updateDraft'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

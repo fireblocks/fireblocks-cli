@@ -21,6 +21,7 @@ export default class GetActivePolicy extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/policy/active_policy'
+  static operationId = 'getActivePolicy'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

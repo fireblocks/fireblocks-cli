@@ -20,6 +20,7 @@ export default class CreateApiUser extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/management/api_users'
+  static operationId = 'createApiUser'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

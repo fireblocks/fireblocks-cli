@@ -25,6 +25,7 @@ export default class FundTicketTerm extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/smart-transfers/{ticketId}/terms/{termId}/fund'
+  static operationId = 'fundTicketTerm'
   static isBeta = false
 
   async run(): Promise<unknown> {

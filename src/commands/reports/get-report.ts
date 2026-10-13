@@ -21,13 +21,12 @@ export default class GetReport extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/reports/{reportId}'
-  static isBeta = true
+  static operationId = 'getReport'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetReport)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

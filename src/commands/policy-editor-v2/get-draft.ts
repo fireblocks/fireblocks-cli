@@ -21,6 +21,7 @@ export default class GetDraft extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/policy/draft'
+  static operationId = 'getDraft'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

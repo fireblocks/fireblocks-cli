@@ -17,13 +17,12 @@ export default class GetMpcKeysList extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/keys/mpc/list'
-  static isBeta = true
+  static operationId = 'getMpcKeysList'
+  static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetMpcKeysList)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

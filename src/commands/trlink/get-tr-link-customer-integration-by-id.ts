@@ -25,6 +25,7 @@ export default class GetTRLinkCustomerIntegrationById extends FireblocksBaseComm
 
   static method = 'GET'
   static path = '/v1/screening/trlink/customers/{customerId}/integrations/{customerIntegrationId}'
+  static operationId = 'getTRLinkCustomerIntegrationById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

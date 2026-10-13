@@ -21,6 +21,7 @@ export default class Link extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/tokens/link'
+  static operationId = 'link'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

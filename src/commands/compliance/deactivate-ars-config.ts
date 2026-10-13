@@ -17,6 +17,7 @@ export default class DeactivateArsConfig extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/ars/config/deactivate'
+  static operationId = 'deactivateArsConfig'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

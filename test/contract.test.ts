@@ -45,6 +45,11 @@ describe('contract: generated CLI structure', () => {
     expect(content).toContain("'include-headers': Flags.boolean(")
   })
 
+  it('generated commands expose their operationId for lifecycle warnings', () => {
+    const content = readFileSync(join(COMMANDS_DIR, 'transactions', 'get-transactions.ts'), 'utf-8')
+    expect(content).toContain("static operationId = 'getTransactions'")
+  })
+
   it('commands without response headers do not have include-headers flag', () => {
     // whoami is a hand-written command without responseHeaders
     const whoamiContent = readFileSync(join(COMMANDS_DIR, 'whoami.ts'), 'utf-8')

@@ -36,6 +36,7 @@ export default class GetPositions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/staking/positions_paginated'
+  static operationId = 'getPositions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

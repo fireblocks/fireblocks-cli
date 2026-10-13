@@ -29,6 +29,7 @@ export default class CreateTRLinkManualDecision extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/transactions/{txId}/manual_decision'
+  static operationId = 'createTRLinkManualDecision'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

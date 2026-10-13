@@ -25,6 +25,7 @@ export default class GetTRLinkTrmRequiredActions extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/{trmId}/required_actions'
+  static operationId = 'getTRLinkTrmRequiredActions'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

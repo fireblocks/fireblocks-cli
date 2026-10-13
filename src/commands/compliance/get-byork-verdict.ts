@@ -21,6 +21,7 @@ export default class GetByorkVerdict extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/byork/verdict'
+  static operationId = 'getByorkVerdict'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

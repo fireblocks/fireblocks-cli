@@ -17,6 +17,7 @@ export default class SetLayerZeroPeers extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/tokenization/multichain/bridge/layerzero/config/peers'
+  static operationId = 'setLayerZeroPeers'
   static isBeta = false
 
   async run(): Promise<unknown> {

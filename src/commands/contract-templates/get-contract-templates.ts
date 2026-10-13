@@ -39,6 +39,7 @@ export default class GetContractTemplates extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/tokenization/templates'
+  static operationId = 'getContractTemplates'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

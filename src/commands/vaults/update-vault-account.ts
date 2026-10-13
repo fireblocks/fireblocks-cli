@@ -25,6 +25,7 @@ export default class UpdateVaultAccount extends FireblocksBaseCommand {
 
   static method = 'PUT'
   static path = '/v1/vault/accounts/{vaultAccountId}'
+  static operationId = 'updateVaultAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

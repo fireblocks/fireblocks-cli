@@ -21,6 +21,7 @@ export default class CreateWebhookOauth extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/webhooks_settings/oauth'
+  static operationId = 'createWebhookOauth'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

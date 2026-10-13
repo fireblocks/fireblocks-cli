@@ -21,6 +21,7 @@ export default class RemoveTicketTerm extends FireblocksBaseCommand {
 
   static method = 'DELETE'
   static path = '/v1/smart-transfers/{ticketId}/terms/{termId}'
+  static operationId = 'removeTicketTerm'
   static isBeta = false
 
   async run(): Promise<unknown> {

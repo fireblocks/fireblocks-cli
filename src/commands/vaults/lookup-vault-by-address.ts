@@ -21,6 +21,7 @@ export default class LookupVaultByAddress extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/vault/lookup_by_address'
+  static operationId = 'lookupVaultByAddress'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

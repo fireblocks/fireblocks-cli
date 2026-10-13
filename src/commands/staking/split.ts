@@ -26,6 +26,7 @@ export default class Split extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/staking/chains/{chainDescriptor}/split'
+  static operationId = 'split'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

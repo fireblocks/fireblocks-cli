@@ -25,6 +25,7 @@ export default class GetTRLinkVaspById extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/vasps/{vaspId}'
+  static operationId = 'getTRLinkVaspById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

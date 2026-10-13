@@ -25,6 +25,7 @@ export default class ResendNotificationById extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/webhooks/{webhookId}/notifications/{notificationId}/resend'
+  static operationId = 'resendNotificationById'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

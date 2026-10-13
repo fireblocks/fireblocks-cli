@@ -21,6 +21,7 @@ export default class GetFiatAccount extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/fiat_accounts/{accountId}'
+  static operationId = 'getFiatAccount'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 

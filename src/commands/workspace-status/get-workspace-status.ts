@@ -13,12 +13,11 @@ export default class GetWorkspaceStatus extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/management/workspace_status'
-  static isBeta = true
+  static operationId = 'getWorkspaceStatus'
+  static isBeta = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetWorkspaceStatus)
-
-    this.logToStderr('Warning: This command is in beta and may change in future releases.')
 
 
     const headers: Record<string, string> = {}

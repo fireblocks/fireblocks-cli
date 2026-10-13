@@ -16,6 +16,7 @@ export default class CreatePayout extends FireblocksBaseCommand {
 
   static method = 'POST'
   static path = '/v1/payments/payout'
+  static operationId = 'createPayout'
   static isBeta = false
 
   async run(): Promise<unknown> {

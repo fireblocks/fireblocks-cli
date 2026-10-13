@@ -21,6 +21,7 @@ export default class GetWebhook extends FireblocksBaseCommand {
 
   static method = 'GET'
   static path = '/v1/webhooks/{webhookId}'
+  static operationId = 'getWebhook'
   static isBeta = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
