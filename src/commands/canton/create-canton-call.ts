@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateCantonCall extends FireblocksBaseCommand {
   static summary = 'Make a Canton call'
 
-  static description = 'Submits one Canton call. \`type\` names the call and selects the shape of \`payload\`; \`vaultAccountId\` and \`blockchainId\` name the wallet that makes it, and are the same for every \`type\`.\n{"type":"DTCC_END_INVESTOR_INVITE","vaultAccountId":"12","blockchainId":"CANTON", "payload":{"endInvestor":"investor-party::1220abc…"}}\n\`payload\` is optional on \`DTCC_PARTICIPANT_ONBOARDING\`, where every field it holds is.\nAn unknown or missing \`type\`, or a \`payload\` missing a required field, is a \`400\`. A field that does not belong to the selected \`type\` is ignored rather than rejected.\nA \`501\` has two different causes, and the distinction is permanent rather than a build-order detail, so it belongs in the published spec:\nNO CANTON CAPABILITY — specified so the contract is complete, but not available in v1: \`DTCC_END_INVESTOR_INVITE_CANCEL\`, \`DTCC_ALLOW_LIST_ADD\`, \`DTCC_ALLOW_LIST_REMOVE\`. NO HANDLER YET — the capability exists and the type is being wired one slice at a time.\nTo withdraw an allocation, answer the allocation offer with \`ALLOCATION_WITHDRAW\` on \`/offers/{offerId}/responses\` — it is not a call.\n\nOperation ID: createCantonCall\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/createCantonCall'
+  static description = 'Submits a Canton call from a vault account\'s Canton wallet. \`type\` selects the call and the shape of \`payload\`.\n\nOperation ID: createCantonCall\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Canton/createCantonCall'
 
   static enableJsonFlag = false
 
