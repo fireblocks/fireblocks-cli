@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class IssueApiUserPairingToken extends FireblocksBaseCommand {
   static summary = 'Issue API user pairing token'
 
-  static description = 'Issues a device pairing token for the given user and returns the user\'s info along with the token.\n- The API user must be in PENDING_ACTIVATION status. If the user is already set up (enabled), the request is rejected with a 409 Conflict.\n- Please note that this endpoint is available only for API keys with Owner/Admin/Non Signing Admin permissions.\nEndpoint Permission: Owner, Admin, Non-Signing Admin.\n\nOperation ID: issueApiUserPairingToken\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Api%20User/issueApiUserPairingToken'
+  static description = 'Issues a device pairing token for the given user and returns the user\'s info along with the token.\n- The API user must be in PENDING_ACTIVATION status. If the user is already set up (enabled), the request is rejected with a 409 Conflict.\n- Please note that this endpoint is available only for API keys with Owner/Admin/Non Signing Admin permissions.\n- This is the same pairing token that the API Co-signer requests during installation and when you pair an additional API user with an existing Co-signer. You can use this endpoint instead of copying the token from Pair API user in the Console. The token is valid for one hour.\n\nOperation ID: issueApiUserPairingToken\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Api%20User/issueApiUserPairingToken'
 
   static enableJsonFlag = false
 
