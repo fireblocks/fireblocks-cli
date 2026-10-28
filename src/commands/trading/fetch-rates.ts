@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class FetchRates extends FireblocksBaseCommand {
   static summary = 'Get rates'
 
-  static description = 'Retrieve indicative exchange rate from specified providers for a given asset pair.\nRates are non-executable price signals intended for discovery and display purposes.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchRates'
+  static description = 'Retrieve indicative exchange rate from specified providers for a given asset pair.\nRates are non-executable price signals intended for discovery and display purposes.\n\nIf \`side\` is omitted it defaults to \`SELL\`. Use \`side: BOTH\` to get rates for each side the provider supports in a single call; providers that support only one side return that side only. Every returned rate carries a concrete \`BUY\` or \`SELL\` side, never \`BOTH\`.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: fetchRates\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/fetchRates'
 
   static enableJsonFlag = false
 

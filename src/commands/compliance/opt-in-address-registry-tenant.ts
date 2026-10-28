@@ -2,9 +2,9 @@ import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
 export default class OptInAddressRegistryTenant extends FireblocksBaseCommand {
-  static summary = 'Opt the workspace in to the address registry'
+  static summary = 'Opt this workspace in to the address registry'
 
-  static description = 'Opts the workspace in. No request body. Response uses the same JSON shape as GET; status is OPTED_IN.\n\nOperation ID: optInAddressRegistryTenant\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/optInAddressRegistryTenant'
+  static description = 'Turn on the address registry for this workspace. No request body. Returns \`OPTED_IN\`.\n\nOperation ID: optInAddressRegistryTenant\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/optInAddressRegistryTenant'
 
   static enableJsonFlag = false
 

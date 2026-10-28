@@ -10,7 +10,7 @@ export default class GetMaxSpendableAmount extends FireblocksBaseCommand {
 
   static flags = {
     'vault-account-id': Flags.string({
-      description: 'The ID of the vault account, or \'default\' for the default vault account',
+      description: 'The ID of the vault account',
       required: true,
     }),
     'asset-id': Flags.string({

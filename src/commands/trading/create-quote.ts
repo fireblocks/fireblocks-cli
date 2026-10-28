@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateQuote extends FireblocksBaseCommand {
   static summary = 'Create a quote'
 
-  static description = 'Generate a time-limited quote for asset conversion, providing exchange rate and amount calculations.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: createQuote\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/createQuote'
+  static description = 'Generate a time-limited quote for asset conversion, providing exchange rate and amount calculations.\n\nIf \`side\` is omitted it defaults to \`SELL\`. Use \`side: BOTH\` to get quotes for each side the provider supports in a single call; providers that support only one side return that side only. Every returned quote carries a concrete \`BUY\` or \`SELL\` side, never \`BOTH\`.\n\nEndpoint Permission: Owner, Admin, Non-Signing Admin, Signer, Editor.\n\nFor detailed information about error codes and troubleshooting, please refer to our [API Error Codes documentation](https://developers.fireblocks.com/reference/api-error-codes).\n\nOperation ID: createQuote\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Trading/createQuote'
 
   static enableJsonFlag = false
 
