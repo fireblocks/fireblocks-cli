@@ -2,9 +2,9 @@ import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
 export default class GetAddressRegistryTenantParticipationStatus extends FireblocksBaseCommand {
-  static summary = 'Get address registry participation status for the authenticated workspace'
+  static summary = 'Get address registry status for this workspace'
 
-  static description = 'Returns whether the workspace is \`OPTED_IN\` or \`OPTED_OUT\` of the address registry.\n\nOperation ID: getAddressRegistryTenantParticipationStatus\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/getAddressRegistryTenantParticipationStatus'
+  static description = 'Check whether this workspace uses the address registry. The response is \`OPTED_IN\` or \`OPTED_OUT\`. If this workspace has not been configured yet, it follows your customer\'s default (see \`GET /v1/address_registry/customer\`) when that default is \`OPTED_IN\` or \`OPTED_OUT\`; otherwise the workspace is opted in by default.\n\nOperation ID: getAddressRegistryTenantParticipationStatus\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Compliance/getAddressRegistryTenantParticipationStatus'
 
   static enableJsonFlag = false
 
