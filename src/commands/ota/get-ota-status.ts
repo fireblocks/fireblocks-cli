@@ -14,7 +14,7 @@ export default class GetOtaStatus extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/management/ota'
   static operationId = 'getOtaStatus'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetOtaStatus)

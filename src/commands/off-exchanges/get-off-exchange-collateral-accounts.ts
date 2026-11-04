@@ -22,7 +22,7 @@ export default class GetOffExchangeCollateralAccounts extends FireblocksBaseComm
   static method = 'GET'
   static path = '/v1/off_exchange/collateral_accounts/{mainExchangeAccountId}'
   static operationId = 'getOffExchangeCollateralAccounts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

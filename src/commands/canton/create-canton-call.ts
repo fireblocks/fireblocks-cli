@@ -22,7 +22,7 @@ export default class CreateCantonCall extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/operations/canton/calls'
   static operationId = 'createCantonCall'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

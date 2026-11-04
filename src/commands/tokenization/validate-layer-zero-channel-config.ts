@@ -22,7 +22,7 @@ export default class ValidateLayerZeroChannelConfig extends FireblocksBaseComman
   static method = 'GET'
   static path = '/v1/tokenization/multichain/bridge/layerzero/validate'
   static operationId = 'validateLayerZeroChannelConfig'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(ValidateLayerZeroChannelConfig)

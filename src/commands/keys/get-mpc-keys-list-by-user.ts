@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetMpcKeysListByUser extends FireblocksBaseCommand {
   static summary = 'Get list of mpc keys by \`userId\`'
 
-  static description = 'Returns a list of MPC signing keys of a specific user. For each key, the list of players associated with it is attached.\n**Note:**\nThis endpoint is currently in beta and might be subject to changes.\n\nOperation ID: getMpcKeysListByUser\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Keys/getMpcKeysListByUser'
+  static description = 'Returns a list of MPC signing keys of a specific user. For each key, the list of players associated with it is attached.\n\nOperation ID: getMpcKeysListByUser\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Keys/getMpcKeysListByUser'
 
   static enableJsonFlag = false
 
@@ -22,7 +22,7 @@ export default class GetMpcKeysListByUser extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/keys/mpc/list/{userId}'
   static operationId = 'getMpcKeysListByUser'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

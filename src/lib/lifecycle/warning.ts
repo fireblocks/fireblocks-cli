@@ -20,10 +20,10 @@ export const LIFECYCLE_STATE_HEADER = 'Fireblocks-Lifecycle-State'
 export const SUNSET_HEADER = 'Sunset'
 export const LINK_HEADER = 'Link'
 
-export const BETA_STATE = 'beta'
+export const EA_STATE = 'ea'
 export const DEPRECATED_STATE = 'deprecated'
 export const CLOSED_STATE = 'closed'
-export const WARNING_STATES: ReadonlySet<string> = new Set([BETA_STATE, DEPRECATED_STATE, CLOSED_STATE])
+export const WARNING_STATES: ReadonlySet<string> = new Set([EA_STATE, DEPRECATED_STATE, CLOSED_STATE])
 
 // The gateway answers a closed operation with 410 Gone to every caller without a
 // temporary exception. That response already says what happened, so no warning.
@@ -79,10 +79,10 @@ export function buildLifecycleWarning(
   const state = rawState.trim().toLowerCase()
   if (!WARNING_STATES.has(state)) return undefined
 
-  if (state === BETA_STATE) {
+  if (state === EA_STATE) {
     return (
-      `Operation '${operationId}' is in 'beta' lifecycle state and is not generally available.` +
-      ' It may change or be removed without notice.'
+      `Operation '${operationId}' is in EA (Early Availability) and is not generally available.` +
+      ' It may change or break before it reaches GA.'
     )
   }
 

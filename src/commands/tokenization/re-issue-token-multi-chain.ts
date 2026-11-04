@@ -26,7 +26,7 @@ export default class ReIssueTokenMultiChain extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/tokenization/multichain/reissue/token/{tokenLinkId}'
   static operationId = 'reIssueTokenMultiChain'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -26,7 +26,7 @@ export default class AssessTRLinkTravelRuleRequirement extends FireblocksBaseCom
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/trm/assess'
   static operationId = 'assessTRLinkTravelRuleRequirement'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

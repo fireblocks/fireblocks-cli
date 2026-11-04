@@ -27,7 +27,7 @@ export default class MergeStakeAccounts extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/staking/chains/{chainDescriptor}/merge'
   static operationId = 'mergeStakeAccounts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

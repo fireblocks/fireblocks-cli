@@ -22,7 +22,7 @@ export default class SetTicketExpiration extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/smart-transfers/{ticketId}/expires-in'
   static operationId = 'setTicketExpiration'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(SetTicketExpiration)

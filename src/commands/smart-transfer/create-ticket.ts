@@ -18,7 +18,7 @@ export default class CreateTicket extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/smart-transfers'
   static operationId = 'createTicket'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(CreateTicket)

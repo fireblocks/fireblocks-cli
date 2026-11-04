@@ -22,7 +22,7 @@ export default class FreezeTransaction extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/transactions/{txId}/freeze'
   static operationId = 'freezeTransaction'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

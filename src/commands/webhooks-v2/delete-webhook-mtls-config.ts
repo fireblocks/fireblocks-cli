@@ -26,7 +26,7 @@ export default class DeleteWebhookMtlsConfig extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/webhooks_settings/mtls/{webhookMtlsId}'
   static operationId = 'deleteWebhookMtlsConfig'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -56,7 +56,7 @@ export default class SearchTickets extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/smart-transfers'
   static operationId = 'searchTickets'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(SearchTickets)

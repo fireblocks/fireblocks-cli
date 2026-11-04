@@ -34,7 +34,7 @@ export default class GetEarnActions extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/earn/actions'
   static operationId = 'getEarnActions'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

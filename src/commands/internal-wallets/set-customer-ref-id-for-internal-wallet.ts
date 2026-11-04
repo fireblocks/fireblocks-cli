@@ -26,7 +26,7 @@ export default class SetCustomerRefIdForInternalWallet extends FireblocksBaseCom
   static method = 'POST'
   static path = '/v1/internal_wallets/{walletId}/set_customer_ref_id'
   static operationId = 'setCustomerRefIdForInternalWallet'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

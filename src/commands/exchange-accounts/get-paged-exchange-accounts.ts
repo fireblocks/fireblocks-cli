@@ -29,7 +29,7 @@ export default class GetPagedExchangeAccounts extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/exchange_accounts/paged'
   static operationId = 'getPagedExchangeAccounts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

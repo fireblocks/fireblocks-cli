@@ -22,7 +22,7 @@ export default class DeleteNetworkConnection extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/network_connections/{connectionId}'
   static operationId = 'deleteNetworkConnection'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -22,7 +22,7 @@ export default class UpsertUtxoSelectionConfig extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/utxo_management/selection_config'
   static operationId = 'upsertUtxoSelectionConfig'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

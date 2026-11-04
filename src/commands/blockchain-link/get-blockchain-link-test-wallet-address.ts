@@ -18,7 +18,7 @@ export default class GetBlockchainLinkTestWalletAddress extends FireblocksBaseCo
   static method = 'GET'
   static path = '/v1/blockchain_link/blockchains/test_wallet_address'
   static operationId = 'getBlockchainLinkTestWalletAddress'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

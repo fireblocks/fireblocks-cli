@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class AddCosigner extends FireblocksBaseCommand {
   static summary = 'Add cosigner'
 
-  static description = 'Add a new cosigner. The cosigner will be pending pairing until the API key is manually paired\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: addCosigner\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/addCosigner'
+  static description = 'Add a new cosigner. The cosigner will be pending pairing until the API user is manually paired (see \`pairCosignerApiUser\`).\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: addCosigner\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/addCosigner'
 
   static enableJsonFlag = false
 
@@ -22,7 +22,7 @@ export default class AddCosigner extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/cosigners'
   static operationId = 'addCosigner'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

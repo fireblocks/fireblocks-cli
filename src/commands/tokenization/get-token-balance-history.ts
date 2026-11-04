@@ -53,7 +53,7 @@ export default class GetTokenBalanceHistory extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/tokenization/tokens/{id}/balances/{accountAddress}/history'
   static operationId = 'getTokenBalanceHistory'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetCosigners extends FireblocksBaseCommand {
   static summary = 'Get all cosigners'
 
-  static description = 'Get all workspace cosigners (paginated).\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: getCosigners\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/getCosigners'
+  static description = 'Get all workspace cosigners (paginated).\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: getCosigners\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/getCosigners'
 
   static enableJsonFlag = false
 
@@ -30,7 +30,7 @@ export default class GetCosigners extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/cosigners'
   static operationId = 'getCosigners'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

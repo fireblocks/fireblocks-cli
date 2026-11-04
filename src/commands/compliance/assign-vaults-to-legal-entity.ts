@@ -26,7 +26,7 @@ export default class AssignVaultsToLegalEntity extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/legal_entities/{legalEntityId}/vaults'
   static operationId = 'assignVaultsToLegalEntity'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

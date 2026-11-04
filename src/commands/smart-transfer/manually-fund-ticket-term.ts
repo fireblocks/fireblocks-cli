@@ -26,7 +26,7 @@ export default class ManuallyFundTicketTerm extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/smart-transfers/{ticketId}/terms/{termId}/manually-fund'
   static operationId = 'manuallyFundTicketTerm'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(ManuallyFundTicketTerm)

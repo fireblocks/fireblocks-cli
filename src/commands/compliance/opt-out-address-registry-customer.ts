@@ -18,7 +18,7 @@ export default class OptOutAddressRegistryCustomer extends FireblocksBaseCommand
   static method = 'DELETE'
   static path = '/v1/address_registry/customer'
   static operationId = 'optOutAddressRegistryCustomer'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

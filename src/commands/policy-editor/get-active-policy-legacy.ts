@@ -18,7 +18,7 @@ export default class GetActivePolicyLegacy extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/tap/active_policy'
   static operationId = 'getActivePolicyLegacy'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -22,7 +22,7 @@ export default class GetContractTemplateById extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/tokenization/templates/{contractTemplateId}'
   static operationId = 'getContractTemplateById'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

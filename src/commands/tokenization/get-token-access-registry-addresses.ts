@@ -38,7 +38,7 @@ export default class GetTokenAccessRegistryAddresses extends FireblocksBaseComma
   static method = 'GET'
   static path = '/v1/tokenization/access_registries/{id}/addresses'
   static operationId = 'getTokenAccessRegistryAddresses'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

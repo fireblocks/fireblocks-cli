@@ -21,7 +21,7 @@ export default class CreateConsoleUser extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/management/users'
   static operationId = 'createConsoleUser'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

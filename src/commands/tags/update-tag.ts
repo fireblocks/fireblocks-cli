@@ -26,7 +26,7 @@ export default class UpdateTag extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/tags/{tagId}'
   static operationId = 'updateTag'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

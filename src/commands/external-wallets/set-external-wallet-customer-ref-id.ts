@@ -26,7 +26,7 @@ export default class SetExternalWalletCustomerRefId extends FireblocksBaseComman
   static method = 'POST'
   static path = '/v1/external_wallets/{walletId}/set_customer_ref_id'
   static operationId = 'setExternalWalletCustomerRefId'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

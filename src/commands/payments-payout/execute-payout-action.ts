@@ -18,7 +18,7 @@ export default class ExecutePayoutAction extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/payments/payout/{payoutId}/actions/execute'
   static operationId = 'executePayoutAction'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(ExecutePayoutAction)

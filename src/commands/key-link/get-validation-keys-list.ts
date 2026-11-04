@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetValidationKeysList extends FireblocksBaseCommand {
   static summary = 'Get list of registered validation keys'
 
-  static description = 'Returns the list of validation keys in the workspace\n\nOperation ID: getValidationKeysList\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Key%20Link/getValidationKeysList'
+  static description = 'Returns the list of validation keys in the workspace. By default, revoked keys are filtered out. Use \`includeRevoked=true\` to show all keys.\n\nOperation ID: getValidationKeysList\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Key%20Link/getValidationKeysList'
 
   static enableJsonFlag = false
 
@@ -26,6 +26,10 @@ export default class GetValidationKeysList extends FireblocksBaseCommand {
       default: 'ASC',
       options: ['ASC', 'DESC'],
     }),
+    'include-revoked': Flags.boolean({
+      description: 'Include revoked validation keys in the response',
+      default: false,
+    }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
       default: false,
@@ -35,7 +39,7 @@ export default class GetValidationKeysList extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/key_link/validation_keys'
   static operationId = 'getValidationKeysList'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
@@ -57,6 +61,9 @@ export default class GetValidationKeysList extends FireblocksBaseCommand {
     }
     if (flags['order'] !== undefined && flags['order'] !== null) {
       queryParams['order'] = String(flags['order'])
+    }
+    if (flags['include-revoked'] !== undefined && flags['include-revoked'] !== null) {
+      queryParams['includeRevoked'] = String(flags['include-revoked'])
     }
 
     const result = await this.makeRequest(

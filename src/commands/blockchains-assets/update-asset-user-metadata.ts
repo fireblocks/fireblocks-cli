@@ -25,7 +25,7 @@ export default class UpdateAssetUserMetadata extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/assets/{id}'
   static operationId = 'updateAssetUserMetadata'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

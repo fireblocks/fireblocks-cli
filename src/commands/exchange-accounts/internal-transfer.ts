@@ -25,7 +25,7 @@ export default class InternalTransfer extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/exchange_accounts/{exchangeAccountId}/internal_transfer'
   static operationId = 'internalTransfer'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -37,7 +37,7 @@ export default class SearchNetworkIds extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/network_ids/search'
   static operationId = 'searchNetworkIds'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

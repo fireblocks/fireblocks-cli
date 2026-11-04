@@ -26,7 +26,7 @@ export default class SetNetworkIdName extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/network_ids/{networkId}/set_name'
   static operationId = 'setNetworkIdName'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

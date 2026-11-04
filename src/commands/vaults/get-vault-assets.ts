@@ -24,7 +24,7 @@ export default class GetVaultAssets extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/vault/assets'
   static operationId = 'getVaultAssets'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

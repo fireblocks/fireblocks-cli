@@ -22,7 +22,7 @@ export default class VerifyAddressRegistryProofOfOwnership extends FireblocksBas
   static method = 'POST'
   static path = '/v1/address_registry/proof_of_ownership_exports/verify'
   static operationId = 'verifyAddressRegistryProofOfOwnership'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

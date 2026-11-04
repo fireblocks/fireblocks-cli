@@ -26,7 +26,7 @@ export default class CreateApprovalKey extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/management/api_users/{userId}/approval_keys'
   static operationId = 'createApprovalKey'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

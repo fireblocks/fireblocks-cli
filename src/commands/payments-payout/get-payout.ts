@@ -18,7 +18,7 @@ export default class GetPayout extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/payments/payout/{payoutId}'
   static operationId = 'getPayout'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetPayout)

@@ -34,7 +34,7 @@ export default class SetCustomerRefIdForAddress extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses/{addressId}/set_customer_ref_id'
   static operationId = 'setCustomerRefIdForAddress'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

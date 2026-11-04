@@ -18,7 +18,7 @@ export default class OptInAddressRegistryCustomer extends FireblocksBaseCommand 
   static method = 'POST'
   static path = '/v1/address_registry/customer'
   static operationId = 'optInAddressRegistryCustomer'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

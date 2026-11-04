@@ -37,7 +37,7 @@ export default class ListBlockchains extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/blockchains'
   static operationId = 'listBlockchains'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

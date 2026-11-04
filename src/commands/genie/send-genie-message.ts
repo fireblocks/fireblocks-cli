@@ -26,7 +26,7 @@ export default class SendGenieMessage extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/genie/sessions/{sessionId}/messages'
   static operationId = 'sendGenieMessage'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

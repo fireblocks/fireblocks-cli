@@ -14,7 +14,7 @@ export default class GetAmlPostScreeningPolicy extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/screening/aml/post_screening_policy'
   static operationId = 'getAmlPostScreeningPolicy'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetAmlPostScreeningPolicy)

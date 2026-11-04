@@ -22,7 +22,7 @@ export default class DeleteExternalWallet extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/external_wallets/{walletId}'
   static operationId = 'deleteExternalWallet'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

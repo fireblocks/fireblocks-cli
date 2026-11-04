@@ -18,7 +18,7 @@ export default class RemoveAllAddressRegistryVaultOptOuts extends FireblocksBase
   static method = 'DELETE'
   static path = '/v1/address_registry/vaults'
   static operationId = 'removeAllAddressRegistryVaultOptOuts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

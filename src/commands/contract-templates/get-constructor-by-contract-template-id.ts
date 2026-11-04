@@ -26,7 +26,7 @@ export default class GetConstructorByContractTemplateId extends FireblocksBaseCo
   static method = 'GET'
   static path = '/v1/tokenization/templates/{contractTemplateId}/constructor'
   static operationId = 'getConstructorByContractTemplateId'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
