@@ -26,7 +26,7 @@ export default class RenameConnectedAccount extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/connected_accounts/{accountId}/rename'
   static operationId = 'renameConnectedAccount'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

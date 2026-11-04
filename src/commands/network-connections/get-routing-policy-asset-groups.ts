@@ -18,7 +18,7 @@ export default class GetRoutingPolicyAssetGroups extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/network_ids/routing_policy_asset_groups'
   static operationId = 'getRoutingPolicyAssetGroups'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

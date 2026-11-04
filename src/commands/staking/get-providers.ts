@@ -18,7 +18,7 @@ export default class GetProviders extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/staking/providers'
   static operationId = 'getProviders'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

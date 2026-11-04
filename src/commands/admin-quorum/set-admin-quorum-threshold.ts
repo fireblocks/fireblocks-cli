@@ -22,7 +22,7 @@ export default class SetAdminQuorumThreshold extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/admin_quorum'
   static operationId = 'setAdminQuorumThreshold'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

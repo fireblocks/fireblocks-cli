@@ -22,7 +22,7 @@ export default class CreateTRLinkCustomer extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/screening/trlink/customers'
   static operationId = 'createTRLinkCustomer'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

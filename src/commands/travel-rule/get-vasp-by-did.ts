@@ -21,7 +21,7 @@ export default class GetVASPByDID extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/screening/travel_rule/vasp/{did}'
   static operationId = 'getVASPByDID'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetVASPByDID)

@@ -26,7 +26,7 @@ export default class ConnectTRLinkIntegration extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}'
   static operationId = 'connectTRLinkIntegration'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -21,7 +21,7 @@ export default class CreateNetworkConnection extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/network_connections'
   static operationId = 'createNetworkConnection'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

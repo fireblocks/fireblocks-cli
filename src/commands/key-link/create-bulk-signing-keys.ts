@@ -22,7 +22,7 @@ export default class CreateBulkSigningKeys extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/key_link/signing_keys/bulk'
   static operationId = 'createBulkSigningKeys'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

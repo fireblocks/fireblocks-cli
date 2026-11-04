@@ -14,7 +14,7 @@ export default class GetWorkspaceStatus extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/management/workspace_status'
   static operationId = 'getWorkspaceStatus'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetWorkspaceStatus)

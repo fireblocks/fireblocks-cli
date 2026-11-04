@@ -22,7 +22,7 @@ export default class CreateUserGroup extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/management/user_groups'
   static operationId = 'createUserGroup'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

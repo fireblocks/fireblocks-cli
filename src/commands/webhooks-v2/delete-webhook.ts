@@ -22,7 +22,7 @@ export default class DeleteWebhook extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/webhooks/{webhookId}'
   static operationId = 'deleteWebhook'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

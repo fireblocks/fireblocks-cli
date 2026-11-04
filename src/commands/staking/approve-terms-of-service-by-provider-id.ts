@@ -22,7 +22,7 @@ export default class ApproveTermsOfServiceByProviderId extends FireblocksBaseCom
   static method = 'POST'
   static path = '/v1/staking/providers/{providerId}/approveTermsOfService'
   static operationId = 'approveTermsOfServiceByProviderId'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

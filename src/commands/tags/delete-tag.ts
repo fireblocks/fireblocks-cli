@@ -22,7 +22,7 @@ export default class DeleteTag extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/tags/{tagId}'
   static operationId = 'deleteTag'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

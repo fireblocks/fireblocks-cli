@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class PairApiKey extends FireblocksBaseCommand {
-  static summary = 'Pair API key'
+export default class PairCosignerApiUser extends FireblocksBaseCommand {
+  static summary = 'Pair API user'
 
-  static description = 'Pair an API key to a cosigner\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: pairApiKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/pairApiKey'
+  static description = 'Pair an API user to a cosigner\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: pairCosignerApiUser\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/pairCosignerApiUser'
 
   static enableJsonFlag = false
 
@@ -13,8 +13,8 @@ export default class PairApiKey extends FireblocksBaseCommand {
       description: 'The unique identifier of the cosigner',
       required: true,
     }),
-    'api-key-id': Flags.string({
-      description: 'The unique identifier of the API key',
+    'api-user-id': Flags.string({
+      description: 'The unique identifier of the API user',
       required: true,
     }),
     data: Flags.string({
@@ -28,13 +28,13 @@ export default class PairApiKey extends FireblocksBaseCommand {
   }
 
   static method = 'PUT'
-  static path = '/v1/cosigners/{cosignerId}/api_keys/{apiKeyId}'
-  static operationId = 'pairApiKey'
-  static isBeta = false
+  static path = '/v1/cosigners/{cosignerId}/api_users/{apiUserId}'
+  static operationId = 'pairCosignerApiUser'
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID","Location"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(PairApiKey)
+    const {flags} = await this.parse(PairCosignerApiUser)
 
     let body: Record<string, unknown> | undefined
     if (flags.data) {
@@ -56,14 +56,14 @@ export default class PairApiKey extends FireblocksBaseCommand {
 
     const pathParams: Record<string, string> = {}
     pathParams['cosignerId'] = String(flags['cosigner-id'])
-    pathParams['apiKeyId'] = String(flags['api-key-id'])
+    pathParams['apiUserId'] = String(flags['api-user-id'])
 
 
-    await this.confirmOrAbort('PUT', '/v1/cosigners/{cosignerId}/api_keys/{apiKeyId}')
+    await this.confirmOrAbort('PUT', '/v1/cosigners/{cosignerId}/api_users/{apiUserId}')
 
     const result = await this.makeRequest(
       'PUT',
-      '/v1/cosigners/{cosignerId}/api_keys/{apiKeyId}',
+      '/v1/cosigners/{cosignerId}/api_users/{apiUserId}',
       {
         body,
         headers,

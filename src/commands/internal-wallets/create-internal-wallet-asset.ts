@@ -29,7 +29,7 @@ export default class CreateInternalWalletAsset extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/internal_wallets/{walletId}/{assetId}'
   static operationId = 'createInternalWalletAsset'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

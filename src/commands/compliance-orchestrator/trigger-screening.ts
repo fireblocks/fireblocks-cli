@@ -22,7 +22,7 @@ export default class TriggerScreening extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/compliance/orchestrator/screenings'
   static operationId = 'triggerScreening'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

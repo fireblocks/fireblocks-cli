@@ -49,7 +49,7 @@ export default class GetOrders extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/trading/orders'
   static operationId = 'getOrders'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

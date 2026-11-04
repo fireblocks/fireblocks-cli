@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DisableValidationKey extends FireblocksBaseCommand {
   static summary = 'Disables a validation key'
 
-  static description = 'Allows disabling validation key even if it has not expired yet. It is not allowed to enable the validation key back. Another key has to be used for future validations.\n\nOperation ID: disableValidationKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Key%20Link/disableValidationKey'
+  static description = 'DEPRECATED - Please use \`POST /key_link/validation_keys/{keyId}/revoke\` instead.\nAllows disabling validation key even if it has not expired yet. It is not allowed to enable the validation key back. Another key has to be used for future validations.\n\nOperation ID: disableValidationKey\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Key%20Link/disableValidationKey'
 
   static enableJsonFlag = false
 
@@ -26,7 +26,7 @@ export default class DisableValidationKey extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/key_link/validation_keys/{keyId}'
   static operationId = 'disableValidationKey'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

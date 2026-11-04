@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateTRLinkManualDecision extends FireblocksBaseCommand {
   static summary = 'Manual decision for missing TRM'
 
-  static description = 'Accept or reject destinations stuck in NoTRM step without waiting for TRP webhook or policy timeout.\n\nOperation ID: createTRLinkManualDecision\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/TRLink/createTRLinkManualDecision'
+  static description = 'Accept or reject destinations waiting for a Travel Rule message (missing TRM), without waiting for a TRP webhook or the missing-TRM policy timeout. You can submit before a destination enters the missing-TRM wait; if it can\'t be updated immediately, the decision is applied on the next processing attempt instead (status ACCEPTED). Check \`status\` in the response to see whether the decision has been applied.\n\nOperation ID: createTRLinkManualDecision\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/TRLink/createTRLinkManualDecision'
 
   static enableJsonFlag = false
 
@@ -30,7 +30,7 @@ export default class CreateTRLinkManualDecision extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/transactions/{txId}/manual_decision'
   static operationId = 'createTRLinkManualDecision'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

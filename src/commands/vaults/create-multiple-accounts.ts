@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateMultipleAccounts extends FireblocksBaseCommand {
   static summary = 'Bulk creation of new vault accounts'
 
-  static description = 'Create multiple vault accounts by running an async job.      \n- The HBAR, TON, SUI, TERRA, ALGO, and DOT blockchains are not supported.\n- These endpoints are currently in beta and might be subject to changes.\n- Limited to a maximum of 10,000 accounts per operation.\n\n**Endpoint Permissions:** Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: createMultipleAccounts\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/createMultipleAccounts'
+  static description = 'Create multiple vault accounts by running an async job.      \n- The HBAR, TON, SUI, TERRA, ALGO, and DOT blockchains are not supported.\n- These endpoints are currently in beta and might be subject to changes.\n- Limited to a maximum of 10,000 accounts per operation.\n- With \`vaultType: KEY_LINK\`, creates Key Link vault accounts; set \`autoAssign: true\` to bind them to the workspace\'s signing keys (see \`vaultType\` and \`autoAssign\`).\n\n**Endpoint Permissions:** Admin, Non-Signing Admin, Signer, Approver, Editor.\n\nOperation ID: createMultipleAccounts\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/createMultipleAccounts'
 
   static enableJsonFlag = false
 
@@ -22,7 +22,7 @@ export default class CreateMultipleAccounts extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/vault/accounts/bulk'
   static operationId = 'createMultipleAccounts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

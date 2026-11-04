@@ -26,7 +26,7 @@ export default class FetchCollectionTokenDetails extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/tokenization/collections/{id}/tokens/{tokenId}'
   static operationId = 'fetchCollectionTokenDetails'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

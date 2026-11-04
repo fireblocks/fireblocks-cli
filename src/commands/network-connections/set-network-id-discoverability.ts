@@ -26,7 +26,7 @@ export default class SetNetworkIdDiscoverability extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/network_ids/{networkId}/set_discoverability'
   static operationId = 'setNetworkIdDiscoverability'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

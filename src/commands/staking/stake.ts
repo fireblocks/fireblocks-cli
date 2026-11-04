@@ -26,7 +26,7 @@ export default class Stake extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/staking/chains/{chainDescriptor}/stake'
   static operationId = 'stake'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

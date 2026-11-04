@@ -18,7 +18,7 @@ export default class GetExchangeAccountsCredentialsPublicKey extends FireblocksB
   static method = 'GET'
   static path = '/v1/exchange_accounts/credentials_public_key'
   static operationId = 'getExchangeAccountsCredentialsPublicKey'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

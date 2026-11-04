@@ -25,7 +25,7 @@ export default class RescreenRejectedTransaction extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/screening/transaction/{txId}/rescreen'
   static operationId = 'rescreenRejectedTransaction'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

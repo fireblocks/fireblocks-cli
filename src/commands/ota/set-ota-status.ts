@@ -22,7 +22,7 @@ export default class SetOtaStatus extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/management/ota'
   static operationId = 'setOtaStatus'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

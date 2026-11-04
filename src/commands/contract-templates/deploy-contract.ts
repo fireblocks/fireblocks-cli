@@ -26,7 +26,7 @@ export default class DeployContract extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/tokenization/templates/{contractTemplateId}/deploy'
   static operationId = 'deployContract'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

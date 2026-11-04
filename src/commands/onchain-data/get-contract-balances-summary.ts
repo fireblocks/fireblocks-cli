@@ -26,7 +26,7 @@ export default class GetContractBalancesSummary extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/onchain_data/base_asset_id/{baseAssetId}/contract_address/{contractAddress}/summary'
   static operationId = 'getContractBalancesSummary'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

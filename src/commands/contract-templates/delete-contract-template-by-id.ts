@@ -22,7 +22,7 @@ export default class DeleteContractTemplateById extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/tokenization/templates/{contractTemplateId}'
   static operationId = 'deleteContractTemplateById'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

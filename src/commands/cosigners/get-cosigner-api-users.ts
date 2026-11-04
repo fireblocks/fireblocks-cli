@@ -1,10 +1,10 @@
 import {Flags} from '@oclif/core'
 import {FireblocksBaseCommand} from '../../lib/base-command.js'
 
-export default class GetApiKeys extends FireblocksBaseCommand {
-  static summary = 'Get all API keys'
+export default class GetCosignerApiUsers extends FireblocksBaseCommand {
+  static summary = 'Get all API users'
 
-  static description = 'Get all cosigner paired API keys (paginated).\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: getApiKeys\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/getApiKeys'
+  static description = 'Get all cosigner paired API users (paginated).\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: getCosignerApiUsers\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/getCosignerApiUsers'
 
   static enableJsonFlag = false
 
@@ -32,13 +32,13 @@ export default class GetApiKeys extends FireblocksBaseCommand {
   }
 
   static method = 'GET'
-  static path = '/v1/cosigners/{cosignerId}/api_keys'
-  static operationId = 'getApiKeys'
-  static isBeta = false
+  static path = '/v1/cosigners/{cosignerId}/api_users'
+  static operationId = 'getCosignerApiUsers'
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
-    const {flags} = await this.parse(GetApiKeys)
+    const {flags} = await this.parse(GetCosignerApiUsers)
 
 
     const headers: Record<string, string> = {}
@@ -59,7 +59,7 @@ export default class GetApiKeys extends FireblocksBaseCommand {
 
     const result = await this.makeRequest(
       'GET',
-      '/v1/cosigners/{cosignerId}/api_keys',
+      '/v1/cosigners/{cosignerId}/api_users',
       {
         headers,
         pathParams,

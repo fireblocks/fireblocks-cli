@@ -25,7 +25,7 @@ export default class DepositFundsFromLinkedDDA extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/fiat_accounts/{accountId}/deposit_from_linked_dda'
   static operationId = 'depositFundsFromLinkedDDA'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

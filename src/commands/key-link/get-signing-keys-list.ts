@@ -57,7 +57,7 @@ export default class GetSigningKeysList extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/key_link/signing_keys'
   static operationId = 'getSigningKeysList'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

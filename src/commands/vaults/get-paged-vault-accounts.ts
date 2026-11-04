@@ -54,7 +54,7 @@ export default class GetPagedVaultAccounts extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/vault/accounts_paged'
   static operationId = 'getPagedVaultAccounts'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

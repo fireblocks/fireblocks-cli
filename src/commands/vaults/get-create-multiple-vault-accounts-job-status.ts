@@ -22,7 +22,7 @@ export default class GetCreateMultipleVaultAccountsJobStatus extends FireblocksB
   static method = 'GET'
   static path = '/v1/vault/accounts/bulk/{jobId}'
   static operationId = 'getCreateMultipleVaultAccountsJobStatus'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

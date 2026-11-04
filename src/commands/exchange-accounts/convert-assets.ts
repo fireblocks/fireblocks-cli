@@ -25,7 +25,7 @@ export default class ConvertAssets extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/exchange_accounts/{exchangeAccountId}/convert'
   static operationId = 'convertAssets'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

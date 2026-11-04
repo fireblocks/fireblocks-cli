@@ -14,7 +14,7 @@ export default class GetScreeningConfiguration extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/screening/travel_rule/policy_configuration'
   static operationId = 'getScreeningConfiguration'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(GetScreeningConfiguration)

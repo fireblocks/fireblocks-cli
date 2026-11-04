@@ -22,7 +22,7 @@ export default class GetTRLinkCustomerIntegrations extends FireblocksBaseCommand
   static method = 'GET'
   static path = '/v1/screening/trlink/customers/{customerId}/integrations'
   static operationId = 'getTRLinkCustomerIntegrations'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

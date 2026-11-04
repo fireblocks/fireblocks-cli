@@ -22,7 +22,7 @@ export default class SubmitTicket extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/smart-transfers/{ticketId}/submit'
   static operationId = 'submitTicket'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(SubmitTicket)

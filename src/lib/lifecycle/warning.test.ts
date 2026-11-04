@@ -21,31 +21,32 @@ function headersOf(state?: string, sunset?: string, link?: string): Headers {
 
 describe('buildLifecycleWarning', () => {
   describe('states that warn', () => {
-    it('warns for beta', () => {
-      expect(buildLifecycleWarning(headersOf('beta'), 'getWebhooks')).toBe(
-        "Operation 'getWebhooks' is in 'beta' lifecycle state and is not generally available. " +
-          'It may change or be removed without notice.',
+    it('warns for ea', () => {
+      expect(buildLifecycleWarning(headersOf('ea'), 'getWebhooks')).toBe(
+        "Operation 'getWebhooks' is in EA (Early Availability) and is not generally available. " +
+          'It may change or break before it reaches GA.',
       )
     })
 
-    it('renders the beta state verbatim, lowercase', () => {
-      const message = buildLifecycleWarning(headersOf('beta'), 'op')
-      expect(message).toContain("'beta'")
-      expect(message).not.toContain("'Beta'")
+    it('names the state as EA, not the raw value', () => {
+      const message = buildLifecycleWarning(headersOf('ea'), 'op')
+      expect(message).toContain('EA (Early Availability)')
+      expect(message).not.toContain("'ea'")
+      expect(message?.toLowerCase()).not.toContain('EA')
     })
 
-    it('no longer recognises the old private_beta name (strict rename)', () => {
-      expect(buildLifecycleWarning(headersOf('private_beta'), 'op')).toBeUndefined()
-      expect(buildLifecycleWarning(headersOf('private_beta'), 'op', 200)).toBeUndefined()
+    it.each(['beta', 'private_beta'])('no longer recognises the retired name %s (strict rename)', (retired) => {
+      expect(buildLifecycleWarning(headersOf(retired), 'op')).toBeUndefined()
+      expect(buildLifecycleWarning(headersOf(retired), 'op', 200)).toBeUndefined()
     })
 
     it('no longer mentions a major version bump', () => {
-      expect(buildLifecycleWarning(headersOf('beta'), 'op')).not.toContain('major version')
+      expect(buildLifecycleWarning(headersOf('ea'), 'op')).not.toContain('major version')
     })
 
-    it('warns for beta whatever the status, including 410', () => {
+    it('warns for EA whatever the status, including 410', () => {
       for (const status of [200, 404, 410, 500, undefined]) {
-        expect(buildLifecycleWarning(headersOf('beta'), 'op', status)).toBeDefined()
+        expect(buildLifecycleWarning(headersOf('ea'), 'op', status)).toBeDefined()
       }
     })
   })
@@ -122,7 +123,7 @@ describe('buildLifecycleWarning', () => {
     it.each(['Fireblocks-Lifecycle-State', 'fireblocks-lifecycle-state', 'FIREBLOCKS-LIFECYCLE-STATE'])(
       'looks the header name up case-insensitively: %s',
       (name) => {
-        const headers = new Headers({[name]: 'beta'})
+        const headers = new Headers({[name]: 'ea'})
         expect(buildLifecycleWarning(headers, 'op')).toBeDefined()
       },
     )

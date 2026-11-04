@@ -50,7 +50,7 @@ export default class GetTokenTransfers extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/tokenization/tokens/{id}/transfers'
   static operationId = 'getTokenTransfers'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -26,7 +26,7 @@ export default class GetTransactionReceipt extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/contract_interactions/base_asset_id/{baseAssetId}/tx_hash/{txHash}/receipt'
   static operationId = 'getTransactionReceipt'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -22,7 +22,7 @@ export default class CreateValidationKey extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/key_link/validation_keys'
   static operationId = 'createValidationKey'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

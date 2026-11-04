@@ -26,7 +26,7 @@ export default class ApproveDvPTicketTerm extends FireblocksBaseCommand {
   static method = 'PUT'
   static path = '/v1/smart_transfers/{ticketId}/terms/{termId}/dvp/approve'
   static operationId = 'approveDvPTicketTerm'
-  static isBeta = false
+  static isEa = false
 
   async run(): Promise<unknown> {
     const {flags} = await this.parse(ApproveDvPTicketTerm)

@@ -22,7 +22,7 @@ export default class PublishDraftLegacy extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/tap/draft'
   static operationId = 'publishDraftLegacy'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -30,7 +30,7 @@ export default class UpdateUsdcGatewayDepositAutomationBeta extends FireblocksBa
   static method = 'PATCH'
   static path = '/v1/vault/accounts/{vaultAccountId}/virtual_asset_wallet/usdc_gateway/deposit_automation/{automationId}'
   static operationId = 'updateUsdcGatewayDepositAutomationBeta'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

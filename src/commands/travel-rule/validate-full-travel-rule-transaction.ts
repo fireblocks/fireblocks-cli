@@ -25,7 +25,7 @@ export default class ValidateFullTravelRuleTransaction extends FireblocksBaseCom
   static method = 'POST'
   static path = '/v1/screening/travel_rule/transaction/validate/full'
   static operationId = 'validateFullTravelRuleTransaction'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

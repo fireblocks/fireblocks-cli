@@ -22,7 +22,7 @@ export default class SetByorkVerdict extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/screening/byork/verdict'
   static operationId = 'setByorkVerdict'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

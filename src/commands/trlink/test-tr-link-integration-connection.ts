@@ -22,7 +22,7 @@ export default class TestTRLinkIntegrationConnection extends FireblocksBaseComma
   static method = 'POST'
   static path = '/v1/screening/trlink/customers/integration/{customerIntegrationId}/test_connection'
   static operationId = 'testTRLinkIntegrationConnection'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

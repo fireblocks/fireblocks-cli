@@ -49,7 +49,7 @@ export default class GetEmbeddedWalletAddresses extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/ncw/wallets/{walletId}/accounts/{accountId}/assets/{assetId}/addresses'
   static operationId = 'GetEmbeddedWalletAddresses'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

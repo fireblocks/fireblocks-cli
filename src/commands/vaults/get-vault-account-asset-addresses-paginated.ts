@@ -35,7 +35,7 @@ export default class GetVaultAccountAssetAddressesPaginated extends FireblocksBa
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}/addresses_paginated'
   static operationId = 'getVaultAccountAssetAddressesPaginated'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -538,26 +538,26 @@ describe('e2e: full command execution flow', () => {
 
     const warnings = (stderr: string[]) => stderr.filter((line) => line.startsWith('Warning:'))
 
-    it('warns on stderr for a beta response and keeps stdout to the JSON body', async () => {
+    it('warns on stderr for a EA response and keeps stdout to the JSON body', async () => {
       mockFireblocksFetch.mockResolvedValueOnce(
-        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'ea'}),
       )
 
       const {stdout, stderr, exitCode} = await runGetVaultAccount()
 
       expect(exitCode).toBe(0)
       expect(warnings(stderr)).toEqual([
-        "Warning: Operation 'getVaultAccount' is in 'beta' lifecycle state and is not generally available. " +
-          'It may change or be removed without notice.',
+        "Warning: Operation 'getVaultAccount' is in EA (Early Availability) and is not generally available. " +
+          'It may change or break before it reaches GA.',
       ])
       expect(stdout).toHaveLength(1)
       expect(stdout[0]).toContain('"123"')
       expect(stdout[0]).not.toContain('Warning')
     })
 
-    it('prints nothing for the old private_beta state name (strict rename)', async () => {
+    it.each(['beta', 'private_beta'])('prints nothing for the retired state name %s (strict rename)', async (retired) => {
       mockFireblocksFetch.mockResolvedValueOnce(
-        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'private_beta'}),
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': retired}),
       )
 
       const {stderr, exitCode} = await runGetVaultAccount()
@@ -676,7 +676,7 @@ describe('e2e: full command execution flow', () => {
     it.each(['1', 'true'])('is suppressed when %s is %s', async (value) => {
       process.env[SUPPRESS_ENV_VAR] = value
       mockFireblocksFetch.mockResolvedValueOnce(
-        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'ea'}),
       )
 
       const {stderr} = await runGetVaultAccount()
@@ -687,7 +687,7 @@ describe('e2e: full command execution flow', () => {
     it.each(['0', 'false'])('still warns when the suppression variable is %s', async (value) => {
       process.env[SUPPRESS_ENV_VAR] = value
       mockFireblocksFetch.mockResolvedValueOnce(
-        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'beta'}),
+        createMockApiResponse(200, {id: '123'}, {'fireblocks-lifecycle-state': 'ea'}),
       )
 
       const {stderr} = await runGetVaultAccount()

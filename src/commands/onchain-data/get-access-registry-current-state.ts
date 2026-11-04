@@ -42,7 +42,7 @@ export default class GetAccessRegistryCurrentState extends FireblocksBaseCommand
   static method = 'GET'
   static path = '/v1/onchain_data/base_asset_id/{baseAssetId}/access_registry_address/{accessRegistryAddress}/list'
   static operationId = 'getAccessRegistryCurrentState'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

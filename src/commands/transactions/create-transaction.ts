@@ -21,7 +21,7 @@ export default class CreateTransaction extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/transactions'
   static operationId = 'createTransaction'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

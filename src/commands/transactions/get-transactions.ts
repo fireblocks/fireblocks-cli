@@ -71,7 +71,7 @@ export default class GetTransactions extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/transactions'
   static operationId = 'getTransactions'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID","next-page","prev-page"]
 
   async run(): Promise<unknown> {

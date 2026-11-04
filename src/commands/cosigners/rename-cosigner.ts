@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class RenameCosigner extends FireblocksBaseCommand {
   static summary = 'Rename cosigner'
 
-  static description = 'Rename a cosigner by ID.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: renameCosigner\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/renameCosigner'
+  static description = 'Rename a cosigner by ID.\nEndpoint Permission: Admin and Non-Signing Admin.\n\nOperation ID: renameCosigner\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Cosigners/renameCosigner'
 
   static enableJsonFlag = false
 
@@ -26,7 +26,7 @@ export default class RenameCosigner extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/cosigners/{cosignerId}'
   static operationId = 'renameCosigner'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

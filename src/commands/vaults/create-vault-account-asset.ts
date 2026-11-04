@@ -32,7 +32,7 @@ export default class CreateVaultAccountAsset extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/vault/accounts/{vaultAccountId}/{assetId}'
   static operationId = 'createVaultAccountAsset'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

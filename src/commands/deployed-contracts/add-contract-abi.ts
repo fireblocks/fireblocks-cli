@@ -22,7 +22,7 @@ export default class AddContractABI extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/tokenization/contracts/abi'
   static operationId = 'addContractABI'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -18,7 +18,7 @@ export default class CreateGenieSession extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/genie/sessions'
   static operationId = 'createGenieSession'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

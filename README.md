@@ -57,7 +57,7 @@ shasum -a 256 <downloaded-file>
 
 ## Versioning
 
-This CLI follows [semantic versioning](https://semver.org), with one exception: commands that call operations in the `beta` lifecycle state. Beta operations are not generally available and may not be accessible to all customers. They can change or be removed without notice.
+This CLI follows [semantic versioning](https://semver.org), with one exception: commands that call operations in the `ea` (Early Availability, EA) lifecycle state. EA operations are not generally available and may not be accessible to all customers. They can change or break before they reach GA.
 
 ## Quick start
 
@@ -173,10 +173,10 @@ Write operations run against your workspace's **Transaction Authorization Policy
 - **stdout**: JSON data only
 - **stderr**: lifecycle warnings, debug logs, and errors
 
-**Lifecycle warnings.** When a response reports a non-GA lifecycle state (`beta`, `deprecated` or `closed`), the CLI prints one line to stderr naming the operation. The state is read from the `Fireblocks-Lifecycle-State` response header, so it is accurate whatever CLI version you have installed:
+**Lifecycle warnings.** When a response reports a non-GA lifecycle state (`ea`, `deprecated` or `closed`), the CLI prints one line to stderr naming the operation. The state is read from the `Fireblocks-Lifecycle-State` response header, so it is accurate whatever CLI version you have installed:
 
 ```
-Warning: Operation 'getWebhooks' is in 'beta' lifecycle state and is not generally available. It may change or be removed without notice.
+Warning: Operation 'getWebhooks' is in EA (Early Availability) and is not generally available. It may change or break before it reaches GA.
 ```
 
 For `deprecated` operations it includes the sunset date, plus the replacement and migration guide when the API provides them. A `closed` operation is normally answered with `410 Gone`, which needs no warning; if it still responds (your workspace has a temporary exception), the CLI warns that the operation has been closed and your access may be revoked. The warning is informational: stdout and the exit code are unchanged, and it also appears on error responses. To suppress it, set `FIREBLOCKS_SDK_SUPPRESS_LIFECYCLE_WARNING` to any value other than `0` or `false`:

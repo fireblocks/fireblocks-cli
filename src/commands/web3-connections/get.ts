@@ -38,7 +38,7 @@ export default class Get extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/connections'
   static operationId = 'get'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

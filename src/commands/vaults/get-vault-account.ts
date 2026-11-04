@@ -22,7 +22,7 @@ export default class GetVaultAccount extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/vault/accounts/{vaultAccountId}'
   static operationId = 'getVaultAccount'
-  static isBeta = false
+  static isEa = false
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
