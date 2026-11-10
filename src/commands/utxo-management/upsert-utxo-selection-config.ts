@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class UpsertUtxoSelectionConfig extends FireblocksBaseCommand {
   static summary = 'Upsert UTXO selection config'
 
-  static description = 'Creates or updates the workspace-level UTXO selection strategy. \`ADAPTIVE\` is recommended.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: upsertUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/upsertUtxoSelectionConfig'
+  static description = 'Creates or updates the workspace-level UTXO selection strategy. \`ADAPTIVE\` is recommended.\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: upsertUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/upsertUtxoSelectionConfig'
 
   static enableJsonFlag = false
 

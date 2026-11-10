@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class UpsertVaultAssetUtxoSelectionConfig extends FireblocksBaseCommand {
   static summary = 'Upsert vault and asset UTXO selection config'
 
-  static description = 'Creates or updates the UTXO selection strategy for this vault account and asset. \`ADAPTIVE\` is recommended.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: upsertVaultAssetUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/upsertVaultAssetUtxoSelectionConfig'
+  static description = 'Creates or updates the UTXO selection strategy for this vault account and asset. \`ADAPTIVE\` is recommended.\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: upsertVaultAssetUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/upsertVaultAssetUtxoSelectionConfig'
 
   static enableJsonFlag = false
 
