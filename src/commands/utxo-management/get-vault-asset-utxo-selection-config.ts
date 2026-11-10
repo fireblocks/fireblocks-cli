@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetVaultAssetUtxoSelectionConfig extends FireblocksBaseCommand {
   static summary = 'Get vault and asset UTXO selection config'
 
-  static description = 'Returns the config stored at this vault-and-asset scope, if any, and the effective strategy after workspace fallback and runtime resolution. \`ADAPTIVE\` is the recommended strategy. When no row is stored at this scope and none is inherited from the workspace (source \`DEFAULT\`), \`effective\` is \`ADAPTIVE\` if adaptive selection is serving for this scope, otherwise \`ASC\`.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getVaultAssetUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/getVaultAssetUtxoSelectionConfig'
+  static description = 'Returns the config stored at this vault-and-asset scope, if any, and the effective strategy after workspace fallback and runtime resolution. \`ADAPTIVE\` is the recommended strategy. When no row is stored at this scope and none is inherited from the workspace (source \`DEFAULT\`), \`effective\` is \`ADAPTIVE\` if adaptive selection is serving for this scope, otherwise \`ASC\`.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getVaultAssetUtxoSelectionConfig\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/getVaultAssetUtxoSelectionConfig'
 
   static enableJsonFlag = false
 

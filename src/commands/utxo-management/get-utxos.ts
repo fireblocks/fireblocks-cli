@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetUtxos extends FireblocksBaseCommand {
   static summary = 'List unspent outputs (UTXOs)'
 
-  static description = 'Returns a paginated list of unspent transaction outputs (UTXOs) for a UTXO-based asset in a vault account, with optional filters for labels, statuses, amounts, and more.\n**Note:** These endpoints are currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUtxos\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/getUtxos'
+  static description = 'Returns a paginated list of unspent transaction outputs (UTXOs) for a UTXO-based asset in a vault account, with optional filters for labels, statuses, amounts, and more.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUtxos\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/UTXO%20Management/getUtxos'
 
   static enableJsonFlag = false
 

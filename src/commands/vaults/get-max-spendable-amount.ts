@@ -21,22 +21,22 @@ export default class GetMaxSpendableAmount extends FireblocksBaseCommand {
       description: 'False by default. The maximum number of inputs depends if the transaction will be signed by an automated co-signer server or on a mobile device.',
     }),
     'include-all-labels': Flags.string({
-      description: 'Only include UTXOs that have ALL of these labels (AND logic). Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Only include UTXOs that have ALL of these labels (AND logic). Requires the UTXO Manager.',
     }),
     'include-any-labels': Flags.string({
-      description: 'Only include UTXOs that have ANY of these labels (OR logic). Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Only include UTXOs that have ANY of these labels (OR logic). Requires the UTXO Manager.',
     }),
     'exclude-any-labels': Flags.string({
-      description: 'Exclude UTXOs that have ANY of these labels. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Exclude UTXOs that have ANY of these labels. Requires the UTXO Manager.',
     }),
     'address': Flags.string({
-      description: 'Only include UTXOs from this specific address. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Only include UTXOs from this specific address. Requires the UTXO Manager.',
     }),
     'min-amount': Flags.string({
-      description: 'Minimum UTXO amount in the asset\'s base unit. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Minimum UTXO amount in the asset\'s base unit. Requires the UTXO Manager.',
     }),
     'max-amount': Flags.string({
-      description: 'Maximum UTXO amount in the asset\'s base unit. Requires the UTXO Manager. This feature is currently in beta and might be subject to changes.',
+      description: 'Maximum UTXO amount in the asset\'s base unit. Requires the UTXO Manager.',
     }),
     'include-headers': Flags.boolean({
       description: 'Include spec-defined response headers in output',
