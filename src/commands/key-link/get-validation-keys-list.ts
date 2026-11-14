@@ -12,9 +12,11 @@ export default class GetValidationKeysList extends FireblocksBaseCommand {
     'page-cursor': Flags.string({
       description: 'Cursor to the next page',
     }),
-    'page-size': Flags.string({
-      description: 'Amount of results to return in the next page',
-      default: '10',
+    'page-size': Flags.integer({
+      description: 'Amount of results to return in the next page (1-50)',
+      default: 10,
+      min: 1,
+      max: 50,
     }),
     'sort-by': Flags.string({
       description: 'Field(s) to use for sorting',
