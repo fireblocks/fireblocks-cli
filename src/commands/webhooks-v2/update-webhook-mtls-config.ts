@@ -26,7 +26,7 @@ export default class UpdateWebhookMtlsConfig extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/webhooks_settings/mtls/{webhookMtlsId}'
   static operationId = 'updateWebhookMtlsConfig'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

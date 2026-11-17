@@ -26,7 +26,7 @@ export default class DeleteWebhookOauth extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/webhooks_settings/oauth/{webhookOauthId}'
   static operationId = 'deleteWebhookOauth'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

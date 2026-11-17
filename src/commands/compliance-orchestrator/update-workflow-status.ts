@@ -26,7 +26,7 @@ export default class UpdateWorkflowStatus extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/compliance/orchestrator/workflows/{workflowId}/status'
   static operationId = 'updateWorkflowStatus'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

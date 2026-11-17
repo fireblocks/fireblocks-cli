@@ -22,7 +22,7 @@ export default class GetBlockchainLinkChain extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}'
   static operationId = 'getBlockchainLinkChain'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

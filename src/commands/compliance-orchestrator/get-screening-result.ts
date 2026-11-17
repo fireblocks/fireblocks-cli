@@ -22,7 +22,7 @@ export default class GetScreeningResult extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/compliance/orchestrator/screenings/{screeningId}'
   static operationId = 'getScreeningResult'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
