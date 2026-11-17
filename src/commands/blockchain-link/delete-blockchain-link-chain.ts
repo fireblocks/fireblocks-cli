@@ -22,7 +22,7 @@ export default class DeleteBlockchainLinkChain extends FireblocksBaseCommand {
   static method = 'DELETE'
   static path = '/v1/blockchain_link/blockchains/{blockchainId}'
   static operationId = 'deleteBlockchainLinkChain'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

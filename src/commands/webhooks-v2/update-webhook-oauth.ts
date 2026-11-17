@@ -26,7 +26,7 @@ export default class UpdateWebhookOauth extends FireblocksBaseCommand {
   static method = 'PATCH'
   static path = '/v1/webhooks_settings/oauth/{webhookOauthId}'
   static operationId = 'updateWebhookOauth'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

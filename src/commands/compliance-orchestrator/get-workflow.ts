@@ -22,7 +22,7 @@ export default class GetWorkflow extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/compliance/orchestrator/workflows/{workflowId}'
   static operationId = 'getWorkflow'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

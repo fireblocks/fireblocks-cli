@@ -22,7 +22,7 @@ export default class RejectApproval extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/approvals/{requestId}/reject'
   static operationId = 'rejectApproval'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

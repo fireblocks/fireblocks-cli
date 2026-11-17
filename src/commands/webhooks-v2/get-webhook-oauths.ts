@@ -18,7 +18,7 @@ export default class GetWebhookOauths extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/webhooks_settings/oauth'
   static operationId = 'getWebhookOauths'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

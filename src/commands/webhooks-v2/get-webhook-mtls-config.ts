@@ -22,7 +22,7 @@ export default class GetWebhookMtlsConfig extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/webhooks_settings/mtls/{webhookMtlsId}'
   static operationId = 'getWebhookMtlsConfig'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

@@ -22,7 +22,7 @@ export default class CreateTempoTransfer extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/operations/tempo/transfer'
   static operationId = 'createTempoTransfer'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

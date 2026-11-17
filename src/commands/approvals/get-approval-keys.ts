@@ -29,7 +29,7 @@ export default class GetApprovalKeys extends FireblocksBaseCommand {
   static method = 'GET'
   static path = '/v1/management/api_users/{userId}/approval_keys'
   static operationId = 'getApprovalKeys'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {

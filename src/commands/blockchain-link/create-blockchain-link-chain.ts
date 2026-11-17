@@ -22,7 +22,7 @@ export default class CreateBlockchainLinkChain extends FireblocksBaseCommand {
   static method = 'POST'
   static path = '/v1/blockchain_link/blockchains'
   static operationId = 'createBlockchainLinkChain'
-  static isEa = false
+  static isEa = true
   static responseHeaders: string[] = ["X-Request-ID"]
 
   async run(): Promise<unknown> {
