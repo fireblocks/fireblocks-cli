@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DeleteUserGroup extends FireblocksBaseCommand {
   static summary = 'Delete user group'
 
-  static description = 'Delete a user group by ID.\n\n**Note**:\n- This endpoint is now in Beta, disabled for general availability at this time.\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: deleteUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/deleteUserGroup'
+  static description = 'Delete a user group by ID.\n\n**Note**:\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: deleteUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/deleteUserGroup'
 
   static enableJsonFlag = false
 

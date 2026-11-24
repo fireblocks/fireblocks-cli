@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateWebhookOauth extends FireblocksBaseCommand {
   static summary = 'Create OAuth credentials'
 
-  static description = 'Creates a reusable OAuth client credential set. Attach it to a webhook by passing the returned id as that webhook\'s \`webhookOauthId\`. Several webhooks may share one credential set, so rotating its client secret covers all of them at once. The client secret is write-only and is never returned.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookOauth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookOauth'
+  static description = 'Creates a reusable OAuth client credential set. Attach it to a webhook by passing the returned id as that webhook\'s \`webhookOauthId\`. Several webhooks may share one credential set, so rotating its client secret covers all of them at once. The client secret is write-only and is never returned.\n\nWith \`authMethod\` \`private_key_jwt\` no client secret is sent: Fireblocks generates two key pairs for the credentials, the signing key and its successor, and keeps the private halves. The public halves are published at the \`jwksUri\` returned with the credentials; register that URL as the client\'s \`jwks_uri\` on your authorization server.\n\n**Endpoint Permissions:** Owner, Admin, Non-Signing Admin.\n\nOperation ID: createWebhookOauth\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Webhooks%20V2/createWebhookOauth'
 
   static enableJsonFlag = false
 

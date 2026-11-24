@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateGenieSession extends FireblocksBaseCommand {
   static summary = 'Create a Genie session'
 
-  static description = 'Starts a new conversation with Genie, the Fireblocks AI assistant. Returns a \`sessionId\` — pass it when sending messages, and reuse it across calls to keep one continuous conversation.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: createGenieSession\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Genie/createGenieSession'
+  static description = 'Starts a new conversation with Genie, the Fireblocks AI assistant. Returns a \`sessionId\` — pass it when sending messages, and reuse it across calls to keep one continuous conversation.\n\n**Note:** This endpoint is currently in early availability and might be subject to changes.\n\nOperation ID: createGenieSession\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Genie/createGenieSession'
 
   static enableJsonFlag = false
 

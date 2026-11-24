@@ -4,15 +4,15 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class ClaimRewards extends FireblocksBaseCommand {
   static summary = 'Claim accrued rewards'
 
-  static description = 'Claims available staking rewards for the specified chain and vault. Supported chains: Solana and Polygon (POL/Matic). Behavior depends on protocol reward distribution.\n\nOperation ID: claimRewards\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/claimRewards'
+  static description = 'Claims available staking rewards for the specified chain and vault. Supported chains: Solana, Polygon (POL/Matic) and Celestia. Behavior depends on protocol reward distribution.\n\nOperation ID: claimRewards\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Staking/claimRewards'
 
   static enableJsonFlag = false
 
   static flags = {
     'chain-descriptor': Flags.string({
-      description: 'Protocol identifier for the claim rewards staking operation (e.g., POL/MATIC/SOL).',
+      description: 'Protocol identifier for the claim rewards staking operation (e.g., POL/MATIC/SOL/CELESTIA).',
       required: true,
-      options: ['SOL', 'SOL_TEST', 'MATIC', 'POL', 'POL_TEST'],
+      options: ['SOL', 'SOL_TEST', 'MATIC', 'POL', 'POL_TEST', 'CELESTIA'],
     }),
     data: Flags.string({
       description: 'JSON request body',

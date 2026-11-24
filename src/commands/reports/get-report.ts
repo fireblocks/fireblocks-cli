@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetReport extends FireblocksBaseCommand {
   static summary = 'Get report status'
 
-  static description = 'Returns the current status of a report job. Check the \`status\` field to determine the outcome.\n\nWhen \`status\` is \`COMPLETED\`, the response includes a fresh pre-signed download URL in\n\`links.downloadUrl\` (TTL ~1 hour). Re-poll this endpoint to obtain a new URL after expiry.\n\nWhen \`status\` is \`FAILED\`, the \`failedAt\` timestamp indicates when the failure occurred.\n\n**Note:** These endpoints are currently in beta and might be subject to changes.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: getReport\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/getReport'
+  static description = 'Returns the current status of a report job. Check the \`status\` field to determine the outcome.\n\nWhen \`status\` is \`COMPLETED\`, the response includes a fresh pre-signed download URL in\n\`links.downloadUrl\` (TTL ~1 hour). Re-poll this endpoint to obtain a new URL after expiry.\n\nWhen \`status\` is \`FAILED\`, the \`failedAt\` timestamp indicates when the failure occurred.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: getReport\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/getReport'
 
   static enableJsonFlag = false
 

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetPayout extends FireblocksBaseCommand {
   static summary = 'Get the status of a payout instruction set'
 
-  static description = '**Note:** The reference content in this section documents the Payments Engine endpoint. The Payments Engine endpoints include APIs available only for customers with Payments Engine enabled on their accounts. \nThese endpoints are currently in beta and might be subject to changes.\nIf you want to learn more about Fireblocks Payments Engine, please contact your Fireblocks Customer Success Manager or email CSM@fireblocks.com. \nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: getPayout\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Payments%20-%20Payout/getPayout'
+  static description = '**Note:** The reference content in this section documents the Payments Engine endpoint. The Payments Engine endpoints include APIs available only for customers with Payments Engine enabled on their accounts. \nIf you want to learn more about Fireblocks Payments Engine, please contact your Fireblocks Customer Success Manager or email CSM@fireblocks.com. \nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: getPayout\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Payments%20-%20Payout/getPayout'
 
   static enableJsonFlag = false
 

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class ListReports extends FireblocksBaseCommand {
   static summary = 'List reports'
 
-  static description = 'Returns a paginated list of report jobs scoped to the calling tenant.\n\n**Note:** Download URLs are not included in list responses. Call \`GET /v1/reports/{reportId}\` to\nobtain a fresh signed download URL for a specific completed report.\n\n**Note:** These endpoints are currently in beta and might be subject to changes.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: listReports\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/listReports'
+  static description = 'Returns a paginated list of report jobs scoped to the calling tenant.\n\n**Note:** Download URLs are not included in list responses. Call \`GET /v1/reports/{reportId}\` to\nobtain a fresh signed download URL for a specific completed report.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: listReports\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/listReports'
 
   static enableJsonFlag = false
 

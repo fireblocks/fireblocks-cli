@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetWorkspaceStatus extends FireblocksBaseCommand {
   static summary = 'Returns current workspace status'
 
-  static description = 'Returns current workspace status (Beta).\n**Note**:\n- This endpoint is now in Beta, disabled for general availability at this time.\n- Please note that this endpoint is available only for API keys with Admin/Non Signing Admin permissions.\n\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: getWorkspaceStatus\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Workspace%20Status/getWorkspaceStatus'
+  static description = 'Returns current workspace status.\n**Note**:\n- Please note that this endpoint is available only for API keys with Admin/Non Signing Admin permissions.\n\nEndpoint Permission: Admin, Non-Signing Admin.\n\nOperation ID: getWorkspaceStatus\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Workspace%20Status/getWorkspaceStatus'
 
   static enableJsonFlag = false
 

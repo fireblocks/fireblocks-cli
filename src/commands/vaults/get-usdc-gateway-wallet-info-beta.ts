@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetUsdcGatewayWalletInfoBeta extends FireblocksBaseCommand {
   static summary = 'Get USDC Gateway wallet info'
 
-  static description = 'Returns the USDC Gateway wallet information associated with the given vault account.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUsdcGatewayWalletInfoBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getUsdcGatewayWalletInfoBeta'
+  static description = 'Returns the USDC Gateway wallet information associated with the given vault account.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUsdcGatewayWalletInfoBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getUsdcGatewayWalletInfoBeta'
 
   static enableJsonFlag = false
 
