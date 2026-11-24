@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class LookupVaultByAddress extends FireblocksBaseCommand {
   static summary = 'Look up a vault account by blockchain address'
 
-  static description = 'Resolves a blockchain address to the vault account that owns it. Returns the vault account ID and the blockchains associated with the address.\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: lookupVaultByAddress\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/lookupVaultByAddress'
+  static description = 'Resolves a blockchain address to the vault account that owns it. Returns the vault account ID and the blockchains associated with the address.\n\nOperation ID: lookupVaultByAddress\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/lookupVaultByAddress'
 
   static enableJsonFlag = false
 

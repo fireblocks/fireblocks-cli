@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetUserGroup extends FireblocksBaseCommand {
   static summary = 'Get user group'
 
-  static description = 'Get a user group by ID.\n\n**Note**:\n- This endpoint is now in Beta, disabled for general availability at this time.\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: getUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/getUserGroup'
+  static description = 'Get a user group by ID.\n\n**Note**:\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: getUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/getUserGroup'
 
   static enableJsonFlag = false
 

@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class UpdateUserGroup extends FireblocksBaseCommand {
   static summary = 'Update user group'
 
-  static description = 'Update a user group by ID.\n\n**Note**:\n- This endpoint is now in Beta, disabled for general availability at this time.\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: updateUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/updateUserGroup'
+  static description = 'Update a user group by ID.\n\n**Note**:\n- Please note that this endpoint is available only for API keys with Admin permissions.\n\nOperation ID: updateUserGroup\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/User%20groups/updateUserGroup'
 
   static enableJsonFlag = false
 

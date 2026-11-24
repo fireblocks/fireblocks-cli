@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class SendGenieMessage extends FireblocksBaseCommand {
   static summary = 'Send a message to a Genie session'
 
-  static description = 'Sends a question to Genie and returns a single answer. Reuse the \`sessionId\` from the original session on follow-up messages to continue the conversation with prior context.\n\n**Note:** This endpoint is currently in beta and might be subject to changes.\n\nOperation ID: sendGenieMessage\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Genie/sendGenieMessage'
+  static description = 'Sends a question to Genie and returns a single answer. Reuse the \`sessionId\` from the original session on follow-up messages to continue the conversation with prior context.\n\n**Note:** This endpoint is currently in early availability and might be subject to changes.\n\nOperation ID: sendGenieMessage\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Genie/sendGenieMessage'
 
   static enableJsonFlag = false
 

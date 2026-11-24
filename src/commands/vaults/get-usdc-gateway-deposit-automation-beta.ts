@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class GetUsdcGatewayDepositAutomationBeta extends FireblocksBaseCommand {
   static summary = 'Read the USDC Gateway deposit automations for a vault account'
 
-  static description = 'Returns the USDC Gateway deposit automations configured for the given vault account.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUsdcGatewayDepositAutomationBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getUsdcGatewayDepositAutomationBeta'
+  static description = 'Returns the USDC Gateway deposit automations configured for the given vault account.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver, Editor, Viewer.\n\nOperation ID: getUsdcGatewayDepositAutomationBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/getUsdcGatewayDepositAutomationBeta'
 
   static enableJsonFlag = false
 

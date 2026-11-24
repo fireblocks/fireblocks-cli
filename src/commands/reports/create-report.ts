@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class CreateReport extends FireblocksBaseCommand {
   static summary = 'Create a report'
 
-  static description = 'Creates a new asynchronous report job and returns a receipt containing the report ID.\nPoll \`GET /v1/reports/{reportId}\` to check status. When \`status\` is \`COMPLETED\`, the poll\nresponse includes a fresh pre-signed download URL in \`links.downloadUrl\`.\n\n**Note:** These endpoints are currently in beta and might be subject to changes.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: createReport\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/createReport'
+  static description = 'Creates a new asynchronous report job and returns a receipt containing the report ID.\nPoll \`GET /v1/reports/{reportId}\` to check status. When \`status\` is \`COMPLETED\`, the poll\nresponse includes a fresh pre-signed download URL in \`links.downloadUrl\`.\n\nEndpoint Permission: Viewer and above.\n\nOperation ID: createReport\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Reports/createReport'
 
   static enableJsonFlag = false
 

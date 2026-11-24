@@ -4,7 +4,7 @@ import {FireblocksBaseCommand} from '../../lib/base-command.js'
 export default class DisableUsdcGatewayDepositAutomationScheduleBeta extends FireblocksBaseCommand {
   static summary = 'Stop a USDC Gateway deposit automation\'s schedule'
 
-  static description = 'Stops the schedule for an existing deposit automation. The automation itself stays configured, only its schedule stops. Turn it back on later with PATCH, without setting up the automation again from scratch.\n**Note:** This endpoint is currently in beta and might be subject to changes.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver.\n\nOperation ID: disableUsdcGatewayDepositAutomationScheduleBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/disableUsdcGatewayDepositAutomationScheduleBeta'
+  static description = 'Stops the schedule for an existing deposit automation. The automation itself stays configured, only its schedule stops. Turn it back on later with PATCH, without setting up the automation again from scratch.\nEndpoint Permission: Admin, Non-Signing Admin, Signer, Approver.\n\nOperation ID: disableUsdcGatewayDepositAutomationScheduleBeta\nDocs: https://docs.fireblocks.com/api/swagger-ui/#/Vaults/disableUsdcGatewayDepositAutomationScheduleBeta'
 
   static enableJsonFlag = false
 
